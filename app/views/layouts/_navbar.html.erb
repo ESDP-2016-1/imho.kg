@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'Shop', root_path, class: 'navbar-brand' %>
+      <%= link_to 'Imhokg', root_path, class: 'navbar-brand' %>
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -25,7 +25,6 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to 'Edit profile', edit_user_registration_path(current_user) %></li>
-                  <li><a href="#">View orders</a></li>
                   <li class="divider"></li>
                   <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
                 </ul>
