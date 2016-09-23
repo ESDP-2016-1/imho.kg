@@ -20,7 +20,7 @@
 
   <div class="field">
     <%= f.label "Date Of Birth", :class=>'singleline' %><br />
-    <%= f.date_select :dob, { :start_year => 1950, :end_year => 2010 } %>
+    <%= f.date_select :dob, {:include_blank => true, :default => nil}, { :start_year => 1950, :end_year => 2010 } %>
   </div>
 
   <div class="field">
