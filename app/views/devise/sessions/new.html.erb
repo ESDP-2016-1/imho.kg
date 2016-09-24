@@ -1,6 +1,7 @@
 <h2><p class="text-center">Log in</p></h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<center>
   <div class="field">
     <p class="text-center"><%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %></p>
@@ -24,3 +25,4 @@
 <% end %></p>
 
 <%= render "devise/shared/links" %>
+</center>
