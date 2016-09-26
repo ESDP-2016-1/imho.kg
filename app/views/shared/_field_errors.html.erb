@@ -1,7 +1,7 @@
 <% if object.errors[field_name].any? %>
-      <ul class="error-messages">
+      <div class="error-messages">
         <% object.errors.full_messages_for(field_name).each do |error| %>
-            <li><%=  error %></li>
+            <p><%=  error %></p>
         <% end %>
-      </ul>
+      </div>
 <% end %>
