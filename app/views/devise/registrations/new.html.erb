@@ -1,42 +1,40 @@
-<h2><p class="text-center">Sign up</p></h2>
+<center><h2>Регистрация</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    
-    <center>
-      <div class="field">
-      <p class="text-center"><%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true %></p>
-      <%= render 'shared/field_errors', object: resource, field_name: :name %>
-    </div>
+  <div class="field">
+    <%= f.label :Имя %><br />
+    <%= f.text_field :name, autofocus: true %>
+    <%= render 'shared/field_errors', object: resource, field_name: :name %>
+  </div>
 
-    <div class="field">
-      <p><%= f.label :email %><br />
-      <%= f.email_field :email %>
-      <%= render 'shared/field_errors', object: resource, field_name: :email %>
-      </p>
+  <div class="field">
+    <p><%= f.label :email %><br />
+    <%= f.email_field :email %>
+    <%= render 'shared/field_errors', object: resource, field_name: :email %>
+    </p>
 
-    </div>
+  </div>
 
-    <div class="field">
-      <p><%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-      <%= render 'shared/field_errors', object: resource, field_name: :password %>
-      </p>
-    </div>
+  <div class="field">
+    <p><%= f.label :Пароль %>
+    <% if @minimum_password_length %>
+    <em>(минимум <%= @minimum_password_length %> символов)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+    <%= render 'shared/field_errors', object: resource, field_name: :password %>
+    </p>
+  </div>
 
-    <div class="field">
-      <p><%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      <%= render 'shared/field_errors', object: resource, field_name: :password_confirmation %>
-      </p>
-    </div>
+  <div class="field">
+    <p><%= f.label :Подтверждение_пароля %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= render 'shared/field_errors', object: resource, field_name: :password_confirmation %>
+    </p>
+  </div>
 
-    <div class="actions">
-      <p class="text-center"><%= f.submit "Sign up" %></p>
-    </div>
+  <div class="actions">
+    <p class="text-center"><%= f.submit "Зарегистрироваться" %></p>
+  </div>
 <% end %>
 
 <%= render "devise/shared/links" %>

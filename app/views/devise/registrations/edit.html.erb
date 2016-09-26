@@ -1,11 +1,11 @@
 <center>
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Изменение профиля <%#= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
       <div class="field">
-      <%= f.label :name %><br />
+      <%= f.label :Имя %><br />
       <%= f.text_field :name, autofocus: true %>
       <%= render 'shared/field_errors', object: resource, field_name: :name %>
     </div>
@@ -22,13 +22,13 @@
     </div>
 
     <div class="field">
-      <%= f.label "Date Of Birth", :class=>'singleline' %><br />
+      <%= f.label "Дата рождения", :class=>'singleline' %><br />
       <%= f.date_select :dob, {:include_blank => true, :default => nil, :start_year => 1950, :end_year => 2010 } %>
     </div>
 
     <div class="field">
-      <%= f.label :sex %><br />
-      <%= f.select :sex, [["N/A", nil], ["Male", true], ["Female", false]] %>
+      <%= f.label :Пол %><br />
+      <%= f.select :sex, [["N/A", nil], ["Мужской", true], ["Женский", false]] %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -36,31 +36,31 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.label :Пароль %> <i>(Пропустите если не хотите менять пароль)</i><br />
       <%= f.password_field :password, autocomplete: "off" %>
       <%= render 'shared/field_errors', object: resource, field_name: :password %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
+      <%= f.label :Подтверждение_пароля %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
       <%= render 'shared/field_errors', object: resource, field_name: :password_confirmation %>
     </div>
 
     <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.label :Текущий_пароль %> <i>(Введите текущий пароль для подтверждения изменения)</i><br />
       <%= f.password_field :current_password, autocomplete: "off" %>
       <%= render 'shared/field_errors', object: resource, field_name: :current_password %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Update" %>
+      <%= f.submit "Обновить" %>
     </div>
 <% end %>
 
-    <h3>Cancel my account</h3>
+    <h3>Удаление аккаунта</h3>
 
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <p>Unhappy? <%= button_to "Удалить", registration_path(resource_name), data: { confirm: "Вы хотите удалить свой профиль? Восстановить его будет невозомжно. " }, method: :delete %></p>
 
-    <%= link_to "Back", :back %>
+    <%= link_to "Назад", :back %>
 </center>
