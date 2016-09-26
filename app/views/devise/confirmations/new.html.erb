@@ -1,17 +1,17 @@
 <center>
-  <h2>Повторная отправка сообщения</h2>
+<h2><%= t('.resend_confirmation_instructions') %></h2>
 
-  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-    <%= devise_error_messages! %>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-    </div>
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
 
-    <div class="actions">
-      <p></p><%= f.submit "Отправить" %>
-    </div>
-  <% end %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+  </div>
 
-    <%= render "devise/shared/links" %>
-</center>
+  <div class="actions">
+    <%= f.submit t('.resend_confirmation_instructions') %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
