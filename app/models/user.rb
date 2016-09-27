@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  belongs_to :gender
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,9 +11,5 @@ class User < ActiveRecord::Base
                     default_url: ':style/missing.png'
   validates_attachment :avatar,
                        content_type: { content_type: %w( image/jpeg image/jpg image/gif image/png) }
-
-
-
-
 
 end
