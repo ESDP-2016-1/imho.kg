@@ -26,18 +26,18 @@
     <%= f.date_select :dob, {:include_blank => true, :default => nil, :start_year => 1950, :end_year => 2010 } %>
   </div>
 
-  <div class="field">
-    <%= f.label :Пол %><br />
-    <%= f.select :sex, [["N/A", nil], ["Мужской", true], ["Женский", false]] %>
-  </div>
 
   <div class="field">
     <%= f.label :Пол %><br />
     <%= f.collection_select :gender_id , Gender.all, :id, :name %>
-
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <div class="field">
+    <%= f.label :город %><br />
+    <%= f.collection_select :city_id, City.all, :id, :name %>
+  </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <p>
       <%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %>
     </p>

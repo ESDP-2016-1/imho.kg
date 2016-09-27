@@ -6,5 +6,6 @@
   <%= user.email %>
     <%= calculate_age(user.dob) %>
     <%= user.gender.name %>
+    <%= user.city.name %>
   <%= image_tag user.avatar.url(:thumb) %>
 <% end %>
