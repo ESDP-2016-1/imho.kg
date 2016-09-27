@@ -10,4 +10,9 @@ class User < ActiveRecord::Base
                     default_url: ':style/missing.png'
   validates_attachment :avatar,
                        content_type: { content_type: %w( image/jpeg image/jpg image/gif image/png) }
+
+
+
+
+
 end

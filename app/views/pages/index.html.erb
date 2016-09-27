@@ -1,13 +1,15 @@
 <h1>Pages#index</h1>
 <p>Find me in app/views/pages/index.html.erb</p>
+
 <% @users.each do |user| %>
   <%= user.name %>
   <%= user.email %>
-  <%= user.dob %>
-    <% if user.sex.nil? %>
+    <%= calculate_age(user.dob) %>
+
+    <% if user.sex.nil? %></b>
         N/A
     <% else %>
-        <%=  user.sex ? 'male' : 'female' %>
+        <%=  user.sex ? 'male' : 'female' %> <br>
     <% end %>
   <%= image_tag user.avatar.url(:thumb) %>
 <% end %>
