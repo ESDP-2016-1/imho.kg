@@ -5,4 +5,5 @@ class Category < ActiveRecord::Base
 	belongs_to :topcategory, class_name: "Category"
 
 	has_many :companies
+
 end
