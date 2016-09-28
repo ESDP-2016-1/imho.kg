@@ -2,11 +2,26 @@
 <p>Find me in app/views/pages/index.html.erb</p>
 
 <% @users.each do |user| %>
-  <%= user.name %>
-  <%= user.dob %>
-  <%= user.email %>
-    <%= calculate_age(user.dob) %>
-    <%= user.gender.name %>
-    <%= user.city.name %>
-  <%= image_tag user.avatar.url(:thumb) %>
+    <%= user.name %>
+      <% if user.role == nil %>
+      <% else %>
+        <%= user.role.name %>
+      <% end  %>
+    <%= user.email %>
+      <% if user.dob == nil %>
+        <%= p 'укажите возраст' %>
+      <% else %>
+        <%= calculate_age(user.dob) %>
+      <% end %>
+    <% if user.gender == nil %>
+        <%= p 'укажите пол' %>
+    <% else %>
+      <%= user.gender.name %>
+    <% end %>
+    <% if user.city == nil %>
+      <% p 'укажите город' %>
+    <% else %>
+      <%= user.city.name %>
+    <% end %>
+    <%= image_tag user.avatar.url(:thumb) %>
 <% end %>

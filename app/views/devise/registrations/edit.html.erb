@@ -37,6 +37,12 @@
     <%= f.collection_select :city_id, City.all, :id, :name %>
   </div>
 
+  <div class="field">
+    <%= f.label :Войти_как %><br />
+    <%= f.collection_select :role_id, Role.all, :id, :name %>
+  </div>
+
+
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <p>
       <%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %>
