@@ -5,8 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = User.create(name: 'Admin', email: 'admin@example.com', password: '123456', password_confirmation: '123456', dob: '1994/06/14', gender_id: 1, city_id: 2, active: true)
-user = User.create(name: 'Min', email: 'min@example.com', password: '123456', password_confirmation: '123456', dob: '1994/06/14', gender_id: 1, city_id: 2, active: true)
+user = User.create(name: 'Admin', email: 'admin@example.com', password: '123456', password_confirmation: '123456', dob: '1994/06/14', gender_id: 1, city_id: 2, active: true, role_id: 1)
+user = User.create(name: 'Min', email: 'min@example.com', password: '123456', password_confirmation: '123456', dob: '1994/06/14', gender_id: 1, city_id: 2, active: true, role_id: 1 )
 gender = Gender.create(name: 'мужской')
 gender = Gender.create(name: 'женский')
 
@@ -19,3 +19,8 @@ city = City.create(name: 'г.Жалал-Абад')
 city  = City.create(name:'г.Бишкек')
 city  = City.create(name:'г.Кант')
 city  = City.create(name:'г.Ош')
+
+role  = Role.create(name:'user')
+role  = Role.create(name:'agent')
+role  = Role.create(name:'moderator')
+role  = Role.create(name:'admin')

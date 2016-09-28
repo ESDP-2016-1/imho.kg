@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928043130) do
+ActiveRecord::Schema.define(version: 20160928064254) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20160928043130) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160928043130) do
     t.integer  "city_id"
     t.string   "fullname"
     t.boolean  "active",                 default: false
+    t.integer  "role_id"
   end
 
   add_index "users", ["city_id"], name: "index_users_on_city_id"
@@ -59,5 +67,6 @@ ActiveRecord::Schema.define(version: 20160928043130) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["gender_id"], name: "index_users_on_gender_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["role_id"], name: "index_users_on_role_id"
 
 end
