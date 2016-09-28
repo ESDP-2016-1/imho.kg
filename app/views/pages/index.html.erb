@@ -3,6 +3,7 @@
 
 <% @users.each do |user| %>
   <%= user.name %>
+  <%= user.dob %>
   <%= user.email %>
     <%= calculate_age(user.dob) %>
     <%= user.gender.name %>
