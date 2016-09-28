@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928064254) do
+ActiveRecord::Schema.define(version: 20160928101832) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -19,11 +19,38 @@ ActiveRecord::Schema.define(version: 20160928064254) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "address"
+    t.string   "phones"
+    t.string   "email"
+    t.string   "website"
+    t.string   "working_hours"
+    t.string   "registration_year"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "city_id"
+  end
+
+  add_index "companies", ["city_id"], name: "index_companies_on_city_id"
+
   create_table "genders", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "company_id"
+  end
+
+  add_index "ratings", ["company_id"], name: "index_ratings_on_company_id"
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
