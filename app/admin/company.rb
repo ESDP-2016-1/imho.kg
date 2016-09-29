@@ -4,7 +4,7 @@ ActiveAdmin.register Company do
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
   permit_params :title, :description, :image, :city_id, :address,
-                :phone, :email, :website, :working_hours, :registration_year,
+                :phones, :email, :website, :working_hours, :registration_year,
                 :category
 
 
@@ -16,7 +16,7 @@ ActiveAdmin.register Company do
       f.input :city
       f.input :category
       f.input :address
-      f.input :phone
+      f.input :phones
       f.input :email
       f.input :website
       f.input :working_hours
@@ -38,11 +38,12 @@ ActiveAdmin.register Company do
     column :city
     column :category
     column :address
-    column :phone
+    column :phones
     column :email
     column :website
     column :working_hours
     column :registration_year
+    column :image
     actions
   end
 
@@ -56,7 +57,7 @@ ActiveAdmin.register Company do
       row :city
       row :category
       row :address
-      row :phone
+      row :phones
       row :email
       row :website
       row :working_hours

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928185828) do
+ActiveRecord::Schema.define(version: 20160929082715) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -53,10 +53,14 @@ ActiveRecord::Schema.define(version: 20160928185828) do
     t.string   "website"
     t.string   "working_hours"
     t.string   "registration_year"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "city_id"
     t.integer  "category_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "companies", ["category_id"], name: "index_companies_on_category_id"
