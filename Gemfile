@@ -23,6 +23,8 @@ gem 'mailcatcher'
 
 gem 'russian'
 
+gem 'activeadmin', '~> 1.0.0.pre4'
+
 gem 'paperclip'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

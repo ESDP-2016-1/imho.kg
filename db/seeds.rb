@@ -55,7 +55,7 @@
               gender_id:             1,
               city_id:               2,
               active:                true,
-              role_id:               City.all.first)
+              role_id:               4)
 
   User.create(name:                  'Min',
               email:                 'min@example.com',
@@ -65,4 +65,4 @@
               gender_id:             1,
               city_id:               2,
               active:                true,
-              role_id:               City.all.first)
+              role_id:               1)
