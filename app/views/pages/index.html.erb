@@ -1,3 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="home-negative col-sm-5">
+      Отрицательные
+    </div>
+    <div class="home-sorting col-sm-2">
+      сортировка 
+      <select name="search">
+        <option value=""></option>
+        <option value="1" selected="selected">По алфавиту</option>
+        <option value="2">По обсуждаемости</option>
+        <option value="3">По рейтингу</option>
+      </select>
+    </div>
+
+    <div class="home-positive col-sm-5">
+      Положительные
+    </div>
+  </div>
+</div>
+
+<div class="container">
 <h1>Pages#index</h1>
 <p>Find me in app/views/pages/index.html.erb</p>
 
@@ -25,3 +47,16 @@
     <% end %>
     <%= image_tag user.avatar.url(:thumb) %>
 <% end %>
+
+<h2> Category </h2>
+<% @cats.each do |cat| %>
+<% if cat.topcategory_id.nil? %>
+  Top category <%= cat.title %></br>
+  Subcategories: </br>
+  <% cat.subcategories.each do |sub| %>
+    <%= sub.title %>
+  <% end %>
+<% end %>
+
+<% end %>
+</div>

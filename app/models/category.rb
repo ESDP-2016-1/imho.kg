@@ -6,4 +6,5 @@ class Category < ActiveRecord::Base
 
 	has_many :companies
 
+	validates :title, uniqueness: true, length: { maximum: 30}
 end

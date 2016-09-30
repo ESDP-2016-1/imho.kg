@@ -1,17 +1,35 @@
 ActiveAdmin.register Category do
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-  permit_params :title, :description, :subcategory, :topcategory
+  action_item :create_subdirectory, only: :index do
+    link_to "Создать SubCategory", new_admin_subcategory_path
+  end
+
+  permit_params :title, :description, :topcategory_id
 
 
   form do |f|
-    f.inputs do
-      f.input :title
-      f.input :description
-      f.input :topcategory
-      f.input :subcategory
+
+    if !category.id.nil? 
+
+      f.inputs "Top category" do
+        f.input :topcategory
+        f.input :description, :input_html => { :rows => 4}
+      end    
+
+       
+      f.inputs "Sub category" do
+               
+        f.input :title
+        f.input :description, :input_html => { :rows => 4}
+      end
+
+    else  
+     
+      f.inputs "Top category" do
+        f.input :title
+        f.input :description, :input_html => { :rows => 4}
+      end
+       
     end
     f.actions
   end
@@ -24,7 +42,15 @@ ActiveAdmin.register Category do
     end
     column :description
     column :topcategory
-    column :subcategory
+    column :subcategories do |category|
+      if category.subcategories.present?
+        name = ""
+        category.subcategories.each do |subcat|
+          name += subcat.title + ", "
+        end  
+        name.chomp(", ")      
+      end
+    end
     actions
   end
 
@@ -33,7 +59,15 @@ ActiveAdmin.register Category do
       row :title
       row :description
       row :topcategory
-      row :subcategory
+      row :subcategories do |category|
+        if category.subcategories.present?
+          name = ""
+          category.subcategories.each do |subcat|
+            name += subcat.title + ", "
+          end  
+          name.chomp(", ")      
+        end
+      end
     end
     active_admin_comments
   end

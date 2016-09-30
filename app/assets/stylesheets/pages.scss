@@ -1,3 +1,37 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.home-negative {
+	display: block;
+	height: 40px;
+	border: 1px;
+
+	text-align: left;
+	font: sans-serif;
+	font-size: large;
+	font-weight: bold;
+	line-height: 40px;
+	color: #800000;
+	background: #FFBFBF;	
+
+}
+
+.home-positive {
+	display: block;
+	height: 40px;
+	border: 1px;
+	text-align: right;
+	font: sans-serif;
+	font-size: large;
+	font-weight: bold;
+	line-height: 40px;
+	color: #008000;
+	background: #BFFFBF;
+}
+
+.home-sorting {
+	display: block;
+	height: 40px;
+}
