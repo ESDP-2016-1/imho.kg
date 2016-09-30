@@ -5,10 +5,11 @@
 
 .home-negative {
 	display: block;
+	float: left;
 	height: 40px;
 	border: 1px;
-
 	text-align: left;
+	padding-left: 30px;
 	font: sans-serif;
 	font-size: large;
 	font-weight: bold;
@@ -20,9 +21,11 @@
 
 .home-positive {
 	display: block;
+	float: left;
 	height: 40px;
 	border: 1px;
 	text-align: right;
+	padding-right: 30px;
 	font: sans-serif;
 	font-size: large;
 	font-weight: bold;
@@ -31,7 +34,43 @@
 	background: #BFFFBF;
 }
 
-.home-sorting {
+.home-sorting, .home-select {
 	display: block;
+	float: left;
+	padding: 5,0px;
 	height: 40px;
+	line-height: 40px;
+	font-size: small;
+	color: white;
+	background: black;
+}
+
+.home-sort {
+	width: 60%;
+	height: 30px;
+}
+
+.catalogue {
+	position: fixed;
+	top: 600px;
+}
+
+#rectangle {
+	float: left;
+	width: 140px;
+	height: 30px;
+	background: #CF0404;
+	font-size: large;
+	color: white;
+	padding-left: 20%;
+	padding-top: 2%;
+}
+
+#triangle-right {
+	float: left;
+	width: 0;
+	height: 0;
+	border-top: 15px solid transparent;
+	border-left: 15px solid #CF0404;
+	border-bottom: 15px solid transparent;
 }

@@ -1,11 +1,11 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="home-negative col-sm-5">
+    <div class="home-negative col-sm-5 col-md-5">
       Отрицательные
     </div>
-    <div class="home-sorting col-sm-2">
-      сортировка 
-      <select name="search">
+    <div class="home-sorting col-sm-2 col-md-2">
+      <span>Cортировка</span>
+      <select name="home-sort" class="home-sort">
         <option value=""></option>
         <option value="1" selected="selected">По алфавиту</option>
         <option value="2">По обсуждаемости</option>
@@ -13,11 +13,16 @@
       </select>
     </div>
 
-    <div class="home-positive col-sm-5">
+    <div class="home-positive col-sm-5 col-md-5">
       Положительные
     </div>
   </div>
 </div>
+
+<div class="catalogue">
+  <div id="rectangle"> <span> <%= link_to 'КАТАЛОГ' %> </span></div>
+  <div id="triangle-right"></div>
+ </div>
 
 <div class="container">
 <h1>Pages#index</h1>
