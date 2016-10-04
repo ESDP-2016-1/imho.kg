@@ -1,0 +1,42 @@
+
+.sign_up {
+	position:absolute;
+	top:71px;
+	right:0;
+	width: 418px;
+	height: 300px;
+	opacity: 0.9;
+	padding: 15px;
+	background-color: #212934;
+}
+
+.sign_up h4 {
+	color: white;
+	font-weight: italic;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.sign_up .field {
+	padding: 5px;
+	text-align: center;
+	margin-bottom: 3px;
+}
+
+.sign_up_name, .sign_up_email, .sign_up_password, .sign_up_password_confirm {
+	color: white;
+	text-align: left;
+	float: left;
+	display: block;
+	width: 180px;
+	padding-left: 5%;
+}
+
+.sign_up .actions {
+	width: 100%;
+	display: block;
+	float: left;
+	padding-left: 25px;
+	padding-right: 25px;
+	margin-top: 15px;
+}

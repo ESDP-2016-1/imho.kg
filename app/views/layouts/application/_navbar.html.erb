@@ -33,7 +33,7 @@
               </li>
             </ul>
         <% else %>
-          <%= link_to 'Войти', new_user_session_path, class: 'btn btn-primary navbar-btn' %>
+          <%= link_to 'Войти', "#sign_in", "data-toggle" => "modal", 'data-target' => '#sign_in_modal', class: 'btn btn-primary navbar-btn' %>
         <% end %>
       </ul>
     </div>

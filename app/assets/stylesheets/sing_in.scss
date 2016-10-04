@@ -1,0 +1,60 @@
+.sign_in {
+	position:absolute;
+	top:72px;
+	right:0;
+	width: 418px;
+	height: 325px;
+	opacity: 0.9;
+	padding: 15px;
+	background-color: #212934;
+}
+
+.sign_in .field {
+	padding: 5px;
+	text-align: center;
+	margin-bottom: 3px;
+}
+
+.sign_in_email, .sign_in_password {
+	color: white;
+	text-align: left;
+	float: left;
+	display: block;
+	width: 100px;
+	padding-left: 5%;
+}
+
+.sign_in_password_field, .sign_in_email_field {
+	display: inline-block;
+	width: 267px;
+	height: 23px;
+}
+
+.sign_in_enter {
+	display: block;
+	margin-left: 10px;
+}
+
+.sign_in_enter .actions {
+	float: right;
+	margin-right: 5px;
+}
+
+.sign_in_with {
+	display: block;
+	color: white;
+	margin: auto;
+}
+
+.sign_in_with_social_icons {
+	display: block;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 15px;
+	
+}
+
+.sign_in_with_social_icons img {
+	border-radius: 8px;
+	margin-left: 10px;
+}
