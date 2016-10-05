@@ -1,5 +1,5 @@
 <div class="modal" id="sign_in_modal">
-<div class="sign_in modal-body">
+<div class="sign_in">
    
     <%= form_for(User.new, url: session_path(:user), html:{id: 'sign_in_user', :'data-type' => 'json'}) do |f| %>
       <div class="field">

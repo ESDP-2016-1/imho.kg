@@ -10,13 +10,12 @@ class User < ActiveRecord::Base
          
   validates :name, presence: true, uniqueness: true, length: {maximum: 50}
 
+  validates :email, presence: true, uniqueness: true
+
   has_attached_file :avatar,
                     styles: { medium: '300x300>', thumb: '100x100>'},
                     default_url: ':style/missing.png'
   validates_attachment :avatar,
                        content_type: { content_type: %w( image/jpeg image/jpg image/gif image/png) }
-
-
-
 
 end
