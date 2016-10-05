@@ -1,6 +1,8 @@
 class Company < ActiveRecord::Base
   has_many :ratings
   belongs_to :city
+  has_many :ucomments
+
 
   belongs_to :category
   has_attached_file :image,
