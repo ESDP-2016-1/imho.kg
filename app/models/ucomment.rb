@@ -5,4 +5,6 @@ class Ucomment < ActiveRecord::Base
 
   belongs_to :topucomment, class_name: 'Ucomment'
 
+  has_many :images
+
 end

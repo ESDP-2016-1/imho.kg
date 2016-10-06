@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161005092756) do
+ActiveRecord::Schema.define(version: 20161006065222) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -72,6 +72,15 @@ ActiveRecord::Schema.define(version: 20161005092756) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
   create_table "ratings", force: :cascade do |t|
     t.integer  "rate"
     t.datetime "created_at", null: false
@@ -100,9 +109,11 @@ ActiveRecord::Schema.define(version: 20161005092756) do
     t.integer  "user_id"
     t.integer  "company_id"
     t.integer  "topucomment_id"
+    t.integer  "image_id"
   end
 
   add_index "ucomments", ["company_id"], name: "index_ucomments_on_company_id"
+  add_index "ucomments", ["image_id"], name: "index_ucomments_on_image_id"
   add_index "ucomments", ["topucomment_id"], name: "index_ucomments_on_topucomment_id"
   add_index "ucomments", ["user_id"], name: "index_ucomments_on_user_id"
 
