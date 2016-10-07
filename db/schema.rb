@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 20161006073259) do
     t.integer  "city_id"
     t.string   "fullname"
     t.boolean  "active",                 default: false
-    t.integer  "role_id"
+    t.integer  "role_id",                default: 1
   end
 
   add_index "users", ["city_id"], name: "index_users_on_city_id"

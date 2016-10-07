@@ -1,6 +1,6 @@
 <div class="sign_in" id="sign_in">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <span class="sign_in_email"><%= f.label :email, "Эл.почта :" %></span>
     <%= f.email_field :email, autofocus: true, class: "sign_in_email_field"  %>
@@ -39,11 +39,6 @@
   <%= image_tag("socialnetwork/facebook.png", size: '48x48') %>
   <%= image_tag("socialnetwork/mailru.png", size: '48x48') %>
 </div>
-
-<div class="field">
-  <%= link_to "Регистрация", new_registration_path(resource_name), class: "btn btn-primary" %>
-</div> 
-
 
 </div>
 
