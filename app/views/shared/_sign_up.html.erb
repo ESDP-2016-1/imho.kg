@@ -5,7 +5,7 @@
     
     <h4>Регистрация</h4>  
     
-    <%= form_for(User.new, url: registration_path(:user), html:{id: 'sign_up_user', :'data-type' => 'json'}, remote: true) do |f| %>
+    <%= form_for(User.new, url: registration_path(:user), html:{id: 'sign_up_user', :'data-type' => 'json'}) do |f| %>
 
        <div class="field">
           <span class="sign_up_name"> <%= f.label :name, "Имя пользователя:" %></span>
