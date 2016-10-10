@@ -6,15 +6,10 @@
 
 #-------------------- CITIES --------------------------------
 
-  City.create(name: 'г. Бишкек')
-  City.create(name: 'г. Талас')
-  City.create(name: 'г. Нарын')
-  City.create(name: 'г. Чуй')
-  City.create(name: 'г. Ыссык-Кол')
-  City.create(name: 'г. Баткен')
-  City.create(name: 'г. Жалал-Абад')
-  City.create(name: 'г. Кант')
-  City.create(name: 'г. Ош')
+  ['г. Бишкек', 'г. Талас', 'г. Нарын', 'г. Чуй', 'г. Ыссык-Кол', 'г. Баткен',
+   'г. Жалал-Абад', 'г. Кант', 'г. Ош'].each do |city|
+    City.find_or_create_by({name: city})
+  end
 
 #--------------------  ROLES ----------------------------------
 
