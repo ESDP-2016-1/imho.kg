@@ -18,10 +18,9 @@
 
 #--------------------  ROLES ----------------------------------
 
-  Role.create(name:'user')
-  Role.create(name:'agent')
-  Role.create(name:'moderator')
-  Role.create(name:'admin')
+['user', 'agent', 'moderator', 'admin', 'banned'].each do |role|
+  Role.find_or_create_by({name: role})
+end
 
 #--------------------  COMPANY ------------------------------
 

@@ -5,7 +5,7 @@ ActiveAdmin.register Company do
 #
   permit_params :title, :description, :image, :city_id, :address,
                 :phones, :email, :website, :working_hours, :registration_year,
-                :category
+                :category_id
 
 
   form do |f|

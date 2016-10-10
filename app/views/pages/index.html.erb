@@ -52,15 +52,10 @@
     <% end %>
     <%= image_tag user.avatar.url(:thumb) %>
 <% end %>
+  <h2> Category </h2>
 
-<h2> Category </h2>
-<% @cats.each do |cat| %>
-<% if cat.topcategory_id.nil? %>
-  Top category <%= cat.title %></br>
-  Subcategories: </br>
-  <% cat.subcategories.each do |sub| %>
-    <%= sub.title %>
-  <% end %>
-<% end %>
+  <% @cats.each do |cat| %>
+     <div> <%= p cat.title if cat.subcategories.present? %>
 
+     </div>
 <% end %>
