@@ -7,5 +7,19 @@ module ApplicationHelper
       age
   end
 
+# Helper methods for Devise. Those methods are needed to create our own views and use them in modal windows.
+  def resource_name
+    :user
+  end
+
+  def resource
+   @resource ||= User.new
+  end
+
+  def devise_mapping
+   @devise_mapping ||= Devise.mappings[:user]
+  end
+# End of devise helpers.
+
 end
 

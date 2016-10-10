@@ -1,7 +1,8 @@
 <div class="modal" id="sign_in_modal">
 <div class="sign_in">
    
-    <%= form_for(User.new, url: session_path(:user), html:{id: 'sign_in_user', :'data-type' => 'json'}) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{id: 'sign_in_user', :'data-type' => 'json'}) do |f| %>
+    
       <div class="field">
         <span class="sign_in_email"><%= f.label :email, "Эл.почта :" %></span>
         <%= f.email_field :email, autofocus: true, class: "sign_in_email_field"  %>
@@ -13,13 +14,13 @@
       </div>
 
       <div class="field sign_in_enter">
-        <%= link_to "Забыли пароль?", new_password_path(:user) %>
+        <%= link_to "Забыли пароль?", new_password_path(resource_name) %>
           <div class="actions">
             <%= f.submit "Вход", class: "btn btn-primary" %>
           </div>
       </div>
 
-      <% if Devise.mappings[:user].rememberable? %>
+      <% if devise_mapping.rememberable? %>
         <div class="field sign_in_rememberme">
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me %>
