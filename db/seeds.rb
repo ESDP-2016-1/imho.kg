@@ -48,8 +48,7 @@ end
     name = 'user' + n.to_s
     email = 'user' + n.to_s + '@example.com'
     password = '123456'
-
-    User.create(name: name, email: email, role_id: n, password: password, password_confirmation: password )
+    User.create(name: name, email: email, role_id: n, password: password, password_confirmation: password ).confirm
   end
 
 
