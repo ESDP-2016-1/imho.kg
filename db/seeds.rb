@@ -41,25 +41,15 @@ end
 
 #---------------------  USERS ---------------------------------
 
-  User.create(name:                  'Admin',
-              email:                 'admin@example.com',
-              password:              '123456',
-              password_confirmation: '123456',
-              dob:                   '1994/06/14',
-              gender_id:             1,
-              city_id:               2,
-              active:                true,
-              role_id:               4)
 
-  User.create(name:                  'Min',
-              email:                 'min@example.com',
-              password:              '123456',
-              password_confirmation: '123456',
-              dob:                   '1994/06/14',
-              gender_id:             1,
-              city_id:               2,
-              active:                true,
-              role_id:               1)
+  4.times do |n|
+    n += 1
+    name = 'user' + n.to_s
+    email = 'user' + n.to_s + '@example.com'
+    password = '123456'
+
+    User.create(name: name, email: email, role_id: n, password: password, password_confirmation: password )
+  end
 
 
 #------------------------- Ucomments------------------------------------------------------
