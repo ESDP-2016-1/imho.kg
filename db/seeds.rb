@@ -44,6 +44,7 @@ end
 
   4.times do |n|
     n += 1
+    puts "\n********************************** #{n} *******************************\n"
     name = 'user' + n.to_s
     email = 'user' + n.to_s + '@example.com'
     password = '123456'
