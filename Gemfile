@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'tzinfo'
@@ -20,7 +20,7 @@ gem 'devise'
 
 gem 'devise-i18n'
 
-gem 'mailcatcher'
+
 
 gem 'russian'
 
@@ -51,6 +51,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'sqlite3'
+  gem 'mailcatcher'
   #gem 'pry'
 end
 
