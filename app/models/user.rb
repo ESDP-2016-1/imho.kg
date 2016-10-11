@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  acts_as_voter
+  #acts_as_voter
   belongs_to :gender
   belongs_to :city
   belongs_to :role
