@@ -44,13 +44,27 @@ end
 
   4.times do |n|
     n += 1
-    puts "\n********************************** #{n} *******************************\n"
+  #  puts "\n********************************** #{n} *******************************\n"
     name = 'user' + n.to_s
     email = 'user' + n.to_s + '@example.com'
     password = '123456'
-    newuser = User.new(name: name, email: email, role_id: n, password: password, password_confirmation: password )
-    newuser.skip_confirmation!
-    newuser.save!
+
+    if Rails.env.production?
+      print "\x1b[0;32m"
+      puts "PRODUCTION MODE : CREATE USER -> #{name}"
+      print "\x1b[0m"
+      u = User.new(name: name, email: email, role_id: n, password: password, password_confirmation: password )
+      u.skip_confirmation!
+      u.save!
+    end
+
+    if Rails.env.development? || Rails.env.test?
+      print "\x1b[0;32m"
+      puts "DEV/TEST MODE : CREATE USER -> #{name}"
+      print "\x1b[0m"
+      User.create(name: name, email: email, role_id: n, password: password, password_confirmation: password )
+    end
+
   end
 
 
