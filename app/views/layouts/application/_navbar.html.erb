@@ -24,13 +24,17 @@
             </p>
             <ul class="nav navbar-nav">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Аккаунт <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to 'Редактирование профиля', edit_user_registration_path(current_user) %></li>
-                  <li class="divider"></li>
-                  <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
-                </ul>
+                <div class="menu_user_avatar">
+                  <%= link_to image_tag(current_user.avatar.url(:thumb), style: "max-height: 60px; margin: 2px;") %>
+                  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-triangle-bottom"></span></a><
+                  <ul class="dropdown-menu">
+                    <li><%= link_to 'Редактирование профиля', edit_user_registration_path(current_user) %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
+                  </ul>
+                </div>
               </li>
+              
             </ul>
         <% else %>
           <%= link_to 'Войти', "#sign_in", "data-toggle" => "modal", 'data-target' => '#sign_in_modal', class: 'btn btn-primary navbar-btn' %>
