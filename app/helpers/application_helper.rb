@@ -21,5 +21,10 @@ module ApplicationHelper
   end
 # End of devise helpers.
 
+  
+  def side_menu_items
+    @categories = Category.all
+  end
+
 end
 
