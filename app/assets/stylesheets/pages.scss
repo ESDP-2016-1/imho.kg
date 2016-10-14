@@ -54,6 +54,12 @@
 .catalogue {
 	position: fixed;
 	bottom: 3%;
+	z-index: 2;
+}
+
+.catalogue:hover {
+	cursor: hand;
+	cursor: pointer;
 }
 
 #rectangle {

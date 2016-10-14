@@ -1,0 +1,21 @@
+<div id="mySidenav" class="sidenav">
+  <nav class="navmenu navmenu-inverse" role="navigation">
+
+  <ul class="nav navmenu-nav">
+    <% @categories.each do |cat| %>
+      <% if cat.subcategories.present? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <%= cat.title %><b class="caret"></b>
+          </a>
+          <% cat.subcategories.each do |sub| %>
+            <ul class="dropdown-menu navmenu-nav" role="menu">
+              <li><a href="#"><%= sub.title %></a></li>
+            </ul>
+          <% end %> 
+        </li>  
+      <% end %>
+    <% end %>
+  </ul>
+</nav>
+</div>

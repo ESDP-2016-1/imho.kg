@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   
   def index
     @users = User.all
-    @cats = Category.all
+    @categories = Category.all
   end
 
 end

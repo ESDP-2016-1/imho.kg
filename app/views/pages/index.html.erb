@@ -18,8 +18,8 @@
   </div>
 </div>
 
-<div class="catalogue">
-  <div id="rectangle"> <span> <%= link_to 'КАТАЛОГ' %> </span></div>
+<div class="catalogue" id="catalogue">
+  <div id="rectangle"> <span onclick="openNav()" id="catalogue_action"> КАТАЛОГ </span></div>
   <div id="triangle-right"></div>
  </div>
 
@@ -51,11 +51,4 @@
       <%= user.city.name %>
     <% end %>
     <%= image_tag user.avatar.url(:thumb) %>
-<% end %>
-  <h2> Category </h2>
-
-  <% @cats.each do |cat| %>
-     <div> <%= p cat.title if cat.subcategories.present? %>
-
-     </div>
 <% end %>
