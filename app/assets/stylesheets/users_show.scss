@@ -1,0 +1,41 @@
+.user-info{
+  overflow: hidden;
+  border: 2px solid #2E2F30;
+  height: auto;
+  padding: 10px;
+}
+
+.user-avatar{
+  width: 300px;
+  height: auto;
+  float: left;
+  margin-right: 40px;
+}
+.user-avatar img{
+  width: 100%;
+  height: auto;
+}
+.user-info-description{
+  width: 400px;
+  float: left;
+  border: 2px;
+}
+.users-chart {
+  overflow: hidden;
+  border: 2px solid #2E2F30;
+  height: auto;
+  padding: 10px;
+}
+
+.chart {
+  width: 400px;
+  height: auto;
+  float: left;
+  margin-right: 40px;
+}
+
+.pie {
+  width: 300px;
+  float: left;
+
+}

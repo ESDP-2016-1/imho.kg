@@ -29,7 +29,7 @@
 
 
 <% @users.each do |user| %>
-    <%= user.name %>
+    <%= link_to user.name, user_path(user) %>
       <% if user.role == nil %>
       <% else %>
         <%= user.role.name %>
