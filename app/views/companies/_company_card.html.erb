@@ -1,0 +1,25 @@
+<%= company.title %>
+<div class="company-card">
+  <div class="company-card-upper">
+    <div class="company-card-positive">
+
+    </div>
+    <div class="company-card-votes">
+
+    </div>
+  </div>
+  <div class="company-card-info">
+    <div class="company-card-image">
+      <%= image_tag company.image.url(:thumb) %>
+    </div>
+    <div class="company-card-info">
+      <%= company.category.title %>
+      <%= company.phones %>
+      <%= company.address %>
+      <%= company.email %>
+    </div>
+  </div>
+  <div class="company-card-bottom">
+    <%= company.title %>
+  </div>
+</div>

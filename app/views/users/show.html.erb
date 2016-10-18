@@ -5,11 +5,11 @@
         <%= image_tag @user.avatar.url(:medium) %>
       </div>
       <div class="user-info-description">
-        Полное имя: <%= @user.fullname %><br/>
+        Полное имя: <%= @user.fullname.nil? ? 'не указан' : @user.fullname %><br/>
         Имя в системе: <%= @user.name %><br/>
-        Возраст: <%= calculate_age(@user.dob) %><br/>
+        Возраст: <%= @user.dob.nil? ? 'не указан' : calculate_age(@user.dob) %><br/>
         Дата рождения: <%= @user.dob %><br/>
-        Пол: <%= @user.gender.nil? ? 'не указан' : @user.gender.name %> <br/>
+        Пол: <%= @user.gender.nil? ? 'не указан' : @user.gender.name %><br/>
         Электронная почта: <%= @user.email %><br/>
         Профили пользователя: <br/>
         Местоположения: <%= @user.city.nil? ? 'не указан' : @user.city.name %>

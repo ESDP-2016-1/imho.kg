@@ -52,3 +52,35 @@
     <% end %>
     <%= image_tag user.avatar.url(:thumb) %>
 <% end %>
+
+<% @companies.each do |company| %> <br />
+  <div class="main-page-comment-company">
+    <div class="comment-main">
+
+    </div>
+    <div class="company-card">
+      <div class="company-card-upper">
+        <div class="company-card-positive">
+
+        </div>
+        <div class="company-card-votes">
+
+        </div>
+      </div>
+      <div>
+        <div class="company-card-image">
+          <%= image_tag company.image.url(:thumb) %>
+        </div>
+        <div class="company-card-info">
+          <b><%#= company.category.title %></b>
+          <%= company.phones %>
+          <%= company.address %>
+          <%= company.email %>
+        </div>
+      </div>
+      <div class="company-card-bottom">
+        <b><%= company.title %></b>
+      </div>
+    </div>
+  </div>
+<% end %>
