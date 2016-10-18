@@ -43,7 +43,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'pg', '0.19.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -52,7 +52,6 @@ group :development, :test do
   gem 'byebug'
   # remove gem 'sqlite3'
   gem 'mailcatcher'
-  gem 'pg'
   #gem 'pry'
 end
 
@@ -65,6 +64,5 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end

@@ -7,7 +7,7 @@
 
 development:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   database: imho_development
   pool: 5
   timeout: 5000
@@ -16,8 +16,8 @@ development:
 
 test:
   adapter: postgresql
-  encoding: unicode
-  database: imho_development
+  encoding: utf8
+  database: imho_test
   pool: 5
   timeout: 5000
   username: pguser
