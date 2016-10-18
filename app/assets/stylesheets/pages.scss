@@ -120,8 +120,13 @@
 }
 
 .company-card-positive {
-  width: 150px;
+  width: 50%;
   float: left;
+  background-color: goldenrod;
+}
+
+.company-card-votes {
+  width: 50%;
 }
 
 .company-card-info {
