@@ -17,30 +17,6 @@
   Role.find_or_create_by({name: role})
 end
 
-#--------------------  COMPANY ------------------------------
-
-  Company.create(title:             'Beeline',
-                 description:       '#1 company in mobile service',
-                 address:           'ул. Киевская 65',
-                 phones:            '0(312)979888;0(312)665566',
-                 email:             'info@beeline.kg',
-                 website:           'beeline.kg',
-                 working_hours:     'Пн-Пт (9:00-17:00)',
-                 registration_year: '2006',
-                 city:               City.all.first)
-                 # category_id:        54)
-
-  Company.create(title:             'Megacom',
-                 description:       'We are the leader in mobile service',
-                 address:           'ул. Дзержинского 65',
-                 phones:            '0(312)656565;0(312)555444',
-                 email:             'info@megacom.kg',
-                 website:           'megacom.kg',
-                 working_hours:     'Пн-Пт (10:00-18:00)',
-                 registration_year: '2002',
-                 city:               City.all.first)
-                 # category_id:        54)
-
 #---------------------  USERS ---------------------------------
 
 n = 0
@@ -184,3 +160,28 @@ end
  'Курорты и санатории'].each do |sub|
   Category.create(title: sub, topcategory_id: 21)
 end
+
+
+#--------------------  COMPANY ------------------------------
+
+  Company.create(title:             'Beeline',
+                 description:       '#1 company in mobile service',
+                 address:           'ул. Киевская 65',
+                 phones:            '0(312)979888;0(312)665566',
+                 email:             'info@beeline.kg',
+                 website:           'beeline.kg',
+                 working_hours:     'Пн-Пт (9:00-17:00)',
+                 registration_year: '2006',
+                 city:               City.all.first,
+                 category_id:        54)
+
+  Company.create(title:             'Megacom',
+                 description:       'We are the leader in mobile service',
+                 address:           'ул. Дзержинского 65',
+                 phones:            '0(312)656565;0(312)555444',
+                 email:             'info@megacom.kg',
+                 website:           'megacom.kg',
+                 working_hours:     'Пн-Пт (10:00-18:00)',
+                 registration_year: '2002',
+                 city:               City.all.first,
+                 category_id:        54)
