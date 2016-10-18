@@ -131,14 +131,30 @@
   width: 50%;
   height: 100%;
   float: left;
-  background-color: red;
+  overflow: hidden;
+}
+
+.company-card-like {
+  width: 50%;
+  height: 100%;
+  color: #008000;
+  background: #BFFFBF;
+  float: left;
+}
+
+.company-card-dislike {
+  width: 50%;
+  height: 100%;
+  color: #800000;
+  background: #FFBFBF;
+  float: left;
 }
 
 .company-card-votes {
   width: 50%;
   height: 100%;
   float: left;
-  background-color: blue;
+  background-color: lightgray;
 }
 
 .company-card-info {
@@ -158,6 +174,6 @@
   text-align: center;
   bottom: 0;
   position: absolute;
-  background-color: green;
+  background-color: lightgray;
 }
 
