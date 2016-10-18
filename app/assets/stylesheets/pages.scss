@@ -91,7 +91,7 @@
 
 .comment-main {
   width: 700px;
-  height: 200px;
+  height: 170px;
   float: left;
   margin-right: 40px;
   padding-bottom: 20px;
@@ -99,34 +99,46 @@
 }
 
 .company-card {
+  position: relative;
   overflow: hidden;
   border: 2px solid #2E2F30;
-  height: 200px;
+  height: 170px;
   width: 350px;
 }
 
+.company-card-image {
+  width: 100px;
+  height: 100px;
+  float: left;
+}
+
 .company-card img{
-  width: 90px;
+  width: 100%;
+  height: 100%;
   float: left;
   padding: 10px 10px;
 }
 
 .company-card-upper {
-  width: 100%;
+  width: 350px;
+  overflow: hidden;
   height: 30px;
   float: left;
-  color: red;
   border: 2px solid black;
 }
 
 .company-card-positive {
   width: 50%;
+  height: 100%;
   float: left;
-  background-color: goldenrod;
+  background-color: red;
 }
 
 .company-card-votes {
   width: 50%;
+  height: 100%;
+  float: left;
+  background-color: blue;
 }
 
 .company-card-info {
@@ -140,14 +152,12 @@
 
 .company-card-bottom {
   width: 100%;
+  height: 30px;
   float: left;
   border: 2px;
-  padding: 2px;
-}
-
-
-
-.company-card-bottom {
-  height: 30px;
   text-align: center;
+  bottom: 0;
+  position: absolute;
+  background-color: green;
 }
+
