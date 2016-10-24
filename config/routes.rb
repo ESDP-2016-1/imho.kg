@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'companies/show'
+
   ActiveAdmin.routes(self)
   
   root 'pages#index'
 
   devise_for :users, controllers: {sessions: 'sessions', registrations: 'registrations'}, :path => 'auth'
 
-  resources :users
+  resources :users, :companies
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

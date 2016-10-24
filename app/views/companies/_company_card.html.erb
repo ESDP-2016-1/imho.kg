@@ -1,4 +1,4 @@
-<%= company.title %>
+<%= form_for @company do |f| %>
 <div class="company-card">
   <div class="company-card-upper">
     <div class="company-card-positive">
@@ -10,16 +10,27 @@
   </div>
   <div class="company-card-info">
     <div class="company-card-image">
-      <%= image_tag company.image.url(:thumb) %>
+      <%= f.label :image, class: 'control-label' %>
+      <%= f.file_field :image %>
+      <%= image_tag @company.image.url(:thumb) %>
     </div>
     <div class="company-card-info">
-      <%= company.category.title %>
-      <%= company.phones %>
-      <%= company.address %>
-      <%= company.email %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+      <%= f.label :category_id %>
+      <%= f.collection_select :category_id, Category.all, :id, :title %>
+      <%= f.label :phones %>
+      <%= f.text_field :phones %>
+      <%= f.label :address %>
+      <%= f.text_field :address %> 
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    
     </div>
   </div>
   <div class="company-card-bottom">
-    <%= company.title %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
   </div>
 </div>
+<% end %>
