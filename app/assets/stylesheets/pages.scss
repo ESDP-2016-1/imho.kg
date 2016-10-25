@@ -81,7 +81,7 @@
 	border-left: 15px solid #CF0404;
 	border-bottom: 15px solid transparent;
 }
-//----------------------------------------------
+//----------------------------------------------Comment and company card----------------------
 .main-page-comment-company {
   overflow: hidden;
   border: 2px solid #2E2F30;
@@ -108,7 +108,7 @@
 
 .company-card-image {
   width: 100px;
-  height: 100px;
+  height: 110px;
   float: left;
 }
 
@@ -124,7 +124,6 @@
   overflow: hidden;
   height: 30px;
   float: left;
-  border: 2px solid black;
 }
 
 .company-card-positive {
@@ -160,9 +159,8 @@
 .company-card-info {
   width: 200px;
   float: left;
-  border: 2px;
   padding: 10px;
-  height: auto;
+  height: 110px;
   text-align: left;
 }
 

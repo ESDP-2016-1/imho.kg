@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013055044) do
+ActiveRecord::Schema.define(version: 20161025072158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20161013055044) do
     t.integer  "user_id"
     t.integer  "company_id"
     t.integer  "image_id"
+    t.string   "title"
   end
 
   add_index "ucomments", ["company_id"], name: "index_ucomments_on_company_id", using: :btree
