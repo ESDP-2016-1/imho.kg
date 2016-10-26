@@ -1,0 +1,36 @@
+<%= form_for @comment, html: {class: 'form-horizontal'} do |f| %>
+    <br>
+    <br>
+    <div class="field text-area">
+      <%= f.label :title, "Заголовок " %><br>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="field text-area">
+      <%= f.label :body %><br>
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
+
+    <div class="field text-area">
+      <%= f.label :positive, "+ or - " %><br>
+      <%= f.check_box :positive, class: 'form-control' %>
+    </div>
+
+    <div class="field text-area">
+      <%= f.label :rate, "Рейтинг " %><br>
+      <%= f.text_field :rate, class: 'form-control' %>
+    </div>
+
+    <div class="field text-area">
+      <%= f.label :company_id, "Компания" %><br>
+      <%= f.collection_select :company_id, Company.all, :id, :title, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+    </div>
+
+    <div>
+      <%= f.submit class:'btn btn-primary' %>
+    </div>
+<% end %>

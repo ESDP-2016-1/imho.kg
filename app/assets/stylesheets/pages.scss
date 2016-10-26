@@ -94,9 +94,63 @@
   height: 170px;
   float: left;
   margin-right: 40px;
-  padding-bottom: 20px;
   border: 2px solid black;
+  overflow: hidden;
 }
+
+.comment-user-logo {
+  border: 2px solid black;
+  width: 80px;
+  height: 80px;
+  float: left;
+  margin: 5px;
+}
+
+.comment-user-logo img {
+  width: 100%;
+  height: 100%;
+
+}
+
+.comment-body {
+  float: left;
+  width: 600px;
+  height: 100%;
+  padding-left: 10px;
+  margin: 2px;
+  background-color: lightpink;
+}
+
+.comment-title {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.comment-text {
+  float: left;
+  width: 80%;
+  height: 95px;
+  border: 2px;
+}
+
+.comment-user-info {
+  width: 80%;
+  height: 20%;
+  float: left;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .company-card {
   position: relative;

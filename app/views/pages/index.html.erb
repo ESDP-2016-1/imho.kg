@@ -53,13 +53,35 @@
     <%= image_tag user.avatar.url(:thumb) %>
 <% end %>
 
+<% unless current_user.nil? %>
+  <%= link_to 'Создать коммент', new_ucomment_path, class: 'btn btn-primary' %>
+<% end %>
 <% @companies.each do |company| %>
   <% company.ucomments.each do |comment| %><br />
     <div class="main-page-comment-company">
       <div class="comment-main">
-        <div class="">
+        <div class="comment-user-logo">
+          <%= image_tag comment.user.avatar.url(:thumb) %>
         </div>
-        <%= comment.body %>
+        <div class="comment-body">
+          <div class="comment-title">
+            <%= comment.title %>
+          </div>
+          <div class="comment-rating">
+            <br />
+          </div>
+          <div class="comment-text">
+            <%= comment.body %>
+          </div>
+          <div class="comment-buttons">
+
+          </div>
+          <div class="comment-user-info">
+            <%= link_to comment.user.name, user_path(comment.user) %>
+            <%= comment.created_at %>
+            <%= link_to 'Подробнее', class:"btn-primary", float:"right" %>
+          </div>
+        </div>
       </div>
       <div class="company-card">
         <div class="company-card-upper">
