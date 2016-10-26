@@ -1,36 +1,33 @@
 <%= form_for @company do |f| %>
-<div class="company-card">
-  <div class="company-card-upper">
-    <div class="company-card-positive">
 
-    </div>
-    <div class="company-card-votes">
-
-    </div>
-  </div>
-  <div class="company-card-info">
-    <div class="company-card-image">
-      <%= f.label :image, class: 'control-label' %>
-      <%= f.file_field :image %>
-      <%= image_tag @company.image.url(:thumb) %>
-    </div>
-    <div class="company-card-info">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-      <%= f.label :category_id %>
-      <%= f.collection_select :category_id, Category.all, :id, :title %>
-      <%= f.label :phones %>
-      <%= f.text_field :phones %>
-      <%= f.label :address %>
-      <%= f.text_field :address %> 
-      <%= f.label :email %>
-      <%= f.email_field :email %>
+<div class="col-md-12 show-company-card">
+  <div class="col-md-6 col-sm-6">
+    <%= f.label :image, class: 'control-label' %><br />
+    <%= image_tag @company.image.url(:medium) %>
+    <%= f.file_field :image %>
     
-    </div>
   </div>
-  <div class="company-card-bottom">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+  <div class="col-md-6 col-sm-6 show-company-details">
+    <%= f.label :title, "Наименование: "%>
+    <%= f.text_field :title %><br />
+    <%= f.label :registration_year, "Начало деятельности: " %>
+    <%= f.text_field :registration_year %><br />
+    <%= f.label :category_id %>
+    <%= f.collection_select :category_id, Category.where.not(topcategory_id: nil), :id, :title %><br />
+    <%= f.label :city_id, "Город: " %>
+    <%= f.collection_select :city_id, City.all, :id, :name %><br />
+    <%= f.label :address, "Адрес: " %>
+    <%= f.text_field :address %><br />
+    <%= f.label :phones, "Телефоны: " %>
+    <%= f.text_field :phones %><br />
+    <%= f.label :working_hours, "Режим работы:" %>
+    <%= f.text_field :working_hours %><br />
+    <%= f.label :email %>
+    <%= f.email_field :email %><br />
+    <%= f.label :website %>
+    <%= f.text_field :website %><br />
+    <%= f.submit %>
+   
 </div>
+
 <% end %>
