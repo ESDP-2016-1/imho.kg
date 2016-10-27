@@ -1,5 +1,6 @@
 class UcommentsController < ApplicationController
   def show
+    @comment = Ucomment.find(params[:id])
   end
 
   def create
