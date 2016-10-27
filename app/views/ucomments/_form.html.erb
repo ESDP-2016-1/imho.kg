@@ -12,8 +12,10 @@
     </div>
 
     <div class="field text-area">
-      <%= f.label :positive, "+ or - " %><br>
-      <%= f.check_box :positive, class: 'form-control' %>
+      <%= f.label :positive, "Положительный", :value => true %>
+      <%= f.radio_button :positive, true %>
+      <%= f.label :positive, "Отрицательный", :value => false %>
+      <%= f.radio_button :positive, false %>
     </div>
 
     <div class="field text-area">

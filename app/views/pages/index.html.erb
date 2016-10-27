@@ -35,12 +35,13 @@
         <div class="comment-user-logo">
           <%= image_tag comment.user.avatar.url(:thumb) %>
         </div>
-        <div class="comment-body">
+        <div class="comment-body<%= comment.positive ? ' comment-positive' : ' comment-negative' %> " >
           <div class="comment-title">
             <%= comment.title %>
           </div>
           <div class="comment-rating">
-            <br />
+            <%= comment.rate %>
+            <%= comment.positive %>
           </div>
           <div class="comment-text">
             <%= comment.body %>
@@ -51,7 +52,7 @@
           <div class="comment-user-info">
             <%= link_to comment.user.name, user_path(comment.user) %>
             <%= comment.created_at %>
-            <%= link_to 'Подробнее', class:"btn-primary", float:"right" %>
+            <%= link_to 'Подробнее', ucomment_path(comment), class: 'btn btn-primary' %>
           </div>
         </div>
       </div>

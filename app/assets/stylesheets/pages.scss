@@ -15,7 +15,7 @@
 	font-weight: bold;
 	line-height: 40px;
 	color: #800000;
-	background: #FFBFBF;	
+
 
 }
 
@@ -114,11 +114,11 @@
 
 .comment-body {
   float: left;
+  position: relative;
   width: 600px;
   height: 100%;
   padding-left: 10px;
   margin: 2px;
-  background-color: lightpink;
 }
 
 .comment-title {
@@ -133,14 +133,34 @@
   border: 2px;
 }
 
-.comment-user-info {
-  width: 80%;
-  height: 20%;
-  float: left;
-
+.comment-buttons {
+  position: absolute;
+  width: 35px;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+  border: 2px solid black;
 }
 
+.comment-user-info {
+  position: absolute;
+  width: 90%;
+  height: 25%;
+  bottom: 0px;
+  float: left;
+}
 
+.comment-user-info .btn {
+  float: right;
+}
+
+.comment-positive {
+  background-color: #BFFFBF;
+}
+
+.comment-negative {
+  background-color: #FFBFBF;
+}
 
 
 

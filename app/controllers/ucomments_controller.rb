@@ -5,7 +5,7 @@ class UcommentsController < ApplicationController
   def create
     @comment = Ucomment.new(comment_params)
     if @comment.save
-      redirect_to  :back
+      redirect_to  root_url
     else
       render 'new'
     end
