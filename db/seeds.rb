@@ -26,15 +26,13 @@ n = 0
     n += 1
     email = name + '@example.com'
     password = '123456'
+    print "\x1b[0;32m"
+    puts "PRODUCTION MODE : CREATE USER -> #{name}"
+    print "\x1b[0m"
+    u = User.new(name: name, email: email, role_id: n, password: password, password_confirmation: password )
+    u.skip_confirmation!
+    u.save!
 
-    if Rails.env.development?
-      print "\x1b[0;32m"
-      puts "PRODUCTION MODE : CREATE USER -> #{name}"
-      print "\x1b[0m"
-      u = User.new(name: name, email: email, role_id: n, password: password, password_confirmation: password )
-      u.skip_confirmation!
-      u.save!
-    end
 
     # if Rails.env.development? || Rails.env.test?
     #   print "\x1b[0;32m"
