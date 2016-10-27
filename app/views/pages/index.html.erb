@@ -24,34 +24,6 @@
  </div>
 
 <div class="container">
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
-
-
-<% @users.each do |user| %>
-    <%= link_to user.name, user_path(user) %>
-      <% if user.role == nil %>
-      <% else %>
-        <%= user.role.name %>
-      <% end  %>
-    <%= user.email %>
-      <% if user.dob == nil %>
-        <%= p 'укажите возраст' %>
-      <% else %>
-        <%= calculate_age(user.dob) %>
-      <% end %>
-    <% if user.gender == nil %>
-        <%= p 'укажите пол' %>
-    <% else %>
-      <%= user.gender.name %>
-    <% end %>
-    <% if user.city == nil %>
-      <% p 'укажите город' %>
-    <% else %>
-      <%= user.city.name %>
-    <% end %>
-    <%= image_tag user.avatar.url(:thumb) %>
-<% end %>
 
 <% unless current_user.nil? %>
   <%= link_to 'Создать коммент', new_ucomment_path, class: 'btn btn-primary' %>

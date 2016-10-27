@@ -12,8 +12,11 @@
     <%= f.text_field :title %><br />
     <%= f.label :registration_year, "Начало деятельности: " %>
     <%= f.text_field :registration_year %><br />
-    <%= f.label :category_id %>
-    <%= f.collection_select :category_id, Category.where.not(topcategory_id: nil), :id, :title %><br />
+    <%= f.label :topcategory_id, "Категория" %>
+    <%= f.collection_select :topcategory_id, Category.where(topcategory_id: nil), :id, :title, selected: @company.category.topcategory_id %><br />
+
+    <%= f.label :category_id, "Подкатегория"%>
+    <%= f.collection_select :category_id, Category.where(topcategory_id: @company.category.topcategory_id), :id, :title %><br />
     <%= f.label :city_id, "Город: " %>
     <%= f.collection_select :city_id, City.all, :id, :name %><br />
     <%= f.label :address, "Адрес: " %>

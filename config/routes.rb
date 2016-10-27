@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :users, :companies, :ucomments
 
+  get 'companies/upd_subcategories' => 'companies#update_subcategories', as: 'upd_subcategories'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
