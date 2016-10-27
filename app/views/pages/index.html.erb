@@ -51,7 +51,8 @@
           </div>
           <div class="comment-user-info">
             <%= link_to comment.user.name, user_path(comment.user) %>
-            <%= comment.created_at %>
+            <% a=comment.created_at %>
+            <%= "     #{a}" %>
             <%= link_to 'Подробнее', ucomment_path(comment), class: 'btn btn-primary' %>
           </div>
         </div>
