@@ -1,0 +1,3 @@
+$("#company_category_id option").remove();
+
+$("#company_category_id").append("<%= escape_javascript(render partial: 'company_subcategories', locals: { subcategories: @subcategories } ) %>");

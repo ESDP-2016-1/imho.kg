@@ -1,1 +1,0 @@
-$("#company_category_id").remove()
