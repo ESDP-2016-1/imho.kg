@@ -16,8 +16,10 @@
 	line-height: 40px;
 	color: #800000;
     background: #FFBFBF;
+}
 
-
+.home-negative span {
+  float: right;
 }
 
 .home-positive {
@@ -33,6 +35,10 @@
 	line-height: 40px;
 	color: #008000;
 	background: #BFFFBF;
+}
+
+.home-positive span {
+  float: left;
 }
 
 .home-sorting, .home-select {
