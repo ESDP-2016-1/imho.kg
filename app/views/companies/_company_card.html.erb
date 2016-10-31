@@ -13,8 +13,11 @@
     <%= f.label :registration_year, "Начало деятельности: " %>
     <%= f.text_field :registration_year %><br />
     <%= f.label :topcategory_id, "Категория" %>
+    <% if @company.category_id == nil %>
+        <% @company.category_id = Category.where(topcategory_id: nil).count + 1 %>
+    <% end %>     
     <%= f.collection_select :topcategory_id, Category.where(topcategory_id: nil), :id, :title, selected: @company.category.topcategory_id %><br />
-
+       
     <%= f.label :category_id, "Подкатегория"%>
     <%= f.collection_select :category_id, Category.where(topcategory_id: @company.category.topcategory_id), :id, :title %><br />
     <%= f.label :city_id, "Город: " %>
