@@ -62,10 +62,10 @@
         <div class="company-card-upper">
           <div class="company-card-positive">
             <div class="company-card-like">
-
+              <span><%= company.ucomments.where(positive: true).count %></span>
             </div>
             <div class="company-card-dislike">
-
+              <span><%= company.ucomments.where(positive: false).count %></span>
             </div>
           </div>
           <div class="company-card-votes">
