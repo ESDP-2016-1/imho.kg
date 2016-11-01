@@ -220,6 +220,11 @@
   color: #008000;
   background: #BFFFBF;
   float: left;
+  text-align: center;
+}
+
+.company-card-like span{
+  font-weight: bold;
 }
 
 .company-card-dislike {
@@ -228,6 +233,11 @@
   color: #800000;
   background: #FFBFBF;
   float: left;
+  text-align: center;
+}
+
+.company-card-dislike span{
+  font-weight: bold;
 }
 
 .company-card-votes {

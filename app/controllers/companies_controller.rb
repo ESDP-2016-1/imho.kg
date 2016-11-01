@@ -34,9 +34,9 @@ class CompaniesController < ApplicationController
   
   def update_subcategories
   	@subcategories = Category.where(topcategory_id: params[:topcategory_id])
-  	respond_to do |format|
-  		format.js {}
-  	end	
+    respond_to do |format|
+      format.json { render json: @subcategories.to_json(:only => [:id, :title]) }
+    end  
   end
 
   private 
