@@ -7,5 +7,6 @@ class Ucomment < ActiveRecord::Base
 
   has_many :images
   has_many :favorites
+  has_many :votes
 
 end

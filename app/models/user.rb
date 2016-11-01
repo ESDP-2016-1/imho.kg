@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :ratings
   has_many :ucomments
   has_many :favorites
+  has_many :votes
   # before_create :set_default_role
   # or
   # before_validation :set_default_role
