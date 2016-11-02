@@ -11,7 +11,7 @@
   <%= link_to 'Создать коммент', new_ucomment_path, class: 'btn btn-primary' %>
 <% end %>
 <% @companies.each do |company| %>
-  <% company.ucomments.each do |comment| %><br />
+  <% company.ucomments.where(topucomment_id: nil).each do |comment| %><br />
     <div class="main-page-comment-company">
       <div class="comment-main">
         <div class="comment-user-logo">
@@ -24,6 +24,9 @@
           <div class="comment-rating">
             <%= comment.rate %>
             <%= comment.positive %>
+            <% unless comment.topucomment_id.nil? %>
+              <%= comment.topucomment.title %>
+            <% end  %>
           </div>
           <div class="comment-text">
             <%= comment.body %>

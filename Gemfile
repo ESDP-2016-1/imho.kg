@@ -20,6 +20,7 @@ gem 'devise'
 gem 'devise-i18n'
 
 gem 'chartkick'
+
 gem 'groupdate'
 
 gem 'russian'
@@ -27,6 +28,8 @@ gem 'russian'
 gem 'activeadmin', '~> 1.0.0.pre4'
 
 gem 'paperclip'
+
+gem 'faker'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

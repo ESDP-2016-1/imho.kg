@@ -211,3 +211,16 @@ Ucomment.create(title: '3Падение скорости',
                 rate: 3,
                 company_id: 1,
                 user_id: 1)
+
+3.times do |n|
+  n += 1
+  Ucomment.create(title: Faker::Lorem.sentence,
+                  body: Faker::Lorem.sentence(3),
+                  positive: false,
+                  rate: rand(1..5),
+                  company_id:  rand(1..2),
+                  user_id: 1,
+                  topucomment_id: n
+                  )
+end
+
