@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
   root 'pages#index'
 
+  get 'selected_companies/:id' => 'pages#show', as: 'select_company'
+
   devise_for :users, controllers: {sessions: 'sessions', registrations: 'registrations'}, :path => 'auth'
 
   resources :users, :companies, :ucomments

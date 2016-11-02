@@ -1,22 +1,4 @@
-  <div class="row">
-    <div class="home-negative col-sm-5 col-md-5">
-      Отрицательные <span><%= Ucomment.where(positive: false).count %></span>
-    </div>
-    <div class="home-sorting col-sm-2 col-md-2">
-      <span>Cортировка</span>
-      <select name="home-sort" class="home-sort">
-        <option value=""></option>
-        <option value="1" selected="selected">По алфавиту</option>
-        <option value="2">По обсуждаемости</option>
-        <option value="3">По рейтингу</option>
-      </select>
-    </div>
-
-    <div class="home-positive col-sm-5 col-md-5">
-      <span> <%= Ucomment.where(positive: true).count %></span> Положительные
-    </div>
-  </div>
-</div>
+<%= render 'negative_positive_tabs' %>
 
 <div class="catalogue" id="catalogue">
   <div id="rectangle"> <span onclick="openNav()" id="catalogue_action"> КАТАЛОГ </span></div>
@@ -58,35 +40,9 @@
           </div>
         </div>
       </div>
-      <div class="company-card">
-        <div class="company-card-upper">
-          <div class="company-card-positive">
-            <div class="company-card-like">
-              <span><%= company.ucomments.where(positive: true).count %></span>
-            </div>
-            <div class="company-card-dislike">
-              <span><%= company.ucomments.where(positive: false).count %></span>
-            </div>
-          </div>
-          <div class="company-card-votes">
 
-          </div>
-        </div>
-        <div>
-          <div class="company-card-image">
-            <%= image_tag company.image.url(:thumb) %>
-          </div>
-          <div class="company-card-info">
-            <b><%= company.category.title %></b>
-            <%= company.phones.split(';')*", " %>
-            <%= company.address %>
-            <%= link_to company.email %>
-          </div>
-        </div>
-        <div class="company-card-bottom">
-          <b><%= link_to company.title, company_path(company) %></b>
-        </div>
-      </div>
+      <%= render 'mini_company_card', company: company %>
+
     </div>
   <% end %>
 <% end %>

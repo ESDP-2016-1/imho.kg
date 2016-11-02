@@ -1,0 +1,29 @@
+<div class="company-card">
+  <div class="company-card-upper">
+    <div class="company-card-positive">
+      <div class="company-card-like">
+        <span><%= company.ucomments.where(positive: true).count %></span>
+      </div>
+      <div class="company-card-dislike">
+        <span><%= company.ucomments.where(positive: false).count %></span>
+      </div>
+    </div>
+    <div class="company-card-votes">
+
+    </div>
+  </div>
+  <div>
+    <div class="company-card-image">
+      <%= image_tag company.image.url(:thumb) %>
+    </div>
+    <div class="company-card-info">
+      <b><%= company.category.title %></b>
+      <%= company.phones.split(';')*", " %>
+      <%= company.address %>
+      <%= link_to company.email %>
+    </div>
+  </div>
+  <div class="company-card-bottom">
+    <b><%= link_to company.title, company_path(company) %></b>
+  </div>
+</div>

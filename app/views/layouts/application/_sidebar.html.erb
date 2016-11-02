@@ -11,7 +11,7 @@
           </a>
           <% cat.subcategories.each do |sub| %>
             <ul class="dropdown-menu navmenu-nav" role="menu">
-              <li><a href="#"><%= sub.title %></a></li>
+              <li><a href='<%= select_company_path(id: sub.id) %>'><%= sub.title %></a></li>
             </ul>
           <% end %> 
         </li>  

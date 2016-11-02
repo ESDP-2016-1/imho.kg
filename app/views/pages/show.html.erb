@@ -1,0 +1,15 @@
+
+<% if @selected_companies.count == 0 %>
+	<h2> В выбранной категории нет компаний </h2>
+	<span> <%= link_to "Назад на главную", root_path %>  </span>
+<% else %>
+	
+	<% for company in @selected_companies do %>
+		<div class="row"> 
+			<div class="col-md-4">
+				<%= render 'mini_company_card', company: company %> 
+			</div>
+		<div>	
+	<% end %>
+
+<% end %>		
