@@ -2,10 +2,10 @@
   <div class="company-card-upper">
     <div class="company-card-positive">
       <div class="company-card-like">
-        <span><%= company.ucomments.where(positive: true).count %></span>
+        <span><%= company.ucomments.where(topucomment_id: nil, positive: true).count %></span>
       </div>
       <div class="company-card-dislike">
-        <span><%= company.ucomments.where(positive: false).count %></span>
+        <span><%= company.ucomments.where(topucomment_id: nil, positive: false).count %></span>
       </div>
     </div>
     <div class="company-card-votes">
@@ -18,8 +18,8 @@
     </div>
     <div class="company-card-info">
       <b><%= company.category.title %></b>
-      <%= company.phones.split(';')*", " %>
-      <%= company.address %>
+      <%= company.phones.split(';')*", " %><br/>
+      <%= company.address %><br/>
       <%= link_to company.email %>
     </div>
   </div>

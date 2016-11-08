@@ -15,4 +15,24 @@ $ ->
     else
       "<div class='alert alert-danger pull-left'>Unknown error</div>"
     $(this).parents('.modal').children('.modal-footer').html(error_messages)
-  )
+  );
+
+$(document).on('ready', function() {
+  $("#home-negative").on('click', function(event) {
+    
+    $.ajax({
+      type: "GET",
+      url: '/only_negative',
+      data: {}
+    })
+  });
+
+  $("#home-positive").on('click', function(event) {
+    $.ajax({
+      type: "GET",
+      url: '/only_positive',
+      data: {}
+    })
+  });
+  
+});

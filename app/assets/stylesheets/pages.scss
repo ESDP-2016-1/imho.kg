@@ -177,7 +177,11 @@
 
 
 
+//------- Company Card -------
 
+.selected_companies {
+  margin: 10px;
+}
 
 .company-card {
   position: relative;
@@ -250,7 +254,7 @@
 .company-card-info {
   width: 200px;
   float: left;
-  padding: 10px;
+  padding: 5px;
   height: 110px;
   text-align: left;
 }

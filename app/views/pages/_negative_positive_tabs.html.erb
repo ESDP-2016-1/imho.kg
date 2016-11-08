@@ -1,7 +1,10 @@
 <div class="row">
-    <div class="home-negative col-sm-5 col-md-5">
-      Отрицательные <span><%= Ucomment.where(positive: false).count %></span>
-    </div>
+    <%= link_to show_negative_path, remote: true do %>
+      <div class="home-negative col-sm-5 col-md-5" id="home-negative">
+        Отрицательные <span><%= Ucomment.where(positive: false).count %></span>
+      </div>
+    <% end %>
+
     <div class="home-sorting col-sm-2 col-md-2">
       <span>Cортировка</span>
       <select name="home-sort" class="home-sort">
@@ -12,8 +15,10 @@
       </select>
     </div>
 
-    <div class="home-positive col-sm-5 col-md-5">
-      <span> <%= Ucomment.where(positive: true).count %></span> Положительные
-    </div>
+    <%= link_to show_positive_path, remote: true do %>
+      <div class="home-positive col-sm-5 col-md-5" id="home-positive">
+        <span> <%= Ucomment.where(positive: true).count %></span> Положительные
+      </div>
+    <% end %>  
   </div>
 </div>

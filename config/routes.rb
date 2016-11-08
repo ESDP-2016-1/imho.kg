@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   get 'selected_companies/:id' => 'pages#show', as: 'select_company'
 
+  get 'only_negative' => 'pages#show_negative', as: 'show_negative'
+  get 'only_positive' => 'pages#show_positive', as: 'show_positive'
+
   devise_for :users, controllers: {sessions: 'sessions', registrations: 'registrations'}, :path => 'auth'
 
   resources :users, :companies, :ucomments
