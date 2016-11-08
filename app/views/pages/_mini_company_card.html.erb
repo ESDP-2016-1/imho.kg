@@ -24,6 +24,7 @@
     </div>
   </div>
   <div class="company-card-bottom">
-    <b><%= link_to company.title, company_path(company) %></b>
+    <span class="mini_card_company_title"><%= link_to company.title.upcase, company_path(company) %></span>
+    <span class="mini_card_company_review"><%= link_to "Все отзывы" %></span>
   </div>
 </div>
