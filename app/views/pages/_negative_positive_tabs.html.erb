@@ -1,7 +1,7 @@
 <div class="row">
     <%= link_to show_negative_path, remote: true do %>
       <div class="home-negative col-sm-5 col-md-5" id="home-negative">
-        Отрицательные <span><%= Ucomment.where(positive: false).count %></span>
+        Отрицательные <span><%= Ucomment.where(topucomment_id: nil, positive: false).count %></span>
       </div>
     <% end %>
 
@@ -17,7 +17,7 @@
 
     <%= link_to show_positive_path, remote: true do %>
       <div class="home-positive col-sm-5 col-md-5" id="home-positive">
-        <span> <%= Ucomment.where(positive: true).count %></span> Положительные
+        <span> <%= Ucomment.where(topucomment_id: nil, positive: true).count %></span> Положительные
       </div>
     <% end %>  
   </div>
