@@ -35,11 +35,31 @@
 
 <div class="col-md-12 show-company-map-desc">
 	<div class="col-md-6 col-sm-6" id="map-container">
-      <div class="company-map" id="map-canvas"> 
-	      <h1> Map will be here </h1>
-	      
-	  </div>    
-    </div>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+      <div id="map">
+        <script>
+          function initMap() {
+            var uluru = {lat: 42.87, lng: 74.59};
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 12,
+              center: uluru
+            });
+//            var marker = new google.maps.Marker({
+//              position: uluru,
+//              map: map
+//            });
+          }
+        </script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALHnDxHcBNzK5byYmkfhZD3XJNvlxX30c&callback=initMap">
+        </script>
+      </div>
+  </div>
 
     <div class="col-md-6 col-sm-6">
       <div class="company-description">
