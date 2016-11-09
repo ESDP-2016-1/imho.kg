@@ -32,6 +32,10 @@
       <%= f.hidden_field :user_id, :value => current_user.id %>
     </div>
 
+    <div class="field">
+      <%= f.hidden_field :topucomment, :value => @comment.id %>
+    </div>
+
     <div>
       <%= f.submit class:'btn btn-primary' %>
     </div>

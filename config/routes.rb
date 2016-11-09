@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: 'sessions', registrations: 'registrations'}, :path => 'auth'
 
   resources :users, :companies, :ucomments
+  get 'create_answer' => 'ucomments#create_answer', as: 'comment_answer'
 
   get 'upd_subcategories' => 'companies#update_subcategories', as: 'upd_subcategories'
 

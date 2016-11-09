@@ -1,9 +1,38 @@
 <div class="col-md-12">
   <div class="col-md-9">
-    <div class="show-comment">
-      <div class="">
-
+    <div class="comment-show">
+      <div class="comment-show-user-logo">
+        <%= image_tag @comment.user.avatar.url(:thumb) %>
+        <p><%= link_to 'open' %></p>
       </div>
+      <div class="comment-show-body<%= @comment.positive ? ' comment-positive' : ' comment-negative' %> " >
+        <div class="comment-title">
+          <%= @comment.title %>
+        </div>
+        <div class="comment-show-rating">
+          <%= @comment.rate %>
+          <%= @comment.positive %>
+        </div>
+        <div class="comment-show-text">
+          <%= @comment.body %>
+        </div>
+        <div class="comment-show-buttons">
+
+        </div>
+        <div class="comment-show-user-info">
+          <%= link_to @comment.user.name, user_path(@comment.user) %>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <%= @comment.created_at.strftime("%b %d, %Y %H:%M") %>
+
+          <%= link_to 'Ответить', comment_answer_path(ucomment: @comment), topucomment_id: @comment_id, class: 'btn btn-primary', id: 'create_answer_to_comment', remote: true %>
+        </div>
+      </div>
+    </div>
+    <div id="comment-answers">
+      <% @comment.subucomments.each do |c| %>
+        <%= c.title %><br />
+        <%= c.body %>
+      <% end %>
     </div>
   </div>
   <div class="col-md-3 advertisement">
