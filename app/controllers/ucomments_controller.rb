@@ -6,15 +6,21 @@ class UcommentsController < ApplicationController
 
   def create
     @comment = Ucomment.new(comment_params)
-    if @comment.save
-      if @comment.topucomment_id.nil?
+    comment_saved = @comment.save
+    if comment_saved
+      redirect_to_comment
+    else
+      render 'new'
+    end
+  end
+
+  def redirect_to_comment
+    main_comment = @comment.topucomment_id.nil?
+    if main_comment
         redirect_to @comment
       else
         redirect_to :back
       end
-    else
-      render 'new'
-    end
   end
 
   def new_reply
