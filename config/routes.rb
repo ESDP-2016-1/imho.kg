@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'reply_ucomment/create'
+
+  get 'reply_ucomment/destroy'
+
   ActiveAdmin.routes(self)
   
   root 'pages#index'
@@ -12,7 +16,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: 'sessions', registrations: 'registrations'}, :path => 'auth'
 
   resources :users, :companies, :ucomments
-  get 'create_answer' => 'ucomments#create_answer', as: 'comment_answer'
+  get 'new_reply' => 'ucomments#new_reply', as: 'reply_to_comment'
 
   get 'upd_subcategories' => 'companies#update_subcategories', as: 'upd_subcategories'
 

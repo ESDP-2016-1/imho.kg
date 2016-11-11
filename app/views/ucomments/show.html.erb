@@ -24,7 +24,7 @@
           &nbsp;&nbsp;&nbsp;&nbsp;
           <%= @comment.created_at.strftime("%b %d, %Y %H:%M") %>
 
-          <%= link_to 'Ответить', comment_answer_path(ucomment: @comment), topucomment_id: @comment_id, class: 'btn btn-primary', id: 'create_answer_to_comment', remote: true %>
+          <%= link_to 'Ответить', reply_to_comment_path(ucomment: @comment), class: 'btn btn-primary', id: 'reply_to_comment', remote: true %>
         </div>
       </div>
     </div>

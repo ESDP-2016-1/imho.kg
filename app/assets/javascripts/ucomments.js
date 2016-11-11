@@ -7,7 +7,7 @@
 
             $.ajax({
                 type: "GET",
-                url: '/comment_answer',
+                url: '/new_reply',
                 data: {}
             })
         });

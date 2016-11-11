@@ -53,7 +53,7 @@ group :development, :test do
   gem 'byebug'
   # remove gem 'sqlite3'
   gem 'mailcatcher'
-  #gem 'pry'
+  # gem 'pry'
 end
 
 gem 'geocoder'

@@ -15,7 +15,7 @@
 	font-weight: bold;
 	line-height: 40px;
 	color: #800000;
-    background: #FFBFBF;
+  background: #FFBFBF;
 }
 
 .home-negative span {
@@ -39,6 +39,11 @@
 
 .home-positive span {
   float: left;
+}
+
+.home-negative:hover, .home-positive:hover {
+  background: lightgrey;
+  border-style: inset;
 }
 
 .home-sorting, .home-select {
@@ -168,13 +173,6 @@
 .comment-negative {
   background-color: #FFBFBF;
 }
-
-
-
-
-
-
-
 
 
 //------- Company Card -------
