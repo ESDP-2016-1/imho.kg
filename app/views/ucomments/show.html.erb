@@ -4,6 +4,11 @@
       <div class="comment-show-user-logo">
         <%= image_tag @comment.user.avatar.url(:thumb) %>
         <p><%= link_to 'open' %></p>
+
+    <div>
+         id :  <%= @comment.id %><br>
+    </div>
+
       </div>
       <div class="comment-show-body<%= @comment.positive ? ' comment-positive' : ' comment-negative' %> " >
         <div class="comment-title">
@@ -19,7 +24,7 @@
         <div class="comment-show-buttons">
 
         </div>
-        <div class="comment-show-user-info">
+        <div class="comment-show-user-info" >
           <%= link_to @comment.user.name, user_path(@comment.user) %>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <%= @comment.created_at.strftime("%b %d, %Y %H:%M") %>
@@ -28,11 +33,11 @@
         </div>
       </div>
     </div>
-    <div id="comment-answers">
-      <% @comment.subucomments.each do |c| %>
-        <%= c.title %><br />
-        <%= c.body %>
-      <% end %>
+    <div id="comment-replies">
+      <% @comment.subucomments.each do |subcomment| %>
+        
+        <%= render 'show_reply', comment: subcomment %>
+        <% end %>
     </div>
   </div>
   <div class="col-md-3 advertisement">

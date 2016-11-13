@@ -25,7 +25,7 @@ class UcommentsController < ApplicationController
 
   def new_reply
    @parentcomment = Ucomment.find(params[:ucomment])
-   @ucomment = Ucomment.new
+   @reply = Ucomment.new
 
    respond_to do |format|
     format.js {}
