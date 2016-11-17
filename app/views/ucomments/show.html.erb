@@ -5,41 +5,49 @@
         <%= image_tag @comment.user.avatar.url(:thumb) %>
         <p><%= link_to 'open' %></p>
 
-    <div>
-         id :  <%= @comment.id %><br>
-    </div>
+        <div>
+             id :  <%= @comment.id %><br>
+        </div>
 
       </div>
       <div class="comment-show-body<%= @comment.positive ? ' comment-positive' : ' comment-negative' %> " >
         <div class="comment-title">
           <%= @comment.title %>
         </div>
+
         <div class="comment-show-rating">
           <%= @comment.rate %>
           <%= @comment.positive %>
         </div>
+
         <div class="comment-show-text">
           <%= @comment.body %>
         </div>
+
         <div class="comment-show-buttons">
 
         </div>
+
         <div class="comment-show-user-info" >
           <%= link_to @comment.user.name, user_path(@comment.user.id) %>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <%= @comment.created_at.strftime("%b %d, %Y %H:%M") %>
 
-          <%= link_to 'Ответить', reply_to_comment_path(ucomment: @comment), class: 'btn btn-primary', id: 'reply_to_comment', remote: true %>
+          <%= link_to 'Ответить', reply_to_comment_path(ucomment: @comment), class: 'btn btn-primary reply_to_comment',     remote: true %>
+
+          <%= link_to "Удалить", ucomment_path(ucomment: @comment), class: 'btn btn-primary', method: :delete, data: {confirm: 'Вы точно хотите удалить?'} %>
         </div>
       </div>
+
     </div>
     <div id="comment-replies">
-      <% @comment.subucomments.each do |subcomment| %>
-        
-        <%= render 'show_reply', comment: subcomment %>
+      <% @comment.subucomments.order(:created_at).each do |subcomment| %>
+        <% subcomment_position = 1 %>
+        <%= render partial: 'show_reply', :locals=> {comment: subcomment, subcomment_position: subcomment_position} %>
         <% end %>
     </div>
   </div>
+
   <div class="col-md-3 advertisement">
     <img src="https://s-media-cache-ak0.pinimg.com/originals/dd/24/8f/dd248f6d8cc95ea36ba763700ade4501.jpg" alt="advertisement">
 

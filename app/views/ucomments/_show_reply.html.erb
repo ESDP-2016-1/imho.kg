@@ -1,33 +1,55 @@
-<%= form_for comment, html: {class: 'form-horizontal'} do |f| %>
+<div class="col-md-9">
+
+   
+
+  <%= form_for comment, html: {class: 'form-horizontal'} do |f| %>
     <br>
-    <br>
+
+    <div>
+      <%= link_to comment.user.name, user_path(comment.user) %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= comment.created_at.strftime("%b %d, %Y %H:%M") %>
+    </div>   
+   
     
     <div class="field text-area">
-      <%= f.label :body %><br>
-      <%= f.text_area :body, class: 'form-control' %>
+      <%= comment.body %>
     </div>
 
     <div>
-      <%= f.label :id %><br>
-      <%= f.text_field :id %>
+      id: <%= comment.id %>
     </div>
 
+<div class="subcomment_position">
+   <pre>
+      Position :<%= subcomment_position %>
+    </pre>
+    </div>
+  <%
+=begin %>
     <div class="field text-area">
       <%= f.label :rate, "Рейтинг " %><br>
       <%= f.text_field :rate, class: 'form-control' %>
     </div>
 
-    <div>
-      <%= link_to comment.user.name, user_path(comment.user.id) %>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-      <%= comment.created_at.strftime("%b %d, %Y %H:%M") %>
-    </div>      
+  <%
+=end %>
 
-    <%= link_to 'Ответить', reply_to_comment_path(ucomment: comment), class: 'btn btn-primary', id: 'reply_to_comment', remote: true %>
-
+    <%= link_to 'Ответить', reply_to_comment_path(ucomment: comment), class: 'btn btn-primary reply_to_comment', remote: true %>
+    <%= link_to 'Удалить', ucomment_path(ucomment: comment), class: 'btn btn-primary destroy_comment', method: :delete, data: {confirm: 'Вы точно хотите удалить?'} %>
+<%
+=begin %>
+    <%= link_to 'Удалить', destroy_reply_to_comment_path(ucomment: comment), class: 'btn btn-primary', id: 'destroy_reply_to_comment', remote: true %>
+<%f
+=end %>
     <% if comment.subucomments.present? %>
-      <% comment.subucomments.each do |sub| %>
-        <%= render 'show_reply', comment: sub %>
+      <% subcomment_position = 1 %>
+      <% comment.subucomments.each do |subcomment| %>
+        <% subcomment_position += 1 %>
+        <%= render partial: 'show_reply', :locals=> {comment: subcomment, subcomment_position: subcomment_position } %>
+        <% subcomment_position += 1 %>
       <% end %>
-    <% end %>    
-<% end %>
+    <% end %>
+
+  <% end %>
+</div>
