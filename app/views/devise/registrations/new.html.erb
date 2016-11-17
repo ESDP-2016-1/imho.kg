@@ -8,7 +8,7 @@
   <div class="field">
       <%= f.label :Имя %><br />
       <%= f.text_field :name, autofocus: true %>
-      <%= render 'shared/field_errors', object: resource, field_name: :name %>
+      <%= render 'shared/error_msg', object: resource, field_name: :name %>
   </div>
 
   <div class="field">

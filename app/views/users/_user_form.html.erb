@@ -10,19 +10,19 @@
           <div class="field">
             <%= f.label :Полное.to_s+' Имя' %><br />
             <%= f.text_field :fullname, autofocus: true %>
-            <%= render 'shared/field_errors', object: resource, field_name: :fullname %>
+            <%= render 'shared/error_msg', object: resource, field_name: :fullname %>
           </div>
 
           <div class="field">
             <%= f.label :Имя.to_s + ' в сети' %><br />
             <%= f.text_field :name %>
-            <%= render 'shared/field_errors', object: resource, field_name: :name %>
+            <%= render 'shared/error_msg', object: resource, field_name: :name %>
           </div>
 
           <div class="field"><br />
             <%= f.label :Аватар %>
             <%= f.file_field :avatar %><br />
-            <%= render 'shared/field_errors', object: resource, field_name: :avatar %>
+            <%= render 'shared/error_msg', object: resource, field_name: :avatar %>
           </div>
 
           <div class="field">

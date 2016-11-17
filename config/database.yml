@@ -14,6 +14,7 @@ development:
   username: pguser
   password: qwerty123
 
+
 test:
   adapter: postgresql
   encoding: utf8

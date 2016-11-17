@@ -1,0 +1,64 @@
+
+<!-- Positive/Negative panel block -->
+
+<div class="row">
+
+  <%= link_to ajax_get_negative_comments_url,  id: "get-all-negative", remote: true do  %>
+
+      <div class="home-negative col-sm-5 col-md-5" id="home-negative">
+        Отрицательные <span><%= @negative_total_count %></span>
+      </div>
+
+  <% end %>
+
+  <div class="home-sorting col-sm-2 col-md-2">
+    <span>Cортировка</span>
+    <select name="home-sort" class="home-sort">
+      <option value=""></option>
+      <option value="1" selected="selected">По алфавиту</option>
+      <option value="2">По обсуждаемости</option>
+      <option value="3">По рейтингу</option>
+    </select>
+  </div>
+
+  <%= link_to ajax_get_positive_comments_url, id:'get-all-positive', remote: true do %>
+
+      <div class="home-positive col-sm-5 col-md-5" id="home-positive">
+        <span> <%= @positive_total_count %></span> Положительные
+      </div>
+
+  <% end %>
+
+</div>
+
+<!-- Positive/Negative panel END -->
+
+
+<!-- SideBar(Catalogue) button block -->
+
+<div class="catalogue" id="catalogue">
+  <div id="rectangle"> <span onclick="openNav()" id="catalogue_action"> КАТАЛОГ </span></div>
+  <div id="triangle-right"></div>
+ </div>
+
+<!-- SideBar(Catalogue) button END -->
+
+
+<!-- CardsBlock -->
+
+<div class="container">
+
+  <% unless current_user.nil? %>
+
+    <%= link_to 'Создать коммент', new_ucomment_path, class: 'btn btn-primary' %>
+
+  <% end %>
+
+  <div id="main-page-list-companies">
+
+    <%= render partial: 'draw_cards', locals: {comments: @comments } %>
+
+  </div>  
+</div>
+
+<!-- CardsBlock END -->

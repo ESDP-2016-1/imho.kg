@@ -1,0 +1,11 @@
+<% comments.each do |comment| %>
+
+        <br>
+        <div class="main-page-comment-company">
+
+          <%= render partial: 'shared/comment_card', locals: {comment: comment} %>
+          <%= render partial: 'shared/company_card', locals: {company: comment.company} %>
+
+        </div>
+
+<% end %>

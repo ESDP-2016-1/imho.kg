@@ -1,0 +1,22 @@
+<% if @companies.count == 0 %>
+
+	<h2> В выбранной категории нет компаний </h2>
+	<span> <%= link_to "Назад на главную", root_path %>  </span>
+
+<% else %>
+
+	<div class="row selected_companies">
+
+		<% @companies.each do |company| %>
+
+      <div class="col-md-4 col-sm-4">
+
+        <%= render 'shared/company_card', company: company %>
+
+      </div>
+
+		<% end %>
+
+	</div>
+
+<% end %>		

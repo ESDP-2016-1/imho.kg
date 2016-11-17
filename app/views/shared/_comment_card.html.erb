@@ -1,0 +1,39 @@
+<div class="comment-main">
+  <div class="comment-user-logo">
+
+    <%= image_tag comment.user.avatar.url(:thumb) %>
+
+  </div>
+  <div class="comment-body <%= comment.positive ? 'comment-positive' : 'comment-negative' %> " >
+    <div class="comment-title">
+
+      <%= comment.title %>
+
+    </div>
+    <div class="comment-rating">
+
+      <%= comment.rate %>
+      <%= comment.positive %>
+      <% unless comment.topucomment_id.nil? %>
+          <%= comment.topucomment.title %>
+      <% end  %>
+
+    </div>
+    <div class="comment-text">
+
+      <%= comment.body %>
+
+    </div>
+    <div class="comment-buttons">
+
+    </div>
+    <div class="comment-user-info">
+
+      <%= link_to comment.user.name, user_path(comment.user) %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= comment.created_at.strftime("%b %d, %Y %H:%M") %>
+      <%= link_to 'Подробнее', ucomment_path(comment), class: 'btn btn-primary' %>
+
+    </div>
+  </div>
+</div>
