@@ -2,8 +2,8 @@ class MainController < ApplicationController
   
   def index
     @comments = Ucomment.where(topucomment_id: nil)
-    @negative_total_count = Ucomment.where(topucomment_id: nil, positive: false).count
-    @positive_total_count = Ucomment.where(topucomment_id: nil, positive: true).count
+    @data = Hash.new
+    @comments.map {|comment| comment.positive ? @data[:positive_total_count] : @data[:negative_total_count] }
   end
 
   def categories
