@@ -29,7 +29,7 @@
     </div>
     <div class="comment-user-info">
 
-      <%= link_to comment.user.name, user_path(comment.user) %>
+      <%= link_to comment.user.name, user_path(comment.user.id) %>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <%= comment.created_at.strftime("%b %d, %Y %H:%M") %>
       <%= link_to 'Подробнее', ucomment_path(comment), class: 'btn btn-primary' %>

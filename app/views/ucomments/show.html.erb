@@ -25,7 +25,7 @@
 
         </div>
         <div class="comment-show-user-info" >
-          <%= link_to @comment.user.name, user_path(@comment.user) %>
+          <%= link_to @comment.user.name, user_path(@comment.user.id) %>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <%= @comment.created_at.strftime("%b %d, %Y %H:%M") %>
 

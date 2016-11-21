@@ -51,12 +51,12 @@
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
               <p class="navbar-text">
-                Привет, <%= link_to current_user.name, edit_user_path(current_user), class: 'navbar-link' %>
+                Привет, <%= link_to current_user.name, edit_profile_path, class: 'navbar-link' %>
               </p>
 
               <ul class="nav navbar-nav">
                 <li>
-                  <div class="menu_avatar_block"><%= link_to image_tag(current_user.avatar.url(:thumb), class: "menu_user_avatar"), user_path(current_user)%>
+                  <div class="menu_avatar_block"><%= link_to image_tag(current_user.avatar.url(:thumb), class: "menu_user_avatar"), profile_path(current_user)%>
                   </div>
                 </li>
 
@@ -64,7 +64,7 @@
                   <div class="menu_avatar_dropdown_block">
                     <a class="dropdow-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-triangle-bottom"></span></a>
                     <ul class="dropdown-menu">
-                      <li><%= link_to 'Редактирование профиля', edit_user_registration_path(current_user) %></li>
+                      <li><%= link_to 'Редактирование профиля', edit_profile_path %></li>
                       <li class="divider"></li>
                       <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
                     </ul>
@@ -85,10 +85,9 @@
 
   <!-- SignIn block -->
 
-  <div class="modal" id="sign_in_modal">
+  <div class="modal" id="sign_in_modal" >
     <div class="sign_in">
-
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{id: 'sign_in_user', :'data-type' => 'json'}) do |f| %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{id: 'sign_in_user', 'data-type' => 'json'}) do |f| %>
 
           <div class="field">
             <span class="sign_in_email"><%= f.label :email, "Эл.почта :" %></span>
@@ -101,7 +100,7 @@
           </div>
 
           <div class="field sign_in_enter">
-            <%= link_to "Забыли пароль?", new_password_path(resource_name) %>
+            <%= link_to "Забыли пароль?", new_user_password_url %>
             <div class="actions">
               <%= f.submit "Вход", class: "btn btn-primary" %>
             </div>
@@ -201,7 +200,7 @@
 
       <ul class="nav navmenu-nav">
 
-        <% side_menu_categories.each do |category| %>
+        <% helper_get_all_categories.each do |category| %>
 
             <% if category.subcategories.present? %>
 
@@ -248,6 +247,26 @@
   <!-- FOOTER block -->
 
   <!-- FOOTER END -->
+
+  <!-- JAVASCRIPT: Draw Modal SignIn IF /sign_in -->
+
+  <% if defined?(@data[:act]) %>
+
+    <script type="text/javascript">
+
+    <% case @data[:act] %>
+      <% when 'sign_in' %>
+        $('#sign_in_modal').modal({show:true});
+      <% when 'register' %>
+        $('#sign_up_modal').modal({show:true});
+      <% else %>
+
+    <% end %>
+
+    </script>
+
+  <% end %>
+
 
 </body>
 
