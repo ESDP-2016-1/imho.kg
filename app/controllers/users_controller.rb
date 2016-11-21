@@ -1,15 +1,21 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: :show_foreign
+
   def show
+    @user = User.find(current_user.id)
+  end
+
+  def show_foreign
     @user = User.find(params[:id])
+    render 'show'
   end
 
   def edit
-    @user = User.find(params[:id])
-
+    @user = User.find(current_user.id)
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
 
     if params[:user][:password].blank?
       params[:user].delete(:password)

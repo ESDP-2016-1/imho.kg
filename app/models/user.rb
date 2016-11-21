@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar,
                     styles: { medium: '250x250>', thumb: '80x80', icon: '50x50'},
                     default_url: ':style/missing.png'
+
   validates_attachment :avatar,
                        content_type: { content_type: %w( image/jpeg image/jpg image/gif image/png) }
 
