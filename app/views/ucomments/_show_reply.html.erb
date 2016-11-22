@@ -1,6 +1,4 @@
-<div class="col-md-9">
-
-   
+<div class="col-md-12">
 
   <%= form_for comment, html: {class: 'form-horizontal'} do |f| %>
     <br>
@@ -10,21 +8,27 @@
         &nbsp;&nbsp;&nbsp;&nbsp;
       <%= comment.created_at.strftime("%b %d, %Y %H:%M") %>
     </div>   
+
+  <div>
+    <div>
+      <%= image_tag comment.user.avatar.url(:thumb) %>
+    </div>
    
     
     <div class="field text-area">
+    <pre>
       <%= comment.body %>
+    </pre>  
     </div>
 
     <div>
       id: <%= comment.id %>
     </div>
 
-<div class="subcomment_position">
-   <pre>
+    <div class="subcomment_position">
       Position :<%= subcomment_position %>
-    </pre>
     </div>
+  </div>  
   <%
 =begin %>
     <div class="field text-area">
@@ -36,18 +40,13 @@
 =end %>
 
     <%= link_to 'Ответить', reply_to_comment_path(ucomment: comment), class: 'btn btn-primary reply_to_comment', remote: true %>
+    <%= link_to "Редактировать", edit_ucomment_path(comment), class: "btn btn-primary" %>
     <%= link_to 'Удалить', ucomment_path(ucomment: comment), class: 'btn btn-primary destroy_comment', method: :delete, data: {confirm: 'Вы точно хотите удалить?'} %>
-<%
-=begin %>
-    <%= link_to 'Удалить', destroy_reply_to_comment_path(ucomment: comment), class: 'btn btn-primary', id: 'destroy_reply_to_comment', remote: true %>
-<%f
-=end %>
+
     <% if comment.subucomments.present? %>
-      <% subcomment_position = 1 %>
+      <% subcomment_position >= 5 ? subcomment_position = 5 : subcomment_position += 1 %>
       <% comment.subucomments.each do |subcomment| %>
-        <% subcomment_position += 1 %>
         <%= render partial: 'show_reply', :locals=> {comment: subcomment, subcomment_position: subcomment_position } %>
-        <% subcomment_position += 1 %>
       <% end %>
     <% end %>
 
