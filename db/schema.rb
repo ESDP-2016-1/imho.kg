@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101194728) do
+ActiveRecord::Schema.define(version: 20161123085002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,12 +118,13 @@ ActiveRecord::Schema.define(version: 20161101194728) do
     t.boolean  "positive"
     t.integer  "rate"
     t.integer  "topucomment_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "user_id"
     t.integer  "company_id"
     t.integer  "image_id"
     t.string   "title"
+    t.boolean  "deleted",        default: false
   end
 
   add_index "ucomments", ["company_id"], name: "index_ucomments_on_company_id", using: :btree
