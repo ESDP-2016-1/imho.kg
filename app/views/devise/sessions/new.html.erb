@@ -1,6 +1,6 @@
 <div class="sign_in" id="sign_in">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(user_resource, as: user_resource_name, url: session_path(user_resource_name)) do |f| %>
   <div class="field">
     <span class="sign_in_email"><%= f.label :email, "Эл.почта :" %></span>
     <%= f.email_field :email, autofocus: true, class: "sign_in_email_field"  %>
@@ -12,7 +12,7 @@
   </div>
 
   <div class="field sign_in_enter">
-    <%= link_to "Забыли пароль?", new_password_path(resource_name) %>
+    <%= link_to "Забыли пароль?", new_password_path(user_resource_name) %>
       <div class="actions">
         <%= f.submit "Вход", class: "btn btn-primary" %>
       </div>

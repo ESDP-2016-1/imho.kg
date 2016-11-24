@@ -3,8 +3,8 @@
         <br>
         <div class="main-page-comment-company">
 
-          <%= render partial: 'shared/comment_card', locals: {comment: comment} %>
-          <%= render partial: 'shared/company_card', locals: {company: comment.company} %>
+          <%= helper_draw_comment_card(comment) %>
+          <%= helper_draw_company_card(comment.company) %>
 
         </div>
 

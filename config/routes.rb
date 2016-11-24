@@ -11,8 +11,11 @@ Rails.application.routes.draw do
 
   get  'users/:id'       =>  'users#show_foreign',   as: 'user'
 
-  get  'profile'         =>  'users#show',           as: 'profile'
-  get  'profile/edit'    =>  'users#edit',           as: 'edit_profile'
+  get    'profile'        =>  'users#show',           as: 'profile'
+  get    'profile/edit'   =>  'users#edit',           as: 'edit_profile'
+  patch  'profile/edit'   =>  'users#update'
+  put    'profile/edit'   =>  'users#update'
+  delete 'profile/edit'   =>  'users#destroy'
 
   resources :companies do
     get 'review'         =>  'companies#review',     as: 'review'
@@ -29,14 +32,14 @@ Rails.application.routes.draw do
     #Registration
     get     'register'   => 'devise_registrations#new',    as: 'new_user_registration'
     post    'register'   => 'devise_registrations#create', as: 'user_registration'
-    patch   'register'   => 'devise_registration#update'
-    put     'register'   => 'devise_registration#update'
-    delete  'register'   => 'devise_registration#destroy'
+    patch   'register'   => 'devise_registrations#update'
+    put     'register'   => 'devise_registrations#update'
+    delete  'register'   => 'devise_registrations#destroy'
 
     #Confirmation
-    get   'confirmation/new'    => 'devise_confirmations#new',      as: 'new_user_confirmation'
-    get   'confirmation'        => 'devise_confirmations#show'
-    post  'confirmation'        => 'devise_confirmations#create',   as: 'user_confirmation'
+    get   'confirmation/new'        => 'devise_confirmations#new',      as: 'new_user_confirmation'
+    get   'confirmation'            => 'devise_confirmations#show'
+    post  'confirmation'            => 'devise_confirmations#create',   as: 'user_confirmation'
 
     #Password
     get   'recovery'                => 'devise_passwords#new',      as: 'new_user_password'

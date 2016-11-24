@@ -17,9 +17,17 @@
       <div class="alert alert-<%= key %>">
         <a href="#" data-dismiss="alert" class="close">×</a>
         <ul>
-          <li>
-            <%= value %>
-          </li>
+          <% if value.is_a?(Array) %>
+            <% value.each do |subvalue| %>
+            <li>
+              <%= subvalue %>
+            </li>
+            <% end %>
+          <% else %>
+              <li>
+                <%= value %>
+              </li>
+          <% end %>
         </ul>
       </div>
   <% end %>
@@ -87,7 +95,7 @@
 
   <div class="modal" id="sign_in_modal" >
     <div class="sign_in">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{id: 'sign_in_user', 'data-type' => 'json'}) do |f| %>
+      <%= form_for(user_resource, as: user_resource_name, url: session_path(user_resource_name), html:{id: 'sign_in_user', 'data-type' => 'json'}) do |f| %>
 
           <div class="field">
             <span class="sign_in_email"><%= f.label :email, "Эл.почта :" %></span>
@@ -153,12 +161,12 @@
 
       <h4>Регистрация</h4>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html:{id: 'sign_up_user', :'data-type' => 'json'}) do |f| %>
+      <%= form_for(user_resource, as: user_resource_name, url: registration_path(user_resource_name), html:{id: 'sign_up_user', :'data-type' => 'json'}) do |f| %>
 
           <div class="field">
             <span class="sign_up_name"> <%= f.label :name, "Имя пользователя:" %></span>
             <%= f.text_field :name, autofocus: true %>
-            <%= render 'shared/error_msg', object: resource, field_name: :name %>
+            <%= render 'shared/error_msg', object: user_resource, field_name: :name %>
           </div>
 
           <div class="field">

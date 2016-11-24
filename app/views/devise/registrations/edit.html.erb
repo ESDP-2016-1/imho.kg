@@ -1,19 +1,19 @@
 <center>
 
-<h2><%= t('.title', resource: current_user.name.humanize) %></h2>
+<h2><%= t('.title', user_resource: current_user.name.humanize) %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(user_resource, as: user_resource_name, url: registration_path(user_resource_name), html: {method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
     <%= f.label :Имя %><br />
     <%= f.text_field :name, autofocus: true %>
-    <%= render 'shared/error_msg', object: resource, field_name: :name %>
+    <%= render 'shared/error_msg', object: user_resource, field_name: :name %>
   </div>
 
   <div class="field"><br />
     <%= f.file_field :avatar %><br />
-    <%= render 'shared/error_msg', object: resource, field_name: :avatar %>
+    <%= render 'shared/error_msg', object: user_resource, field_name: :avatar %>
   </div>
 
   <div class="field">
@@ -43,9 +43,9 @@
   </div>
 
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <% if devise_mapping.confirmable? && user_resource.pending_reconfirmation? %>
     <p>
-      <%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %>
+      <%= t('.currently_waiting_confirmation_for_email', email: user_resource.unconfirmed_email) %>
     </p>
   <% end %>
 
@@ -69,6 +69,6 @@
 
 <h3><%= t('.cancel_my_account') %></h3>
 
-<p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %>.</p>
+<p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(user_resource_name), data: {confirm: t('.are_you_sure') }, method: :delete %>.</p>
 
 <%= link_to t('devise.shared.links.back'), :back %>

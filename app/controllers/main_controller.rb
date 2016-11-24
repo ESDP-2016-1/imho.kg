@@ -13,6 +13,8 @@ class MainController < ApplicationController
   	@companies = Company.where(category_id: params[:id])
   end
 
+  # AJAX
+
   def ajax_get_negative_comments
   	@comments = Ucomment.where(topucomment_id: nil, positive: false)
   end

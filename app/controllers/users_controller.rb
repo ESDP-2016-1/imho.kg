@@ -6,8 +6,12 @@ class UsersController < ApplicationController
   end
 
   def show_foreign
-    @user = User.find(params[:id])
-    render 'show'
+    if current_user && (current_user.id == params[:id].to_i)
+      redirect_to(profile_path)
+    else
+      @user = User.find(params[:id])
+      render 'show'
+    end
   end
 
   def edit
@@ -15,35 +19,31 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(current_user.id)
-
-    if params[:user][:password].blank?
-      params[:user].delete(:password)
-      params[:user].delete(:password_confirmation)
-    end
-
-    user = User.find_by_email(params[:user][:email])
-    if user.valid_password?(params[:user][:current_password])
-      params[:user].delete(:current_password)
-    end
-
-    if @user.update(user_params)
-      flash[:success] = "You've updated your profile."
-      redirect_to root_path
-    else
-      flash[:error] = "Something went wrong, please, try again."
-      render 'edit'
-    end  
-
+      @user = User.find(current_user.id)
+      if @user.apply_updates(user_update_params, current_user, params[:user][:password])
+        redirect_to profile_path
+      else
+        render 'edit'
+      end
   end
+
 
   def destroy
   end
 
   private 
 
-  def user_params
-    params.require(:user).permit(:fullname, :name, :email, :password, :password_confirmation, :current_password, :dob, :avatar, :gender_id, :city_id, :role_id )
+  def user_update_params
+    params.require(:user).permit(:fullname, :name, :dob, :city_id, :gender_id)
   end
+
+=begin
+  def validate_before_update
+    flash[:error] ||= []
+    flash[:error] << "Пароль не соответствует\n" unless @user.valid_password?(params[:user][:current_password])
+    flash[:error] << "Длинна имени не должна быть больше 50 символов\n" if params[:user][:name].length > 50
+    flash[:error] <<  "Длинна имени не может быть менее 4 символов\n" if params[:user][:name].length < 4
+  end
+=end
 
 end

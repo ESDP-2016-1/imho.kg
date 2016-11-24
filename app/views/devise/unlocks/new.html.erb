@@ -1,7 +1,7 @@
 <center>
 <h2><%= t('.resend_unlock_instructions') %></h2>
 
-<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+<%= form_for(user_resource, as: user_resource_name, url: unlock_path(user_resource_name), html: {method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
