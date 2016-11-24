@@ -1,1 +1,1 @@
-$("#main-page-list-companies").html("<%= j(render(partial:"draw_cards" , locals: {comments: @comments})) %>");
+$("#main-page-list-companies").html("<%= j(helper_draw_cards(@comments)) %>");
