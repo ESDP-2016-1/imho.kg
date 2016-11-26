@@ -1,35 +1,46 @@
 <div class="col-md-12">
-
+  <div id="comment_<%= comment.id %>" >
   <%= form_for comment, html: {class: 'form-horizontal'} do |f| %>
-    <br>
+  
+      <br>
+    <% if comment.deleted? %>
+      <div>
+        <%= image_tag("/images/thumb/deleted_user.png", size: "50x50") %>
+        <span>Комментарий был удален</span>
+      </div>
+    <% else %> 
+
+      <div>
+        
+        <%= !comment.anonymous ? (link_to comment.user.name, user_path(comment.user)) : 'Aнонимный' %>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        <%= comment.created_at.strftime("%b %d, %Y %H:%M") %>
+      </div>   
 
     <div>
-      <%= link_to comment.user.name, user_path(comment.user) %>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-      <%= comment.created_at.strftime("%b %d, %Y %H:%M") %>
-    </div>   
+      <div>
 
-  <div>
-    <div>
-      <%= image_tag comment.user.avatar.url(:thumb) %>
-    </div>
-   
-    
-    <div class="field text-area">
-    <pre>
-      <%= comment.body %>
-    </pre>  
-    </div>
+         <%= !comment.anonymous ? (image_tag comment.user.avatar.url(:thumb)) : image_tag("/images/thumb/anonymous_user.png", size: "50x50") %>
+      </div>
+     
+      
+      <div class="field text-area">
+      
+      <pre>
+        <%= comment.body %>
+      </pre>
 
-    <div>
-      id: <%= comment.id %>
-    </div>
+      </div>
 
-    <div class="subcomment_position">
-      Position :<%= subcomment_position %>
-    </div>
-  </div>  
-  <%
+      <div>
+        id: <%= comment.id %><br>
+      </div>
+
+      <div class="subcomment_indent">
+        Indent :<%= subcomment_indent %>
+      </div>
+    </div>  
+    <%
 =begin %>
     <div class="field text-area">
       <%= f.label :rate, "Рейтинг " %><br>
@@ -39,16 +50,19 @@
   <%
 =end %>
 
-    <%= link_to 'Ответить', reply_to_comment_path(ucomment: comment), class: 'btn btn-primary reply_to_comment', remote: true %>
-    <%= link_to "Редактировать", edit_ucomment_path(comment), class: "btn btn-primary" %>
-    <%= link_to 'Удалить', ucomment_path(ucomment: comment), class: 'btn btn-primary destroy_comment', method: :delete, data: {confirm: 'Вы точно хотите удалить?'} %>
+      <%= link_to 'Ответить', reply_to_comment_path(ucomment: comment), class: 'btn btn-primary reply_to_comment', remote: true %>
+      <%= link_to "Редактировать", edit_ucomment_path(comment), class: "btn btn-primary" %>
+      <%= link_to 'Удалить', ucomment_path(ucomment: comment), class: 'btn btn-primary destroy_comment', method: :delete, data: {confirm: 'Вы точно хотите удалить?'} %>
 
-    <% if comment.subucomments.present? %>
-      <% subcomment_position >= 5 ? subcomment_position = 5 : subcomment_position += 1 %>
-      <% comment.subucomments.each do |subcomment| %>
-        <%= render partial: 'show_reply', :locals=> {comment: subcomment, subcomment_position: subcomment_position } %>
-      <% end %>
     <% end %>
 
-  <% end %>
+      <% if comment.subucomments.present? %>
+        <% subcomment_indent >= 5 ? subcomment_indent = 5 : subcomment_indent += 1 %>
+        <% comment.subucomments.each do |subcomment| %>
+          <%= render partial: 'show_reply', :locals=> {comment: subcomment, subcomment_indent: subcomment_indent } %>
+        <% end %>
+      <% end %>
+
+    <% end %>
+  </div>  
 </div>

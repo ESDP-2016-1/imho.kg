@@ -1,6 +1,10 @@
 <%= form_for ucomment, html: {class: 'form-horizontal'} do |f| %>
     <br>
     <br>
+    <div>
+      <%= f.label :anonymous, 'Анонимный' %> 
+      <%= f.check_box :anonymous %>
+    <div>
     <div class="field text-area">
       <%= f.label :body %><br>
       <%= f.text_area :body, class: 'form-control' %>

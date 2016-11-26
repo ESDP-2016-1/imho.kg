@@ -31,6 +31,7 @@
 
         <div>
              id :  <%= @comment.id %><br>
+             Ответов:<%= @total_subcomments %>
         </div>
 
       </div>
@@ -77,8 +78,8 @@
     </div>
     <div id="comment-replies">
       <% @comment.subucomments.order(:created_at).each do |subcomment| %>
-        <% subcomment_position = 1 %>
-        <%= render partial: 'show_reply', :locals=> {comment: subcomment, subcomment_position: subcomment_position} %>
+        <% subcomment_indent = 1 %>
+        <%= render partial: 'show_reply', :locals=> {comment: subcomment, subcomment_indent: subcomment_indent} %>
         <% end %>
     </div>
   </div>

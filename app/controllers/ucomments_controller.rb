@@ -6,6 +6,8 @@ class UcommentsController < ApplicationController
 
   def show
     @comment = Ucomment.find(params[:id])
+    @all_subcomments = Array.new
+    @total_subcomments = count_all_subcomments(@comment)
   end
 
   def create
@@ -52,15 +54,14 @@ class UcommentsController < ApplicationController
   def destroy
     @comment = Ucomment.find(params[:ucomment])
     if @comment.topucomment_id.nil?
-      destroy_topucomment_and_its_childs(@comment)
-      @comment.body = "Комментарий был удален"
+      destroy_all_children_of_topucomment(@comment)
+      @comment.deleted = true
       @comment.save
       redirect_to root_path
     else
       
-      @comment.body = "Комментарий был удален"
+      @comment.deleted = true
       @comment.save
-      
       redirect_to :back
     end  
   end
@@ -85,22 +86,36 @@ class UcommentsController < ApplicationController
       end
   end
 
-  def destroy_topucomment_and_its_childs(comment)
+  def destroy_all_children_of_topucomment(comment)
       if comment.subucomments.present?
         for subcomment in comment.subucomments do
-          subcomment.body = "Комментарий был удален"
+          subcomment.deleted = true
           subcomment.save
-          destroy_topucomment_and_its_childs(subcomment)
+          destroy_all_children_of_topucomment(subcomment)
         end  
       else
-        comment.body = "Комментарий был удален"
+        comment.deleted = true
         comment.save  
       end
   end  
 
+  def count_all_subcomments(comment)  
+    if comment.subucomments.present?
+      for subcomment in comment.subucomments do
+        #unless subcomment.deleted
+          @all_subcomments.push subcomment
+        #end  
+        count_all_subcomments(subcomment)
+      end
+    end
+    return @all_subcomments.size
+
+  end
+
   def comment_params
     params.require(:ucomment).permit(:title, :body,
-                   :positive, :rate, :topucomment_id, :user_id, :company_id)
+                   :positive, :anonymous, :rate, :topucomment_id, 
+                   :user_id, :company_id, :deleted)
   end
 
 end
