@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
 
   def review
     @company = Company.find(params[:company_id])
-    @comments = @company.ucomments.where(topucomment_id: nil)
+    @comments = @company.ucomments.where(topucomment_id: nil, deleted: false)
   end
 
   def new
