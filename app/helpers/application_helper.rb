@@ -97,7 +97,7 @@ module ApplicationHelper
         </div>
         <div class="company-card-bottom">
           <span class="mini_card_company_title">#{ link_to company.title.upcase, company_path(company) }</span>
-          <span class="mini_card_company_review">#{ link_to "Все отзывы" }</span>
+          <span class="mini_card_company_review">#{ link_to "Все отзывы", company_review_path(company) }</span>
         </div>
       </div>
     HTML
