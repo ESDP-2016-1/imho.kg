@@ -2,13 +2,11 @@ class DeviseConfirmationsController < Devise::ConfirmationsController
 
   # GET /resource/confirmation/new
   def new
-    binding.pry
     self.resource = resource_class.new
   end
 
   # POST /resource/confirmation
   def create
-    binding.pry
     self.resource = resource_class.send_confirmation_instructions(resource_params)
     yield resource if block_given?
 
@@ -21,7 +19,6 @@ class DeviseConfirmationsController < Devise::ConfirmationsController
 
   # GET /resource/confirmation?confirmation_token=abcdef
   def show
-    binding.pry
     self.resource = resource_class.confirm_by_token(params[:confirmation_token])
 
     yield resource if block_given?

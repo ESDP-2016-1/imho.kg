@@ -26,8 +26,8 @@ Rails.application.routes.draw do
 
     #SignIn/SignOut[Sessions]
     get     'sign_in'    => 'devise_sessions#new',      as: 'new_user_session'
-    post    'sign_in'    => 'devise/sessions#create',   as: 'user_session'
-    delete  'sign_out'   => 'devise/sessions#destroy',  as: 'destroy_user_session'
+    post    'sign_in'    => 'devise_sessions#create',   as: 'user_session'
+    delete  'sign_out'   => 'devise_sessions#destroy',  as: 'destroy_user_session'
 
     #Registration
     get     'register'   => 'devise_registrations#new',    as: 'new_user_registration'

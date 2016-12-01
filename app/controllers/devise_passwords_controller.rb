@@ -5,7 +5,6 @@ class DevisePasswordsController < Devise::PasswordsController
   def new
     self.resource = resource_class.new
     session[:modal] = 'recovery'
-    binding.pry
     redirect_to root_path
   end
 

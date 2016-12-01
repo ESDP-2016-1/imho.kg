@@ -7,7 +7,6 @@ class DeviseRegistrationsController < Devise::RegistrationsController
 
     session[:modal] = 'register'
     redirect_to root_path
-    binding.pry
   end
 
 
@@ -63,7 +62,6 @@ class DeviseRegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    binding.pry
     render :edit
   end
 
@@ -71,7 +69,6 @@ class DeviseRegistrationsController < Devise::RegistrationsController
   # We need to use a copy of the resource because we don't want to change
   # the current user in place.
   def update
-    binding.pry
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
@@ -93,7 +90,6 @@ class DeviseRegistrationsController < Devise::RegistrationsController
 
   # DELETE /resource
   def destroy
-    binding.pry
     resource.destroy
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
     set_flash_message! :notice, :destroyed
@@ -107,7 +103,6 @@ class DeviseRegistrationsController < Devise::RegistrationsController
   # cancel oauth signing in/up in the middle of the process,
   # removing all OAuth session data.
   def cancel
-    binding.pry
     expire_data_after_sign_in!
     redirect_to new_registration_path(resource_name)
   end
