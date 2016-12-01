@@ -44,6 +44,12 @@
 <!-- SideBar(Catalogue) button END -->
 
 
+<!-- Pagination block -->
+<%= will_paginate @comments %>
+
+<!-- Pagination END -->
+
+
 <!-- CardsBlock -->
 
 <div class="container">
@@ -62,3 +68,7 @@
 </div>
 
 <!-- CardsBlock END -->
+
+
+<!-- JAVASCRIPT: Executes Visibility of Modals -->
+<%= helper_execute_modals(@data) %>

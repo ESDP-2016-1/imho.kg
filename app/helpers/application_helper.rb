@@ -2,11 +2,11 @@ module ApplicationHelper
 
 
 # Helper methods for Devise. Those methods are needed to create our own views and use them in modal windows.
-  def user_resource_name
+  def resource_name
     :user
   end
 
-  def user_resource
+  def resource
    @resource ||= User.new
   end
 
@@ -17,6 +17,8 @@ module ApplicationHelper
 
 
 
+
+# Draw all topucomments cards with associated companies
   def helper_draw_cards(comments)
     out_html=''
     comments.each do |comment|
@@ -32,39 +34,7 @@ module ApplicationHelper
     out_html.html_safe
   end
 
-
-  def helper_draw_subcategories(category)
-    html=''
-    category.subcategories.each do |subcategory|
-      each_html = content_tag :li do
-        link_to subcategory.title, categories_path(subcategory.id)
-      end
-      html << each_html
-    end
-    html.html_safe
-  end
-
-  def helper_draw_categories(categories)
-    html = ''
-    categories.each do |category|
-      if category.subcategories.present?
-        each_html = <<-HTML
-                    <li class="dropdown">
-                      <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                        #{ category.title }<b class="caret"></b>
-                      </a>
-                      <ul class="dropdown-menu navmenu-nav" role="menu">
-                        #{ helper_draw_subcategories(category) }
-                      </ul>
-                    </li>
-        HTML
-        html << each_html
-      end
-    end
-    html.html_safe
-  end
-
-
+  # Draw topucomment card
   def helper_draw_comment_card(comment)
     html = <<-HTML
       <div class="comment-main">
@@ -98,18 +68,17 @@ module ApplicationHelper
     html.html_safe
   end
 
-
-
+  #Draw Company Card
   def helper_draw_company_card(company)
     html = <<-HTML
       <div class="company-card">
         <div class="company-card-upper">
           <div class="company-card-positive">
             <div class="company-card-like">
-              <span>#{company.ucomments.where(topucomment_id: nil, positive: true).count }</span>
+              <span>#{ company.total_positive }</span>
             </div>
             <div class="company-card-dislike">
-              <span>#{company.ucomments.where(topucomment_id: nil, positive: false).count }</span>
+              <span>#{ company.total_negative }</span>
             </div>
           </div>
           <div class="company-card-votes">
@@ -134,6 +103,42 @@ module ApplicationHelper
     HTML
     html.html_safe
   end
+
+
+
+# Draw Categories in SIDE MENU
+  def helper_draw_categories(categories)
+    html = ''
+    categories.each do |category|
+      if category.subcategories.present?
+        each_html = <<-HTML
+                    <li class="dropdown">
+                      <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                        #{ category.title }<b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu navmenu-nav" role="menu">
+                        #{ helper_draw_subcategories(category) }
+                      </ul>
+                    </li>
+        HTML
+        html << each_html
+      end
+    end
+    html.html_safe
+  end
+
+# Draw SUBCATEGORIES in SIDE MENU
+  def helper_draw_subcategories(category)
+    html=''
+    category.subcategories.each do |subcategory|
+      each_html = content_tag :li do
+        link_to subcategory.title, categories_path(subcategory.id)
+      end
+      html << each_html
+    end
+    html.html_safe
+  end
+
 
 
 end

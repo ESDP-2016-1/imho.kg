@@ -21,16 +21,18 @@ Rails.application.routes.draw do
     get 'review'         =>  'companies#review',     as: 'review'
   end
 
-  devise_for :users, path: '', skip: [:sessions, :registrations, :passwords, :confirmations]
+  devise_for :users, skip: [:sessions, :registrations, :passwords, :confirmations]
   as :user do
 
     #SignIn/SignOut[Sessions]
     get     'sign_in'    => 'devise_sessions#new',      as: 'new_user_session'
-    post    'sign_in'    => 'devise_sessions#create',   as: 'user_session'
-    delete  'sign_out'   => 'devise_sessions#destroy',  as: 'destroy_user_session'
+    post    'sign_in'    => 'devise/sessions#create',   as: 'user_session'
+    delete  'sign_out'   => 'devise/sessions#destroy',  as: 'destroy_user_session'
 
     #Registration
     get     'register'   => 'devise_registrations#new',    as: 'new_user_registration'
+    get     'register/cancel' => 'devise_registrations#cancel', as: 'cancel_user_registration'
+    get     'register/edit'   => 'devise_registrations#edit', as: 'edit_user_registration'
     post    'register'   => 'devise_registrations#create', as: 'user_registration'
     patch   'register'   => 'devise_registrations#update'
     put     'register'   => 'devise_registrations#update'

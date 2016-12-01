@@ -21,17 +21,9 @@
       <div class="alert alert-<%= key %>">
         <a href="#" data-dismiss="alert" class="close">×</a>
         <ul>
-          <% if value.is_a?(Array) %>
-            <% value.each do |subvalue| %>
             <li>
-              <%= subvalue %>
-            </li>
-            <% end %>
-          <% else %>
-              <li>
                 <%= value %>
               </li>
-          <% end %>
         </ul>
       </div>
   <% end %>
@@ -99,7 +91,7 @@
 
   <div class="modal" id="sign_in_modal" >
     <div class="sign_in">
-      <%= form_for(user_resource, as: user_resource_name, url: session_path(user_resource_name), html:{id: 'sign_in_user', 'data-type' => 'json'}) do |f| %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{id: 'sign_in_user', 'data-type' => 'json'}) do |f| %>
 
           <div class="field">
             <span class="sign_in_email"><%= f.label :email, "Эл.почта :" %></span>
@@ -112,7 +104,7 @@
           </div>
 
           <div class="field sign_in_enter">
-            <%= link_to "Забыли пароль?", new_user_password_url %>
+            <%= link_to "Забыли пароль?", "#recovery", "data-toggle" => "modal", 'data-target' => '#recovery_modal', 'data-dismiss' => 'modal' %>
             <div class="actions">
               <%= f.submit "Вход", class: "btn btn-primary" %>
             </div>
@@ -165,12 +157,12 @@
 
       <h4>Регистрация</h4>
 
-      <%= form_for(user_resource, as: user_resource_name, url: registration_path(user_resource_name), html:{id: 'sign_up_user', :'data-type' => 'json'}) do |f| %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
           <div class="field">
             <span class="sign_up_name"> <%= f.label :name, "Имя пользователя:" %></span>
             <%= f.text_field :name, autofocus: true %>
-            <%= render 'shared/error_msg', object: user_resource, field_name: :name %>
+            <%= render 'shared/error_msg', object: resource, field_name: :name %>
           </div>
 
           <div class="field">
@@ -203,6 +195,66 @@
   </div>
 
   <!-- SignUp END -->
+
+
+  <!-- RecoveryPasswordEmail block -->
+
+  <div class="modal" id="recovery_modal">
+
+
+    <div class="sign_up">
+
+      <h4>Восстановление пароля</h4>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post }) do |f| %>
+
+            <div class="field">
+              <span class="sign_up_name"> <%= f.label :email, "Ваш e-mail:" %></span>
+              <%= f.email_field :email, autofocus: true %>
+            </div>
+
+            <div class="actions">
+              <button class="btn btn-primary col-xs-4" data-dismiss="modal">Отмена</button>
+              <%= f.submit "Отправить инструкцию", class: "btn btn-primary col-xs-6 col-xs-offset-2" %>
+            </div>
+        <% end %>
+    </div>
+
+  </div>
+
+  <!-- RecoveryPasswordEmail END -->
+
+  <!-- RecoveryEditNewPassword block -->
+  <% if @data && (@data[:modal]=='recovery_new_password') %>
+  <div class="modal" id="recovery_new_password_modal">
+
+
+    <div class="sign_up">
+
+      <h4>Измените ваш пароль</h4>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :put }) do |f| %>
+          <%= f.hidden_field :reset_password_token %>
+          <div class="field">
+            <span class="sign_up_name"> <%= f.label :password, "Новый пароль:" %></span>
+            <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+          </div>
+
+          <div class="field">
+            <span class="sign_up_name"> <%= f.label :password_confirmation, "Подтверждение:" %></span>
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </div>
+
+
+          <div class="actions">
+            <button class="btn btn-primary col-xs-4" data-dismiss="modal">Отмена</button>
+            <%= f.submit "Изменить пароль", class: "btn btn-primary col-xs-6 col-xs-offset-2" %>
+          </div>
+      <% end %>
+    </div>
+
+  </div>
+  <% end %>
+
+  <!-- RecoveryEditNewPassword END -->
 
 
   <!-- SideBar(Catalogue) block -->
@@ -240,24 +292,6 @@
 
   <!-- FOOTER END -->
 
-  <!-- JAVASCRIPT: Draw Modal SignIn IF /?act=sign_in -->
-
-  <% if defined?(@data[:act]) %>
-
-    <script type="text/javascript">
-
-    <% case @data[:act] %>
-      <% when 'sign_in' %>
-        $('#sign_in_modal').modal({show:true});
-      <% when 'register' %>
-        $('#sign_up_modal').modal({show:true});
-      <% else %>
-
-    <% end %>
-
-    </script>
-
-  <% end %>
 
 
 </body>

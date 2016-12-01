@@ -10,4 +10,13 @@ class Company < ActiveRecord::Base
                     default_url: '/images/:style/missing.png'
   validates_attachment_content_type :image,
                                     content_type: ['image/jpeg', 'image/gif', 'image/png']
+
+  def total_positive
+    self.ucomments.where(positive: true).count
+  end
+
+  def total_negative
+    self.ucomments.where(positive: false).count
+  end
+
 end

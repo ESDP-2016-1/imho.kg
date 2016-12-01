@@ -4,9 +4,9 @@ source 'https://rubygems.org'
 gem 'tzinfo'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails', '4.2.6'
-# Use sqlite3 as the database for Active Record
 
-# Use SCSS for stylesheets
+gem 'will_paginate', '~> 3.1.1'
+
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

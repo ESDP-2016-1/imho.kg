@@ -9,4 +9,6 @@ class Ucomment < ActiveRecord::Base
   has_many :favorites
   has_many :votes
 
+  self.per_page = 10
+
 end

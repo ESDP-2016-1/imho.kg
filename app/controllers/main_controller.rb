@@ -1,12 +1,13 @@
 class MainController < ApplicationController
   
   def index
-    @comments ||= Ucomment.where(topucomment_id: nil)
+    @comments = Ucomment.where(topucomment_id: nil).paginate(:page => params[:page])
 
-    @data = { act: params[:act] ,
-              positive_total_count: 0 ,
-              negative_total_count: 0 }
-    @comments.map {|comment| comment.positive ? @data[:positive_total_count]+=1 : @data[:negative_total_count]+=1 }
+    @data = { positive_total_count: count_total_positive,
+              negative_total_count: count_total_negative,
+              modal: get_modal_from_session }
+
+    erase_modal_in_session
   end
 
   def categories
@@ -23,6 +24,28 @@ class MainController < ApplicationController
   	@comments = Ucomment.where(topucomment_id: nil, positive: true)
   end
 
+
+
+
+
   private
+
+  def get_modal_from_session
+    return nil unless session[:modal]
+    session[:modal]
+  end
+
+  def erase_modal_in_session
+    session.delete(:modal)
+  end
+
+  def count_total_positive
+    Ucomment.where(topucomment_id: nil, positive: true).count
+  end
+
+  def count_total_negative
+    Ucomment.where(topucomment_id: nil, positive: false).count
+  end
+
 
 end
