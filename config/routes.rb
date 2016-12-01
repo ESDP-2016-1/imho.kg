@@ -63,8 +63,6 @@ Rails.application.routes.draw do
 
   resources :ucomments, path: "comments"
 
-
-
   get 'new_reply' => 'ucomments#new_reply', as: 'reply_to_comment'
 
   get 'upd_subcategories' => 'companies#update_subcategories', as: 'upd_subcategories'

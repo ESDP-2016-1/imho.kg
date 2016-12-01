@@ -1,0 +1,69 @@
+<div class="col-md-12">
+  <div id="comment_<%= subcomment.id %>" >
+  <%= form_for subcomment, html: {class: 'form-horizontal'} do |f| %>
+  
+      <br>
+    <% if subcomment.deleted? %>
+      <div>
+        <%= image_tag("/images/thumb/deleted_user.png", size: "50x50") %>
+        <span>Комментарий был удален</span>
+      </div>
+    <% else %> 
+
+      <div>
+        
+        <%= !subcomment.anonymous ? (link_to subcomment.user.name, user_path(subcomment.user)) : 'Aнонимный' %>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        <%= subcomment.created_at.strftime("%b %d, %Y %H:%M") %>
+        <span class="glyphicon glyphicon-share-alt"></span> <%= subcomment.topucomment.user.name %>
+      </div>   
+
+    <div>
+      <div>
+
+         <%= !subcomment.anonymous ? (image_tag subcomment.user.avatar.url(:thumb)) : image_tag("/images/thumb/anonymous_user.png", size: "50x50") %>
+      </div>
+     
+      
+      <div class="field text-area">
+      
+      <pre>
+        <%= subcomment.body %>
+      </pre>
+
+      </div>
+
+      <div>
+        id: <%= subcomment.id %><br>
+      </div>
+
+      <div class="subcomment_indent">
+        Indent :<%= subcomment_indent %>
+      </div>
+    </div>  
+    <%
+=begin %>
+    <div class="field text-area">
+      <%= f.label :rate, "Рейтинг " %><br>
+      <%= f.text_field :rate, class: 'form-control' %>
+    </div>
+
+  <%
+=end %>
+
+      <%= link_to 'Ответить', reply_to_comment_path(ucomment: subcomment), class: 'btn btn-primary reply_to_comment', remote: true %>
+      <%= link_to "Редактировать", edit_ucomment_path(subcomment), class: "btn btn-primary edit-comment-btn", remote: true %>
+      <%= link_to 'Удалить', ucomment_path(ucomment: subcomment), class: 'btn btn-primary destroy_comment', method: :delete, data: {confirm: 'Вы точно хотите удалить?'} %>
+
+    <% end %>
+  </div> 
+      <% if subcomment.subucomments.present? %>
+        <% subcomment_indent >= 5 ? subcomment_indent = 5 : subcomment_indent += 1 %>
+        <% subcomment.subucomments.each do |subcomment| %>
+          <%= render partial: 'show_subcomment', :locals=> {subcomment: subcomment, subcomment_indent: subcomment_indent } %>
+        <% end %>
+      <% end %>
+
+    <% end %>
+   
+</div>

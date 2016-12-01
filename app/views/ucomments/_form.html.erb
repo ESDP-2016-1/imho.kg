@@ -37,6 +37,10 @@
     </div>
 
     <div>
-      <%= f.submit class:'btn btn-primary' %>
+      <% if params[:action] == 'edit' %>
+        <%= f.submit "Обновить отзыв", class:'btn btn-primary' %>
+      <% else %>  
+        <%= f.submit "Создать отзыв", class:'btn btn-primary' %>
+      <% end %>
     </div>
 <% end %>

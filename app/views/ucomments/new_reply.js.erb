@@ -1,2 +1,5 @@
-$("#reply_to_comment_modal .modal-body").html("<%= escape_javascript(render partial: 'reply', locals: { ucomment: @reply, parentcomment: @parentcomment} ) %>");
-$("#reply_to_comment_modal").modal();
+$(".add_reply_to_comment").each( function() {
+	$(this).remove();
+});
+$("#comment_<%= parent_comment_div %>").append("<%= escape_javascript(render partial: 'reply', locals: { ucomment: @reply, parentcomment: @parentcomment} ) %>");
+$("#ucomment_body").focus();

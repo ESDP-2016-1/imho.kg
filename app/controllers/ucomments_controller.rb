@@ -12,9 +12,12 @@ class UcommentsController < ApplicationController
 
   def create
     @comment = Ucomment.new(comment_params)
-    comment_saved = @comment.save
-    if comment_saved
-      redirect_to_comment
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to_comment }
+        format.js {render 'ajax_create_reply.js.erb', locals: {ucomment: @comment}}
+        format.json {render json: @comment}
+      end
     else
       render 'new'
     end
@@ -22,13 +25,14 @@ class UcommentsController < ApplicationController
 
   def edit
     @comment = Ucomment.find(params[:id])
-
-    if @comment.topucomment_id.nil?
-      render partial: 'form'
-    else 
+    if !@comment.topucomment_id.nil?
       @parentcomment = Ucomment.find(@comment.topucomment_id)
-      render partial: 'reply', :locals => {ucomment: @comment, parentcomment: @parentcomment}
     end
+
+    respond_to do |format|
+        format.js {render 'ajax_edit_comment.js.erb', locals: {ucomment: @comment, parentcomment: @parentcomment}}
+      end
+    
   end 
 
   def new_reply
@@ -36,13 +40,15 @@ class UcommentsController < ApplicationController
    @reply = Ucomment.new
 
    respond_to do |format|
-    format.js {}
+    format.html
+    format.js { render 'new_reply.js.erb', locals: {parent_comment_div: @parentcomment.id} }
+    
    end
   end
 
-
   def update
     @comment = Ucomment.find(params[:id])
+
     if @comment.update(comment_params)
       redirect_to_comment
     else

@@ -23,9 +23,10 @@
 <!-- Reply_to_comment MODAL block END -->
 
 <div class="col-md-12">
-  <div class="col-md-9">
-    <div class="comment-show">
-      <div class="comment-show-user-logo">
+  <div class="col-md-9" id="comments_container" >
+  <div id="comment_<%= @comment.id %>" >
+    <div class="comment-show" >
+      <div class="comment-show-user-logo" >
         <%= image_tag @comment.user.avatar.url(:thumb) %>
         <p><%= link_to 'open' %></p>
 
@@ -35,51 +36,39 @@
         </div>
 
       </div>
-      <div class="comment-show-body<%= @comment.positive ? ' comment-positive' : ' comment-negative' %> " >
-        <div class="comment-title">
-          <%= @comment.title %>
+        <div class="comment-show-body<%= @comment.positive ? ' comment-positive' : ' comment-negative' %> " >
+          <div class="comment-title">
+            <%= @comment.title %>
+          </div>
+
+          <div class="comment-show-rating">
+            <%= @comment.rate %>
+            <%= @comment.positive %>
+          </div>
+
+          <div class="comment-show-text">
+            <%= @comment.body %>
+          </div>
+
+          <div class="comment-show-buttons"> </div> 
+
+          <div class="comment-show-user-info" >
+            <%= link_to @comment.user.name, user_path(@comment.user.id) %>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <%= @comment.created_at.strftime("%b %d, %Y %H:%M") %>
+
+            <%= link_to 'Ответить', reply_to_comment_path(ucomment: @comment), class: 'btn btn-primary reply_to_comment', remote: true %>
+
+            <%= link_to "Удалить", ucomment_path(ucomment: @comment), class: 'btn btn-primary', method: :delete, data: {confirm: 'Вы точно хотите удалить?'} %>
+            <%= link_to "Редактировать", edit_ucomment_path(@comment), class: "btn btn-primary", remote: true %>
+          </div>
         </div>
-
-        <div class="comment-show-rating">
-          <%= @comment.rate %>
-          <%= @comment.positive %>
-        </div>
-
-        <div class="comment-show-text">
-          <%= @comment.body %>
-        </div>
-
-        <div class="comment-show-buttons">
-
-        </div>
-
-        <div class="comment-show-user-info" >
-          <%= link_to @comment.user.name, user_path(@comment.user.id) %>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <%= @comment.created_at.strftime("%b %d, %Y %H:%M") %>
-
-          <%= link_to 'Ответить', reply_to_comment_path(ucomment: @comment), class: 'btn btn-primary reply_to_comment', remote: true %>
-
-<%
-=begin %>
-          <%= link_to 'Ответить', reply_to_comment_path(ucomment: @comment), class: 'btn btn-primary reply_to_comment', remote: true %>
-
-
-
-        <button type="button" class="btn btn-info btn-primary" data-toggle="modal" data-target="#reply_to_comment_modal">Open Modal</button>
-
-<%
-=end %>        
-
-          <%= link_to "Удалить", ucomment_path(ucomment: @comment), class: 'btn btn-primary', method: :delete, data: {confirm: 'Вы точно хотите удалить?'} %>
-          <%= link_to "Редактировать", edit_ucomment_path(@comment), class: "btn btn-primary" %>
-        </div>
-      </div>
     </div>
+  </div>  
     <div id="comment-replies">
       <% @comment.subucomments.order(:created_at).each do |subcomment| %>
         <% subcomment_indent = 1 %>
-        <%= render partial: 'show_reply', :locals=> {comment: subcomment, subcomment_indent: subcomment_indent} %>
+        <%= render partial: 'show_subcomment', :locals=> {subcomment: subcomment, subcomment_indent: subcomment_indent} %>
         <% end %>
     </div>
   </div>

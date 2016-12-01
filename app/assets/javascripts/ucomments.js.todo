@@ -1,0 +1,44 @@
+$(document).on('ready', function() {
+	
+	$("#comments_container").on('click', "#subcomment_close_btn", function() {
+		$("#ajax_new_reply_to_comment").remove();
+	});
+
+	$("#comments_container").on('submit', "#edit-subcomment", function(event) {
+	    event.preventDefault();
+	    var comment_id = $(this).data("comment-id");
+
+		$("#ajax_new_reply_to_comment").remove();
+        $.ajax({
+            method: "PATCH",
+            data: $("#edit-subcomment").serialize(),
+            url: "/comments/" + comment_id,
+            success: function (data) {
+                console.log(data);
+            }
+        })
+	});
+
+	$("#comments_container").on('submit', "#new_ucomment", function(event) {
+		event.preventDefault();
+        var comment_body = $("ucomment_body").val();
+        var is_anonymous = $("ucomment_anonymous").prop("checked");
+        var csrf_token = $("input[name=authenticity_token]").val();
+        var topcomment_id = $("#ucomment_topucomment_id").val();
+        var company_id = $("#ucomment_company_id").val();
+        var user_id = $("#ucomment_user_id").val();
+		$.ajax({
+			type: "POST",
+			url: '/comments',
+			data: $("#new_ucomment").serialize(),
+			success: function(data){
+				debugger;
+				console.log(data);
+				// $("#comments_container").html(data);
+			}
+		});
+		$("#ajax_new_reply_to_comment").remove();
+	});
+
+
+});

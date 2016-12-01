@@ -1,4 +1,5 @@
-<%= form_for ucomment, html: {class: 'form-horizontal'} do |f| %>
+<div id="ajax_new_reply_to_comment" class="add_reply_to_comment">
+  <%= form_for ucomment, html: {class: 'form-horizontal' } do |f| %>
     <br>
     <br>
     <div>
@@ -7,7 +8,7 @@
     <div>
     <div class="field text-area">
       <%= f.label :body %><br>
-      <%= f.text_area :body, class: 'form-control' %>
+      <%= f.text_area :body, class: 'form-control', autofocus: true %>
     </div>
 
     <div class="field">
@@ -18,8 +19,14 @@
 
     
     <div>
-      <%= f.submit class:'btn btn-primary' %>
-      <%= f.button "Очистить", type: :reset, class: 'btn btn-primary' %>
+      <% if params[:action] == 'new_reply' %>
+        <%= f.submit "Добавить ответ", class:'btn btn-primary', id:"append_new_reply_btn", remote: true %>
+        <%= f.button "Очистить", type: :reset, class: 'btn btn-primary' %>
+        <%= button_tag "Зaкрыть", type: :button, class: "btn btn-primary", id: "subcomment_close_btn" %>
+      <% else %>
+        <%= f.submit "Обновить отзыв", class:'btn btn-primary', id:"update_comment_btn", remote: true %>
+      <% end %>  
     </div>
 
-<% end %>
+  <% end %>
+</div>
