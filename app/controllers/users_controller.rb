@@ -3,6 +3,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
+    @variables = {
+        :positive_comment => @user.ucomments.where(:positive => true),
+        :negative_comment => @user.ucomments.where(:positive => false)}
   end
 
   def show_foreign
@@ -10,6 +13,9 @@ class UsersController < ApplicationController
       redirect_to(profile_path)
     else
       @user = User.find(params[:id])
+      @variables = {
+          :positive_comment => @user.ucomments.where(:positive => true),
+          :negative_comment => @user.ucomments.where(:positive => false)}
       render 'show'
     end
   end

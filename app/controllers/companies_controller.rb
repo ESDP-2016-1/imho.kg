@@ -19,6 +19,9 @@ class CompaniesController < ApplicationController
 
   def show
   	@company = Company.find(params[:id])
+    @variables = {
+        :positive_comment => @company.ucomments.where(:positive => true),
+        :negative_comment => @company.ucomments.where(:positive => false)}
   end
 
   def edit
