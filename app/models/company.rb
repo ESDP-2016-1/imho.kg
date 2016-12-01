@@ -7,7 +7,7 @@ class Company < ActiveRecord::Base
   
   has_attached_file :image,
                     styles: { medium: '250x250>', thumb: '80x80>', icon: '50x50'},
-                    default_url: '/images/:style/missing.png'
+                    default_url: '/images/:style/missing-for-company.png'
   validates_attachment_content_type :image,
                                     content_type: ['image/jpeg', 'image/gif', 'image/png']
 

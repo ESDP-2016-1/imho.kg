@@ -60,7 +60,7 @@ module ApplicationHelper
             #{link_to(comment.user.name, user_path(comment.user.id))}
             &nbsp;&nbsp;&nbsp;&nbsp;
             #{comment.created_at.strftime("%b %d, %Y %H:%M")}
-            #{link_to 'Подробнее', ucomment_path(comment), class: 'btn btn-primary'}
+            #{link_to 'Подробнее', ucomment_path(comment), class: 'btn btn-primary btn-for-comment-details'}
           </div>
         </div>
       </div>

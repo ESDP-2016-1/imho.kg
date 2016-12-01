@@ -8,7 +8,7 @@
 	float: left;
 	height: 40px;
 	border: 1px;
-	text-align: left;
+	text-align: center;
 	padding-left: 30px;
 	font: sans-serif;
 	font-size: large;
@@ -27,7 +27,7 @@
 	float: left;
 	height: 40px;
 	border: 1px;
-	text-align: right;
+	text-align: center;
 	padding-right: 30px;
 	font: sans-serif;
 	font-size: large;
@@ -92,12 +92,14 @@
 	border-top: 15px solid transparent;
 	border-left: 15px solid #CF0404;
 	border-bottom: 15px solid transparent;
+    #box-shadow: 10px 10px 5px red;
+
 }
 //----------------------------------------------Comment and company card----------------------
 .main-page-comment-company {
   overflow: hidden;
-  border: 2px solid #2E2F30;
-  padding: 10px 10px;
+  padding: 5px 5px;
+
 
 }
 
@@ -106,22 +108,25 @@
   height: 170px;
   float: left;
   margin-right: 40px;
-  border: 2px solid black;
+  border: 1px solid white;
   overflow: hidden;
+  padding-bottom: 10px;
+
 }
 
 .comment-user-logo {
-  border: 2px solid black;
+  border: 1px solid darkgray;
   width: 80px;
   height: 80px;
   float: left;
   margin: 5px;
 }
 
+
 .comment-user-logo img {
   width: 100%;
   height: 100%;
-
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.20), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
 }
 
 .comment-body {
@@ -130,7 +135,7 @@
   width: 600px;
   height: 100%;
   padding-left: 10px;
-  margin: 2px;
+  margin: 3px;
 }
 
 .comment-title {
@@ -151,27 +156,38 @@
   height: 100%;
   top: 0px;
   right: 0px;
-  border: 2px solid black;
+
 }
 
 .comment-user-info {
   position: absolute;
   width: 90%;
-  height: 25%;
+  height: 12%;
   bottom: 0px;
   float: left;
+
+}
+
+.btn-for-comment-details {
+  position: absolute;
+  right: 20px;
+  bottom: 3px;
 }
 
 .comment-user-info .btn {
   float: right;
+
 }
 
 .comment-positive {
-  background-color: #BFFFBF;
+  background-color: #BFFFBF ;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.20), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
 }
 
 .comment-negative {
   background-color: #FFBFBF;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.20), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+
 }
 
 
@@ -184,9 +200,11 @@
 .company-card {
   position: relative;
   overflow: hidden;
-  border: 2px solid #2E2F30;
-  height: 170px;
+  border: 1px solid darkgray;
+  height: 165px;
   width: 350px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.20), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+
 }
 
 .company-card-image {
@@ -223,10 +241,12 @@
   background: #BFFFBF;
   float: left;
   text-align: center;
+
 }
 
 .company-card-like span{
   font-weight: bold;
+
 }
 
 .company-card-dislike {
@@ -240,13 +260,14 @@
 
 .company-card-dislike span{
   font-weight: bold;
+
 }
 
 .company-card-votes {
   width: 50%;
   height: 100%;
   float: left;
-  background-color: lightgray;
+  background-color:  #F0F0F0 ;
 }
 
 .company-card-info {
@@ -255,6 +276,7 @@
   padding: 5px;
   height: 110px;
   text-align: left;
+
 }
 
 .company-card-bottom {
@@ -265,7 +287,7 @@
   text-align: center;
   bottom: 0;
   position: absolute;
-  background-color: lightgray;
+  background-color: #F0F0F0;
 }
 
 .mini_card_company_title {
@@ -273,6 +295,7 @@
   float: left;
   padding-left: 5%;
   padding-top: 1%;
+
 }
 
 .mini_card_company_review {
@@ -280,4 +303,5 @@
   float: right;
   padding-right: 5%;
   padding-top: 1%;
+  
 }

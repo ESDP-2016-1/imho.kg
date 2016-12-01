@@ -16,10 +16,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 body {
-  margin: 0;
-  padding: 0;
-}
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF;
+  }
 
 .navbar {
 	margin-bottom: 0;
@@ -37,4 +39,14 @@ body {
   	z-index: 1010;
 }
 
+.add-comment {
+  padding: 5px;
+}
 
+.positive-center {
+  text-align: center;
+}
+
+.negative-center {
+  text-align: center;
+}

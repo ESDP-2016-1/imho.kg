@@ -71,3 +71,11 @@ group :production do
   gem 'pg', '0.19.0'
   gem 'rails_12factor'
 end
+group :test do
+  gem 'pg', '0.19.0'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+end

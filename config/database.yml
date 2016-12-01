@@ -15,7 +15,7 @@ development:
   password: qwerty123
 
 
-test:
+test: &test
   adapter: postgresql
   encoding: utf8
   database: imho_test
@@ -26,3 +26,6 @@ test:
 
 production:
   url: <%= ENV['DATABASE_URL'] %>
+
+cucumber:
+  <<: *test

@@ -27,7 +27,7 @@ function initialize() {
         codeLatLng(geocoding);
       });
       
-   
+
 }
 
 var info;

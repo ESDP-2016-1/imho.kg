@@ -1,33 +1,36 @@
 .advertisement {
-  border: 2px solid pink;
+
   height: 100%;
 }
 
 .advertisement img {
   width: 100%;
+  margin-top: 10px;
 }
 
 .comment-show {
   width: 880px;
-  height: 200px;
+  height: 250px;
   float: left;
-
-  border: 2px solid black;
   overflow: hidden;
   margin: 5px;
+  padding-bottom: 10px;
 }
 
 .comment-show-user-logo {
-  border: 2px solid black;
+  border: 1px solid darkgrey;
   width: 80px;
   height: 80px;
   float: left;
   margin: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.20), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
 }
 
 .comment-show-user-logo img {
   width: 100%;
   height: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.20), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+
 
 }
 
@@ -37,8 +40,10 @@
   width: 780px;
   height: 100%;
   padding-left: 10px;
-  margin: 2px;
+  margin: 5px;
+
 }
+
 
 .comment-show-title {
   font-size: 14pt;
@@ -58,15 +63,21 @@
   height: 100%;
   top: 0px;
   right: 0px;
-  border: 2px solid black;
+
 }
 
 .comment-show-user-info {
   position: absolute;
   width: 90%;
-  height: 25%;
+  height: 12%;
   bottom: 0px;
   float: left;
+}
+
+.btn-for-answer-show {
+  position: absolute;
+  right: 20px;
+  bottom: 7px;
 }
 
 .comment-show-user-info .btn {
