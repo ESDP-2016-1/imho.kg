@@ -265,4 +265,47 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
+  config.omniauth :facebook, Rails.application.secrets.FACEBOOK_APP_ID ,
+                             Rails.application.secrets.FACEBOOK_APP_SECRET ,
+                             scope: 'email', info_fields: 'email,name'
+
+  config.omniauth :vkontakte, Rails.application.secrets.VKONTAKTE_APP_ID ,
+                              Rails.application.secrets.VKONTAKTE_APP_SECRET,
+                              {
+                                :scope => 'email,photos',
+                                :display => 'popup',
+                                :lang => 'ru',
+                                :image_size => 'original'
+                              }
+
+  config.omniauth :odnoklassniki, Rails.application.secrets.ODNOKLASSNIKI_APP_ID,
+                                  Rails.application.secrets.ODNOKLASSNIKI_APP_SECRET,
+                                  :public_key => Rails.application.secrets.ODNOKLASSNIKI_APP_PUBLIC
+
+
+  config.omniauth :twitter, Rails.application.secrets.TWITTER_APP_KEY,
+                            Rails.application.secrets.TWITTER_APP_SECRET,
+                           {
+                             :secure_image_url => 'true',
+                             :image_size => 'original',
+                             :authorize_params => {
+                               :force_login => 'true',
+                               :lang => 'ru'
+                             }
+                           }
+
+
+  config.omniauth :google_oauth2, Rails.application.secrets.GOOGLE_APP_ID,
+                                  Rails.application.secrets.GOOGLE_APP_SECRET,
+                                  {
+                                    :scope => "email, profile",
+                                    :prompt => "select_account",
+                                    :image_aspect_ratio => "square"
+                                  }
+
+  config.omniauth :mailru, '750433', '0119e5c66b4507eca30aa6c12638182c', {
+                            :callback_url => 'http://app.kg/auth/mailru/callback',
+                            :private_key => '941e69282e005635d17590bc923db3f2'
+                            }
 end

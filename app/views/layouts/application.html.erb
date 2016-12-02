@@ -137,12 +137,12 @@
       </div>
 
       <div class="sign_in_with_social_icons">
-        <%= image_tag("socialnetwork/vk.png", size: "48x48") %>
-        <%= image_tag("socialnetwork/ok.png", size: '48x48') %>
-        <%= image_tag("socialnetwork/twitter.png", size: '48x48') %>
-        <%= image_tag("socialnetwork/google.png", size: '48x48') %>
-        <%= image_tag("socialnetwork/facebook.png", size: '48x48') %>
-        <%= image_tag("socialnetwork/mailru.png", size: '48x48') %>
+        <%= link_to image_tag("socialnetwork/vk.png", size: "48x48"), user_vkontakte_omniauth_authorize_path %>
+        <%= link_to image_tag("socialnetwork/ok.png", size: '48x48'), user_odnoklassniki_omniauth_authorize_path %>
+        <%= link_to image_tag("socialnetwork/twitter.png", size: '48x48'), user_twitter_omniauth_authorize_path %>
+        <%= link_to image_tag("socialnetwork/google.png", size: '48x48'), user_google_oauth2_omniauth_authorize_path %>
+        <%= link_to image_tag("socialnetwork/facebook.png", size: '48x48'), user_facebook_omniauth_authorize_path %>
+        <%= link_to image_tag("socialnetwork/mailru.png", size: '48x48'), user_mailru_omniauth_authorize_path %>
       </div>
 
       <div class="actions">
@@ -304,8 +304,13 @@
   <!-- FOOTER block -->
 
   <!-- FOOTER END -->
-
-
+<script type="text/javascript">
+  if (window.location.hash == '#_=_'){
+  history.replaceState
+  ? history.replaceState(null, null, window.location.href.split('#')[0])
+  : window.location.hash = '';
+  }
+  </script>
 
 </body>
 

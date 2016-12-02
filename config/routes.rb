@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get 'review'         =>  'companies#review',     as: 'review'
   end
 
-  devise_for :users, skip: [:sessions, :registrations, :passwords, :confirmations]
+  devise_for :users, path: '', :controllers => { :omniauth_callbacks => "omniauth_callbacks" }, skip: [:sessions, :registrations, :passwords, :confirmations]
   as :user do
 
     #SignIn/SignOut[Sessions]
