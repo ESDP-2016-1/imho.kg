@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(version: 20161201163327) do
     t.string   "odnoklassniki_uid"
     t.string   "twitter_uid"
     t.string   "google_uid"
-    t.string   "mailru"
+    t.string   "mailru_uid"
   end
 
   add_index "users", ["city_id"], name: "index_users_on_city_id", using: :btree

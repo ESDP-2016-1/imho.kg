@@ -5,6 +5,6 @@ class AddOmniauthToUsers < ActiveRecord::Migration
     add_column :users, :odnoklassniki_uid, :string
     add_column :users, :twitter_uid, :string
     add_column :users, :google_uid, :string
-    add_column :users, :mailru, :string
+    add_column :users, :mailru_uid, :string
   end
 end
