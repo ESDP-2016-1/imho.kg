@@ -89,7 +89,7 @@ module ApplicationHelper
             #{image_tag company.image.url(:thumb)}
           </div>
           <div class="company-card-info">
-            <b>#{ company.category.title }</b>
+            <b>#{ link_to company.category.title, categories_path(company.category.id) }</b>
             #{ company.phones.split(';')*", " }<br/>
             #{ company.address }<br/>
             #{ link_to company.email }

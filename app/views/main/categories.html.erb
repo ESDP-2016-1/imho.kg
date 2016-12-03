@@ -1,4 +1,5 @@
-<%= will_paginate @comments %>
+<%= will_paginate @companies %>
+
 <% if @companies.count == 0 %>
 
 	<h2> В выбранной категории нет компаний </h2>
@@ -20,4 +21,6 @@
 
 	</div>
 
-<% end %>		
+<% end %>
+
+<%= will_paginate @companies %>

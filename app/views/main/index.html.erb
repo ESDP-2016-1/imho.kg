@@ -44,29 +44,30 @@
 <!-- SideBar(Catalogue) button END -->
 
 
-<!-- Pagination block -->
-<%= will_paginate @comments %>
-
-<!-- Pagination END -->
 
 
 <!-- CardsBlock -->
 
-<div class="container">
+  <!-- Pagination block -->
+  <%= will_paginate @comments %>
 
-  <% unless current_user.nil? %>
+  <div class="container">
 
-    <%= link_to 'Создать коммент', new_ucomment_path, class: 'btn btn-primary' %>
+    <% unless current_user.nil? %>
 
-  <% end %>
+      <%= link_to 'Создать коммент', new_ucomment_path, class: 'btn btn-primary' %>
 
-  <div id="main-page-list-companies">
+    <% end %>
 
-    <%= helper_draw_cards(@comments) %>
+    <div id="main-page-list-companies">
 
-  </div>  
-</div>
+      <%= helper_draw_cards(@comments) %>
 
+    </div>
+  </div>
+
+  <!-- Pagination block -->
+  <%= will_paginate @comments %>
 <!-- CardsBlock END -->
 
 

@@ -13,7 +13,7 @@ class MainController < ApplicationController
 
 
   def categories
-  	@companies = Company.where(category_id: params[:id])
+  	@companies = Company.where(category_id: params[:id]).paginate(page:params[:page])
   end
 
 
