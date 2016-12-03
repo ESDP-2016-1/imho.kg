@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="home-sorting col-sm-2 col-md-2">
-    <span>Cортировка</span>
-    <select name="home-sort" class="home-sort">
-      <option value=""></option>
-      <option value="1" selected="selected">По алфавиту</option>
-      <option value="2">По обсуждаемости</option>
-      <option value="3">По рейтингу</option>
+    <span>Cортировка по:</span>
+    <select id="sort_by_filter"  name="home-sort" class="home-sort">
+      <%= options_for_select({ 'дате добавления'    => 'default',
+                               'обсуждаемости'      => 'most_disputed',
+                               'рейтингу'           => 'most_rated' },
+                               session[:sorting].nil? ? 'default' : session[:sorting] ) %>
     </select>
   </div>
 

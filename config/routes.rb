@@ -51,11 +51,9 @@ Rails.application.routes.draw do
     put   'recovery'                => 'devise_passwords#update'
   end
 
-  # AJAX routes:
-
-  get 'negative_comments' => 'main#negative_comments', as: 'negative_comments'
-  get 'positive_comments' => 'main#positive_comments', as: 'positive_comments'
-
+  get 'negative_comments' => 'main#negative_comments',  as: 'negative_comments'
+  get 'positive_comments' => 'main#positive_comments',  as: 'positive_comments'
+  get 'sorting'           => 'main#sorting',            as: 'sorting'
 
   # UNDONE
 

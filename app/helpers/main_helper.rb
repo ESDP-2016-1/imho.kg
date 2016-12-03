@@ -19,12 +19,7 @@ module MainHelper
         else
       end
       javascript_tag("$('##{modal_id}').modal({show:true});")
-
-    elsif data[:modal].calss==Hash
-
-
     end
-
   end
 
 end

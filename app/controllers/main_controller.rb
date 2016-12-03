@@ -28,6 +28,10 @@ class MainController < ApplicationController
     redirect_to root_path
   end
 
+  def sorting
+    apply_sort_by
+    redirect_to root_path
+  end
 
 
   private
@@ -44,13 +48,27 @@ class MainController < ApplicationController
     session.delete(:modal)
   end
 
+  # SETTING SESSION[:sorting] DEPENDS OF PARAMS[:type]
+  def apply_sort_by
+    case params[:type]
+      when 'most_disputed'
+        session[:sorting]='most_disputed'
+      when 'most_rated'
+        session[:sorting]='most_rated'
+      else
+        session.delete(:sorting)
+    end
+  end
+
   # GETTING SORTING BY TYPE FOR COMMENTS FROM SESSION
   def sort_by_in_session
     case session[:sorting]
-      when 'date'
-        'created_at'
+      when 'most_disputed'
+        'created_at ASC'
+      when 'most_rated'
+        'created_at DESC'
       else
-        'created_at'
+        'created_at DESC'
     end
   end
 
