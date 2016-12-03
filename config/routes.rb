@@ -53,8 +53,8 @@ Rails.application.routes.draw do
 
   # AJAX routes:
 
-  get 'negative_comments' => 'main#ajax_get_negative_comments', as: 'ajax_get_negative_comments'
-  get 'positive_comments' => 'main#ajax_get_positive_comments', as: 'ajax_get_positive_comments'
+  get 'negative_comments' => 'main#negative_comments', as: 'negative_comments'
+  get 'positive_comments' => 'main#positive_comments', as: 'positive_comments'
 
 
   # UNDONE
