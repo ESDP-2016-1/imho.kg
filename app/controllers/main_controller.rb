@@ -1,7 +1,7 @@
 class MainController < ApplicationController
   
   def index
-    @comments = Ucomment.where(topucomment_id: nil).paginate(:page => params[:page])
+    @comments = Ucomment.where(topucomment_id: nil, deleted: false).paginate(:page => params[:page])
 
     @data = { positive_total_count: count_total_positive,
               negative_total_count: count_total_negative,
@@ -17,11 +17,11 @@ class MainController < ApplicationController
   # AJAX
 
   def ajax_get_negative_comments
-  	@comments = Ucomment.where(topucomment_id: nil, positive: false)
+  	@comments = Ucomment.where(topucomment_id: nil, positive: false, deleted: false)
   end
 
   def ajax_get_positive_comments
-  	@comments = Ucomment.where(topucomment_id: nil, positive: true)
+  	@comments = Ucomment.where(topucomment_id: nil, positive: true, deleted: false)
   end
 
 
@@ -40,11 +40,11 @@ class MainController < ApplicationController
   end
 
   def count_total_positive
-    Ucomment.where(topucomment_id: nil, positive: true).count
+    Ucomment.where(topucomment_id: nil, positive: true, deleted: false).count
   end
 
   def count_total_negative
-    Ucomment.where(topucomment_id: nil, positive: false).count
+    Ucomment.where(topucomment_id: nil, positive: false, deleted: false).count
   end
 
 
