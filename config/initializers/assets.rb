@@ -9,4 +9,12 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # added ckediro ckeditor/config.js
-Rails.application.config.assets.precompile += %w( main.js companies.js ucomments.js users.js chartkick.js Chart.bundle.js ckeditor/config.js)
+Rails.application.config.assets.precompile += %w(
+    main.js
+    companies.js
+    ucomments.js
+    users.js
+    chartkick.js
+    Chart.bundle.js
+    votable.js
+    ckeditor/config.js)

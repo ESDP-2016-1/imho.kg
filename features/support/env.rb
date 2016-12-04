@@ -16,7 +16,7 @@ end
 # ---- Config for Capybara-----
 Capybara.ignore_hidden_elements = true
 Capybara.default_max_wait_time = 15
-Capybara.app_host = 'localhost:80'
+Capybara.app_host = 'http://app.kg'
 # ---For automated test with browser(Firefox as a default)
 Capybara.default_driver = :selenium
 
