@@ -46,6 +46,8 @@ gem 'activeadmin', '~> 1.0.0.pre4'
 
 gem 'paperclip'
 
+gem 'ckeditor'
+
 gem 'faker'
 
 gem 'sdoc', '~> 0.4.0', group: :doc

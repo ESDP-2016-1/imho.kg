@@ -1,3 +1,4 @@
+<%= javascript_include_tag Ckeditor.cdn_url %>
 <!-- Reply_to_comment MODAL block -->
 
 <div id="reply_to_comment_modal" class="modal fade" role="dialog">
@@ -28,8 +29,7 @@
     <div class="comment-show" >
       <div class="comment-show-user-logo" >
         <%= image_tag @comment.user.avatar.url(:thumb) %>
-        <p><%= link_to 'open' %></p>
-
+        
         <div>
              id :  <%= @comment.id %><br>
              Ответов:<%= @total_subcomments %>
@@ -47,7 +47,7 @@
           </div>
 
           <div class="comment-show-text">
-            <%= @comment.body %>
+            <%= raw @comment.body %>
           </div>
 
           <div class="comment-show-buttons"> </div> 

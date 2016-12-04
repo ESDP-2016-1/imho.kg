@@ -58,6 +58,9 @@ Rails.application.routes.draw do
 
   # AJAX
   get 'vote'              => 'main#vote_for',               as: 'vote_for'
+  # CKeditor routes:
+  mount Ckeditor::Engine => '/ckeditor'
+
   # UNDONE
 
 

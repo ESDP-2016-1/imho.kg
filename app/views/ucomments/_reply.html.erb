@@ -1,3 +1,4 @@
+<%= javascript_include_tag Ckeditor.cdn_url %>
 <div id="ajax_new_reply_to_comment" class="add_reply_to_comment">
   <%= form_for ucomment, html: {class: 'form-horizontal' } do |f| %>
     <br>
@@ -8,7 +9,7 @@
     <div>
     <div class="field text-area">
       <%= f.label :body %><br>
-      <%= f.text_area :body, class: 'form-control', autofocus: true %>
+      <%= f.cktext_area :body, class: 'form-control ckeditor', :ckeditor => { uiColor: '#AADC6E', :toolbar => 'mini' }, autofocus: true %>
     </div>
 
     <div class="field">

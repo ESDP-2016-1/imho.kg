@@ -9,7 +9,7 @@
   <% @js_files.each do |js_file| %>
     <%= javascript_include_tag js_file %>
   <% end %>
-
+  <%= javascript_include_tag :ckeditor %>
   <%= csrf_meta_tags %>
 </head>
 
