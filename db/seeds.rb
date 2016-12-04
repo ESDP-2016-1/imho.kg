@@ -19,7 +19,7 @@ line_width = 60
 
   cities = ['г. Бишкек', 'г. Талас', 'г. Нарын', 'г. Чуй', 'г. Ыссык-Кол', 'г. Баткен', 'г. Жалал-Абад', 'г. Кант', 'г. Ош']
   cities.each do |city|
-    City.find_or_create_by({name: city})
+    City.create(name: city)
     puts"CREATED CITY: #{city}"
   end
   puts
@@ -28,7 +28,7 @@ line_width = 60
 #--------------------  ROLES ----------------------------------
 
   ['user', 'agent', 'moderator', 'admin', 'banned'].each do |role|
-    Role.find_or_create_by({name: role})
+    Role.create(name: role)
     puts "CREATED ROLE: #{role}"
   end
   puts
@@ -39,7 +39,12 @@ line_width = 60
 ['user', 'agent', 'moderator', 'admin'].each_with_index do |name, n|
     email = name + '@example.com'
     password = '123456'
-    User.create(name: name, email: email, role_id: n+1, password: password, password_confirmation: password, confirmed_at: Time.now )
+    User.create(  name: name,
+                  email: email,
+                  role_id: n+1,
+                  password: password,
+                  password_confirmation: password,
+                  confirmed_at: Time.now )
     print "\x1b[0;32m"
     puts "CREATED USER -> #{name} WITH ROLE = #{name} AND PASSWORD: #{password}"
     print "\x1b[0m"
