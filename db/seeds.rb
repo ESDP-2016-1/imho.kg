@@ -236,10 +236,9 @@ puts
   puts
 
 #---------------------------  VOTES ------------------------------------
-  users = User.all.count
   Ucomment.all.each do |comment|
     for i in 0..rand(100)
-      Vote.add(user_id: rand(1..users),ucomment_id: comment.id, is_liked: rand(0..1)==1 ? 1 : -1 )
+      Vote.add(User.find(rand(1..generate_amount_users)),comment, rand(0..1)==1 ? :like : :dislike )
     end
   end
 
