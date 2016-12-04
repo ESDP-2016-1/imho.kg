@@ -7,7 +7,8 @@ class Ucomment < ActiveRecord::Base
 
   has_many :images
   has_many :favorites
-  has_many :votes
+  has_many :votes, dependent: :destroy
+  has_many :users,  -> { distinct }, through: :votes
 
   self.per_page = 10
 
@@ -30,4 +31,10 @@ class Ucomment < ActiveRecord::Base
   def self.count_total_negative
     where(topucomment_id: nil, positive: false, deleted: false).count
   end
+
+  def count_votes(action = :like)
+    like_dislike = action == :like ? 1 : -1
+    Vote.where(ucomment_id: self.id, is_liked: like_dislike).count
+  end
+
 end

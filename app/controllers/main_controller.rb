@@ -33,6 +33,15 @@ class MainController < ApplicationController
     redirect_to root_path
   end
 
+  def vote_for
+    if current_user
+      @comment = Ucomment.find(params[:comment])
+      like_dislike = params[:vote]=="up" ? 1 : -1
+      if @comment
+        Vote.add(current_user, @comment, like_dislike)
+      end
+    end
+  end
 
   private
 

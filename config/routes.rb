@@ -55,6 +55,9 @@ Rails.application.routes.draw do
   get 'positive_comments' => 'main#positive_comments',  as: 'positive_comments'
   get 'sorting'           => 'main#sorting',            as: 'sorting'
 
+
+  # AJAX
+  get 'vote'              => 'main#vote_for',               as: 'vote_for'
   # UNDONE
 
 

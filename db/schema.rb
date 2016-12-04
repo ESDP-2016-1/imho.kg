@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 20161201163327) do
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
   create_table "votes", force: :cascade do |t|
-    t.boolean  "is_liked"
+    t.integer  "is_liked"
     t.integer  "user_id"
     t.integer  "ucomment_id"
     t.datetime "created_at",  null: false

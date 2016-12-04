@@ -53,7 +53,21 @@ module ApplicationHelper
         <div class="comment-text">
         #{comment.body}
         </div>
-        <div class="comment-buttons">
+        <div align="center" class="comment-buttons">
+          <div style="margin-top:10px">
+              <div #{ 'id=up_'+comment.id.to_s } style='font-weight:bold; font-size:11px; color:green;'> #{ comment.count_votes(:like) } </div>
+              #{ link_to  vote_for_path(comment: comment.id, vote: 'up'), remote: true do
+                      image_tag '/images/up.png', style:'width:20px;height:20px' , alt:"like"
+                end
+              }
+          </div>
+          <div>
+               #{ link_to  vote_for_path(comment: comment.id, vote: 'down'), remote: true do
+                    image_tag '/images/down.png', style:'width:20px;height:20px;margin-top:10px;' , alt:"dislike"
+                end
+                }
+               <div #{ 'id=down_'+comment.id.to_s } style='font-weight:bold; font-size:11px; color: red'> #{ comment.count_votes(:dislike) } </div>
+         </div>
         </div>
           <div class="comment-user-info">
 

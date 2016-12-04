@@ -1,0 +1,5 @@
+<% if @comment %>
+  $("#up_<%= @comment.id %>").text("<%= @comment.count_votes(:like) %>");
+  $("#down_<%= @comment.id %>").text("<%= @comment.count_votes(:dislike) %>");
+<% end %>
+//$("#main-page-list-companies").html("< j(helper_draw_cards(@comments)) %>");

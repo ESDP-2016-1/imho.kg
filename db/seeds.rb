@@ -230,6 +230,21 @@ puts
   puts "CREATED COMMENTS!"
   puts
 
+#---------------------------  VOTES ------------------------------------
+  users = User.all.count
+  Ucomment.all.each do |comment|
+    for i in 0..rand(100)
+      Vote.create(user_id: rand(1..users),ucomment_id: comment.id, is_liked: rand(0..1)==1 ? 1 : -1 )
+    end
+  end
+  puts "CREATED LIKES/DISLIKES!"
+  puts
+
+
+
+
+
+
 
   3.times do |n|
     n += 1
