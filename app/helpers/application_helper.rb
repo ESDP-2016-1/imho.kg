@@ -54,27 +54,14 @@ module ApplicationHelper
         #{comment.body}
         </div>
         <div align="center" class="comment-buttons">
-          <div style="margin-top:10px">
-              <div #{ 'id=up_'+comment.id.to_s } style='font-weight:bold; font-size:11px; color:green;'> #{ comment.count_votes(:like) } </div>
-              #{ link_to  vote_for_path(comment: comment.id, vote: 'up'), remote: true do
-                      image_tag '/images/up.png', style:'width:20px;height:20px' , alt:"like"
-                end
-              }
-          </div>
-          <div>
-               #{ link_to  vote_for_path(comment: comment.id, vote: 'down'), remote: true do
-                    image_tag '/images/down.png', style:'width:20px;height:20px;margin-top:10px;' , alt:"dislike"
-                end
-                }
-               <div #{ 'id=down_'+comment.id.to_s } style='font-weight:bold; font-size:11px; color: red'> #{ comment.count_votes(:dislike) } </div>
-         </div>
+            #{ helper_draw_like_dislike(comment) }
         </div>
           <div class="comment-user-info">
 
-            #{link_to(comment.user.name, user_path(comment.user.id))}
+            #{ link_to(comment.user.name, user_path(comment.user.id))}
             &nbsp;&nbsp;&nbsp;&nbsp;
-            #{comment.created_at.strftime("%b %d, %Y %H:%M")}
-            #{link_to 'Подробнее', ucomment_path(comment), class: 'btn btn-primary btn-for-comment-details'}
+            #{ comment.created_at.strftime("%b %d, %Y %H:%M") }
+            #{ link_to 'Подробнее', ucomment_path(comment), class: 'btn btn-primary btn-for-comment-details' }
           </div>
         </div>
       </div>
@@ -100,7 +87,7 @@ module ApplicationHelper
         </div>
         <div>
           <div class="company-card-image">
-            #{image_tag company.image.url(:thumb)}
+            #{ image_tag company.image.url(:thumb) }
           </div>
           <div class="company-card-info">
             <b>#{ link_to company.category.title, categories_path(company.category.id) }</b>
@@ -118,6 +105,48 @@ module ApplicationHelper
     html.html_safe
   end
 
+# Draw Like/Dislike button with numbers
+  def helper_draw_like_dislike(comment)
+    css_active_like_class = 'vote-active'
+    css_active_dislike_class = 'vote-active'
+
+    div_id_like_prefix = 'like_'
+    div_id_dislike_prefix = 'dislike_'
+    btn_prefix = 'btn_'
+    id = comment.id.to_s
+
+    if current_user
+      voted = comment.get_vote_of_user(current_user)
+      css_active_like_class = (voted == :like ? 'vote-active' : 'vote-inactive')
+      css_active_dislike_class = (voted == :dislike ? 'vote-active' : 'vote-inactive')
+    end
+
+    content_tag :div, id: 'vote_' + id , style: 'margin-top:10px' do
+      # LIKE
+      concat( content_tag(:div, id: div_id_like_prefix + id, class: ['vote-message', 'vote-up-text']) do
+        concat(comment.count_votes(:like))
+      end )
+
+      concat( image_tag('/images/up.png',
+                        id: btn_prefix + div_id_like_prefix + id,
+                        'data-id' => id,
+                        'data-execute' => 'like',
+                        class: ['vote-buttons', css_active_like_class ],
+                        alt: 'Нравится'))
+
+      # DISLIKE
+      concat( image_tag('/images/down.png',
+                        id: btn_prefix + div_id_dislike_prefix + id,
+                        'data-id' => id,
+                        'data-execute' => 'dislike',
+                        class: ['vote-buttons', css_active_dislike_class],
+                        alt: 'Не нравится'))
+
+      concat( content_tag(:div, id: div_id_dislike_prefix + id, class: ['vote-message', 'vote-down-text']) do
+        concat (comment.count_votes(:dislike))
+      end )
+    end
+  end
 
 
 # Draw Categories in SIDE MENU

@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-
+  before_filter :authenticate_user!, :only => [:ajax_vote_for]
 
   def index
     @comments = Ucomment.for_view_state( sort_by_in_session, params[:page], show_state_in_session )
@@ -33,14 +33,18 @@ class MainController < ApplicationController
     redirect_to root_path
   end
 
-  def vote_for
-    if current_user
-      @comment = Ucomment.find(params[:comment])
-      like_dislike = params[:vote]=="up" ? 1 : -1
-      if @comment
-        Vote.add(current_user, @comment, like_dislike)
-      end
-    end
+  def ajax_vote_for
+      return unless current_user
+      comment = Ucomment.find(params[:comment_id])
+      return unless comment
+
+      like_dislike = params[:execute].parameterize.to_sym
+      result = Vote.add(current_user, comment, like_dislike)
+      @data = { id:       comment.id,
+                likes:    comment.count_votes(:like),
+                dislikes: comment.count_votes(:dislike),
+                voted:    result
+      }
   end
 
   private

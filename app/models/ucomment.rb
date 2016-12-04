@@ -37,4 +37,8 @@ class Ucomment < ActiveRecord::Base
     Vote.where(ucomment_id: self.id, is_liked: like_dislike).count
   end
 
+  def get_vote_of_user(user)
+    Vote.voted_value(user, self)
+  end
+
 end

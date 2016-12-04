@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
     case params[:controller]
       when 'main', 'ucomments'
         @js_files.push(params[:controller])
+        @js_files.push 'votable' if current_user
       when 'companies', 'users'
         @js_files.push('Chart.bundle')
         @js_files.push('chartkick')

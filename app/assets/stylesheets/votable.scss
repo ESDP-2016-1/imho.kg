@@ -1,0 +1,33 @@
+.vote-message {
+  font-weight:bold;
+  font-size:11px;
+}
+
+.vote-up-text
+{
+  color:green;
+}
+
+.vote-down-text {
+  color: red;
+}
+
+.vote-active {
+  opacity: 1;
+  filter: alpha(opacity=50);
+}
+
+.vote-inactive {
+  opacity: 0.4;
+  filter: alpha(opacity=50);
+}
+
+img.vote-buttons:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.vote-buttons {
+  width:20px;
+  height:20px;
+}

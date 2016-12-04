@@ -1,0 +1,16 @@
+<% if @data %>
+$("#like_<%= @data[:id] %>").text("<%= @data[:likes] %>");
+$("#dislike_<%= @data[:id] %>").text("<%= @data[:dislikes] %>");
+
+<% if    @data[:voted] == :like %>
+$("#btn_like_<%= @data[:id] %>").attr('class', 'vote-buttons vote-active');
+$("#btn_dislike_<%= @data[:id] %>").attr('class', 'vote-buttons vote-inactive');
+<% elsif @data[:voted] == :dislike %>
+$("#btn_like_<%= @data[:id] %>").attr('class','vote-buttons vote-inactive');
+$("#btn_dislike_<%= @data[:id] %>").attr('class','vote-buttons vote-active');
+<% else %>
+$("#btn_like_<%= @data[:id] %>").attr('class', 'vote-buttons vote-inactive');
+$("#btn_dislike_<%= @data[:id] %>").attr('class', 'vote-buttons vote-inactive');
+<% end %>
+
+<% end %>
