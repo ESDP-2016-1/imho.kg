@@ -16,16 +16,26 @@ class ApplicationController < ActionController::Base
 
   def load_js_files
     @js_files=Array.new
-    @js_files.push('application')
+    @js_files.push 'application'
 
-    case params[:controller]
-      when 'main', 'ucomments'
-        @js_files.push(params[:controller])
+    controller_js = params[:controler]
+    case controller_js
+
+      when 'main'
+        @js_files.push controller_js
         @js_files.push 'votable' if current_user
+
+      when 'ucomments'
+        @js_files.push controller_js
+        @js_files.push 'ckeditor'
+        @js_files.push 'votable' if current_user
+
+
       when 'companies', 'users'
-        @js_files.push('Chart.bundle')
-        @js_files.push('chartkick')
-        @js_files.push(params[:controller])
+        @js_files.push controller_js
+        @js_files.push 'Chart.bundle'
+        @js_files.push 'chartkick'
+
       when 'admin/dashboard'
         @js_files.push('active_admin.js.coffee')
     end
