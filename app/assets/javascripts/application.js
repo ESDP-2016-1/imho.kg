@@ -4,3 +4,4 @@
 //= require jquery_ujs
 //= require active_admin.js.coffee
 //= require ckeditor/init
+

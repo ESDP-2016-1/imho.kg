@@ -17,4 +17,5 @@ Rails.application.config.assets.precompile += %w(
     chartkick.js
     Chart.bundle.js
     votable.js
+    shareable.scss
     ckeditor/config.js)

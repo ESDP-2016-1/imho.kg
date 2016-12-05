@@ -5,10 +5,11 @@
   <title>IMHO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag 'application', media: 'all' %>
-
+  <!-- DDF -->
   <% @js_files.each do |js_file| %>
     <%= javascript_include_tag js_file %>
   <% end %>
+  <!-- DDF -->
   <%= csrf_meta_tags %>
 </head>
 
@@ -284,7 +285,13 @@
 
   <!-- SideBar(Catalogue) END -->
 
+  <!-- SHARE POPUP block -->
 
+    <div id="share_popup" class="share-popup">
+
+    </div>
+
+  <!-- SHARE POPUP END -->
 
 
   <!-- BODY block -->

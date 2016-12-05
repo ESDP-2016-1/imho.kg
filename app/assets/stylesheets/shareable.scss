@@ -1,0 +1,34 @@
+
+.share-popup {
+  display:none;
+  position:absolute;
+  text-align: left;
+  vertical-align: middle;
+  margin:-10px 30px;
+  min-width:200px;
+  min-height: 40px;
+  line-height: 38px;
+  background-color: #FFE6BF;
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px #000;
+  z-index: 5000;
+}
+
+.share-button {
+  width:20px;
+  height:20px;
+}
+
+.share-button-item {
+  margin-left: 8px;
+  width:30px;
+  height:30px;
+}
+
+img.share-button-item:hover {
+  cursor: pointer;
+}
+
+img.share-button:hover {
+  cursor: pointer;
+}

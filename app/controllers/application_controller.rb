@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
 
   protect_from_forgery with: :exception
-  before_action :load_js_files
+  before_filter :load_js_files
   before_filter :store_current_location, :unless => :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -18,16 +18,18 @@ class ApplicationController < ActionController::Base
     @js_files=Array.new
     @js_files.push 'application'
 
-    controller_js = params[:controler]
+    controller_js = params[:controller]
     case controller_js
 
       when 'main'
         @js_files.push controller_js
+        @js_files.push 'shareable'
         @js_files.push 'votable' if current_user
 
       when 'ucomments'
         @js_files.push controller_js
         @js_files.push 'ckeditor'
+        @js_files.push 'shareable'
         @js_files.push 'votable' if current_user
 
 
@@ -35,10 +37,12 @@ class ApplicationController < ActionController::Base
         @js_files.push controller_js
         @js_files.push 'Chart.bundle'
         @js_files.push 'chartkick'
+        @js_files.push 'shareable'
 
       when 'admin/dashboard'
         @js_files.push('active_admin.js.coffee')
     end
+    @js_files
   end
 
 

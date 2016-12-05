@@ -55,6 +55,7 @@ module ApplicationHelper
         </div>
         <div align="center" class="comment-buttons">
             #{ helper_draw_like_dislike(comment) }
+            #{ helper_draw_share_button(comment) }
         </div>
           <div class="comment-user-info">
 
@@ -145,6 +146,18 @@ module ApplicationHelper
       concat( content_tag(:div, id: div_id_dislike_prefix + id, class: ['vote-message', 'vote-down-text']) do
         concat (comment.count_votes(:dislike))
       end )
+    end
+  end
+
+
+  def helper_draw_share_button(comment)
+    content_tag :div, class: 'share-div' do
+      concat( image_tag(  '/images/share.png',
+                          'data-id' => comment.id.to_s,
+                          'data-title' => comment.title,
+                          class: 'share-button',
+                          onclick: 'togglePopup()',
+                          alt: 'Поделиться'))
     end
   end
 

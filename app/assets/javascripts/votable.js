@@ -4,5 +4,5 @@ $(document).on('click', '.vote-buttons', function(){
             comment_id: $(this).attr('data-id'),
             execute: $(this).attr('data-execute')
         },
-        function(data, status){});
+        function(){ });
 });
