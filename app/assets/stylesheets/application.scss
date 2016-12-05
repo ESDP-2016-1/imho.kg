@@ -27,7 +27,7 @@ body {
 	margin-bottom: 0;
 	border-radius: 0;
 	height: 70px;
-  background: #212934;
+    background: #212934;
 }
 
 .alert {
@@ -39,16 +39,52 @@ body {
   	z-index: 1010;
 }
 
-.add-comment {
-  padding: 5px;
-}
-
 .positive-center {
   text-align: center;
 }
 
 .negative-center {
   text-align: center;
+}
+
+.add-comment-button {
+  position:absolute;
+  z-index: 100;
+}
+
+.add-comment-image {
+  max-height: 68px;
+  max-width: 68px;
+}
+
+.logo-image {
+  max-height:68px;
+  margin-left: 80px;
+}
+
+.search-div {
+  padding-top:15px;
+  width:500px;
+  padding-left: 60px;
+}
+
+.search-class:hover {
+  cursor: pointer;
+}
+
+.search-class {
+  padding: 0px;
+}
+
+.search-button-addon {
+  background:white;
+}
+
+.search-button-image {
+  margin-left:10px;
+  margin-right:10px;
+  width: 22px;
+  height:22px;
 }
 
 // SHARE BUTTON

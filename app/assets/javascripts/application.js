@@ -10,3 +10,10 @@ function FavoritesAdd(id){
         { comment_id: id },
         null);
 }
+
+$(document).ready(function(){
+   $(".search-class").click(function(event){
+       event.stopPropagation();
+       alert("Ещё не готово!");
+   });
+});
