@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-  before_filter :authenticate_user!, :only => [:ajax_vote_for]
+  before_filter :authenticate_user!, :only => [:ajax_vote_for, :ajax_favorites]
 
   def index
     @comments = Ucomment.for_view_state( sort_by_in_session, params[:page], show_state_in_session )
