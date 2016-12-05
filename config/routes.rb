@@ -58,6 +58,8 @@ Rails.application.routes.draw do
 
   # AJAX
   post 'vote'              => 'main#ajax_vote_for',               as: 'ajax_vote_for'
+  post 'favorites'         => 'main#ajax_favorites',              as: 'ajax_favorites'
+
   # CKeditor routes:
   mount Ckeditor::Engine => '/ckeditor'
 

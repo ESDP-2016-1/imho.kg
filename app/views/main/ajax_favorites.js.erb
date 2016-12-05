@@ -1,0 +1,7 @@
+<% if @data %>
+  <% if @data[:result]==:added %>
+    $('#favorite_<%= @data[:id] %>').attr('src', '/images/favorite.png');
+  <% else  #if @data[:result] == :removed %>
+    $('#favorite_<%= @data[:id] %>').attr('src', '/images/favorite-empty.png');
+  <% end %>
+<% end %>

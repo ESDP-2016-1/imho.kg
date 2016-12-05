@@ -54,6 +54,7 @@ module ApplicationHelper
         #{comment.body}
         </div>
         <div align="center" class="comment-buttons">
+            #{ helper_draw_favorite_button(comment) }
             #{ helper_draw_like_dislike(comment) }
             #{ helper_draw_share_button(comment) }
         </div>
@@ -156,11 +157,25 @@ module ApplicationHelper
                           'data-id' => comment.id.to_s,
                           'data-title' => comment.title,
                           class: 'share-button',
-                          onclick: 'togglePopup()',
                           alt: 'Поделиться'))
     end
   end
 
+  def helper_draw_favorite_button(comment)
+    return unless current_user
+    id = comment.id.to_s
+    result = current_user.is_in_favorite(comment)
+    img_favorite = (result == :added) ? '/images/favorite.png' : '/images/favorite-empty.png'
+    p_onclick = 'FavoritesAdd('+ id + ');'
+    content_tag :div, class: 'favorite-div' do
+      concat( image_tag(  img_favorite,
+                          'id' => 'favorite_' + id,
+                          'data-id' => id,
+                          onclick: p_onclick,
+                          class: 'favorite-button',
+                          alt: 'В избранное'))
+    end
+  end
 
 # Draw Categories in SIDE MENU
   def helper_draw_categories(categories)

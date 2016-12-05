@@ -34,21 +34,35 @@ class MainController < ApplicationController
   end
 
   def ajax_vote_for
-      return unless current_user
-      comment = Ucomment.find(params[:comment_id])
-      return unless comment
+    comment = get_comment_from_params
+    return unless comment
 
-      like_dislike = params[:execute].parameterize.to_sym
-      result = Vote.add(current_user, comment, like_dislike)
-      @data = { id:       comment.id,
-                likes:    comment.count_votes(:like),
-                dislikes: comment.count_votes(:dislike),
-                voted:    result
-      }
+    like_dislike = params[:execute].parameterize.to_sym
+    result = Vote.add(current_user, comment, like_dislike)
+    @data = { id:       comment.id,
+              likes:    comment.count_votes(:like),
+              dislikes: comment.count_votes(:dislike),
+              voted:    result
+    }
   end
+
+  def ajax_favorites
+    comment = get_comment_from_params
+    return unless comment
+
+    @data = { id: comment.id.to_s,
+              result: current_user.add_to_favorites(comment) }
+  end
+
+
 
   private
 
+  # CHECK FOR AJAX CURRENT_USER AVAILABLE OR NOT
+  def get_comment_from_params
+    return unless current_user
+    comment = Ucomment.find(params[:comment_id])
+  end
 
   # GETING MODAL WINDOW NAME TO SHOW FROM SESSION
   def get_modal_from_session

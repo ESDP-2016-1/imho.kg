@@ -7,7 +7,10 @@ class User < ActiveRecord::Base
   belongs_to :role
   has_many :ratings
   has_many :ucomments
+
   has_many :favorites
+  has_many :ucomments, -> { uniq }, through: :favorites
+
   has_many :votes, dependent: :destroy
   has_many :ucomments,  -> { distinct }, through: :votes
 
@@ -77,18 +80,15 @@ class User < ActiveRecord::Base
     end
     name
   end
-=begin
-  def self.new_with_session(params, session)
-    binding.pry
-    super.tap do |user|
-      if (data = session["devise.facebook_data"]) && session["devise.facebook_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
-      end
-    end
-  end
-=end
   # END OmniAuth
 
+  # Favorites
+  def add_to_favorites(comment)
+    Favorite.add(self, comment)
+  end
 
+  def is_in_favorite(comment)
+    Favorite.is_in_favorite(self, comment)
+  end
 
 end
