@@ -71,6 +71,10 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def get_comment_from_params
+    return unless current_user
+    comment = Ucomment.find(params[:comment_id])
+  end
 
 
   protected

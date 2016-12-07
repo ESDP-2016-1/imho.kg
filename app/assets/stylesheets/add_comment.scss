@@ -2,9 +2,15 @@
 
 }
 
+.invisible_content {
+  display:none;
+}
+
 #company_name_div {
   display:none;
 }
+
+
 
 .search-box {
   display:none;
@@ -30,10 +36,11 @@
   position:relative;
   left:0;
   bottom:0;
-  height: 40px;
+  height: 39px;
+  border-radius: 0px 0px 5px 5px;
   width: 100%;
   border-top: 1px solid grey;
-  line-height: 40px;
+  line-height: 39px;
   vertical-align: middle;
 }
 
@@ -95,7 +102,83 @@
   font-size: 12px;
 }
 
+.status-button:hover {
+  background: #E5EDFF;
+  cursor: pointer;
+  border-radius: 0px 0px 5px 5px;
+}
+
 .search-status-msg {
   font-weight: bold;
 }
+
+.add-company-item {
+  height: 35px;
+}
+
+.add-company-field-desc {
+  margin:0;
+  height: 34px;
+  width: 150px;
+  float: left;
+  text-align: right;
+}
+
+.add-company-field {
+  margin-left:150px;
+  height: 34px;
+  //padding-top:5px;
+}
+
+.add-company-field input[type="text"] {
+  margin-left: 5px;
+  width: 90%;
+}
+
+.div-space {
+  height: 8px;
+}
+
+.add-company-back-btn {
+  margin-top: -1px;
+  margin-left: -1px;
+  padding: 0;
+  height: 41px;
+  width: 41px;
+  border: 1px solid gray;
+  float: left;
+  border-radius: 0px 0px 0px 5px;
+}
+.add-company-back-btn:hover {
+  background: #E5EDFF ;
+  cursor: pointer;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.add-company-back-btn img {
+  margin-top: -3px;
+  padding:0;
+  height: 38px;
+  width: 38px;
+  border-radius: 0px 0px 0px 5px;
+}
+
+#add_create {
+  margin-top: 0px;
+  border-top: 1px;
+  height: 39px;
+  margin-left: 39px;
+  border-radius: 0px 0px 5px 0px;
+}
+
+#add_create:hover {
+  background: #E5EDFF ;
+  cursor: pointer;
+}
+
+
+
+//outline: solid 1px #000000;
+//background-color: #0066CC;
+
 

@@ -57,7 +57,9 @@ Rails.application.routes.draw do
   # AJAX
   post 'vote'                  => 'main#ajax_vote_for',               as: 'ajax_vote_for'
   post 'favorites'             => 'main#ajax_favorites',              as: 'ajax_favorites'
-  get  'search/new'            => 'main#ajax_add_comment',            as: 'ajax_add_comment'
+  get  'search/new'            => 'companies#ajax_get_companies',     as: 'ajax_get_companies'
+  get  'search/show'           => 'companies#ajax_draw_company',      as: 'ajax_draw_company'
+
   # CKeditor routes:
   mount Ckeditor::Engine => '/ckeditor'
 

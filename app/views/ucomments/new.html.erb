@@ -1,5 +1,5 @@
-<% form_tag('/something', method: :post) do %>
-  <input type="hidden" id="comment_type" name="user" value="texens" />
+<% form_tag('/something', id: 'hidden_form', method: :post) do %>
+  <input type="hidden" id="comment_type" name="id" value="" />
   <input type="hidden" id="texens" name="user" value="texens" />
 <% end %>
 
@@ -17,12 +17,10 @@
 
 </div>
 
-<div class="col-md-8 col-md-offset-2">
   <div>
     Добавление нового комментария
   </div>
   <div>
-
     <div class="btn-group btn-group-justified">
       <div class="btn-group">
         <button id="positive" type="button" class="btn btn-default positive-negative-select">Положительный</button>
@@ -36,6 +34,10 @@
       <input id="company_name" type="text" class="form-control">
     </div>
 
+    <div id="company_card_show" class="invisible_content">
+
+    </div>
+
+
 
   </div>
-</div>

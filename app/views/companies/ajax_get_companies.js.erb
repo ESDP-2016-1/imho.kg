@@ -1,5 +1,7 @@
 <% if @data && @data[:companies].size > 0 %>
   search_content.empty();
+  search_status.empty();
+
   <% @data[:companies].each do |company| %>
     <% category_obj = company.category.topcategory %>
     <% category_info = ( category_obj ? category_obj.title + ' / ' : '' ) + company.category.title %>
@@ -21,7 +23,14 @@
                                   '</div>' +
                           '</div>');
   <% end %>
+
+  search_status.append('<div id="add_new" class="status-button" data-type="new">' +
+                              '<span class="search-status-msg">Нет в списке? Добавить...</span>' +
+                        '</div>');
+
 <% else %>
   search_content.html('<span class="search-result-msg">Такой компании не найдено</span>');
-  search_status.html('<span class="search-status-msg">Добавить компанию</span>');
+  search_status.html('<div id="add_new" class="status-button">' +
+                        '<span class="search-status-msg">Добавить Компанию...</span>' +
+                      '</div>');
 <% end %>
