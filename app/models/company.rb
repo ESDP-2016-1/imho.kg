@@ -1,10 +1,14 @@
 class Company < ActiveRecord::Base
+  searchkick word_start: [:title]
+  #searchkick
+
   belongs_to :city
   belongs_to :category
 
   has_many :ratings
   has_many :ucomments
-  
+
+
   has_attached_file :image,
                     styles: { medium: '250x250>', thumb: '80x80>', icon: '50x50'},
                     default_url: '/images/:style/missing-for-company.png'

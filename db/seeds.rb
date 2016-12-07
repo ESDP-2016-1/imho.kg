@@ -1,3 +1,28 @@
+puts
+puts 'CLEARING ALL DATA'
+
+User.destroy_all
+puts 'CLEARED: User entities'
+Ucomment.destroy_all
+puts 'CLEARED: Ucomment entities'
+Favorite.destroy_all
+puts 'CLEARED: Favorite entities'
+Vote.destroy_all
+puts 'CLEARED: Vote entities'
+City.destroy_all
+puts 'CLEARED: City entities'
+Role.destroy_all
+puts 'CLEARED: Role entities'
+Category.destroy_all
+puts 'CLEARED: Category entities'
+Gender.destroy_all
+puts 'CLEARED: Gender entities'
+Company.destroy_all
+puts 'CLEARED: Company entities'
+puts ("-" * line_width)
+puts 'ALL ENTITIES CLEARED!'
+puts
+
 generate_amount_companies = 50
 generate_amount_head_comments = 150
 generate_amount_sub_comments = 200
@@ -207,7 +232,7 @@ puts
     city = rand(1..cities.size)
     company = Company.create( title:   Faker::Company.name,
                               description:       Faker::Company.bs.capitalize,
-                              address:           "#{cities[city]}",
+                              address:           Faker::Address.street_address,
                               phones:            "0(312)#{rand(999999)};0(700)#{rand(999999)}",
                               email:             Faker::Internet.email,
                               website:           Faker::Internet.domain_name,
@@ -237,7 +262,7 @@ puts
 
 #---------------------------  VOTES ------------------------------------
   Ucomment.all.each do |comment|
-    for i in 0..rand(100)
+    for i in 1..rand(15)
       Vote.add(User.find(rand(1..generate_amount_users)),comment, rand(0..1)==1 ? :like : :dislike )
     end
   end
@@ -262,6 +287,8 @@ puts
 
   end
 
+Company.reindex!
+puts "ELASTICSEARCH REINDEXED FOR COMPANY table"
 puts
 puts "*" * line_width
 puts "SEEDS FINISHED SUCCESSFULLY!"

@@ -54,7 +54,17 @@ class MainController < ApplicationController
               result: current_user.add_to_favorites(comment) }
   end
 
+  def ajax_add_comment
+    companies = Company.search( params[:company], {
+        match: :word_start,
+        limit: 10,
+        misspellings: {below: 5}})
+    return unless companies
 
+    @data = { companies: companies }
+    puts "ENTERED WITH PARAMS" + params.to_s
+    puts "ANSWERED: " + @data.to_s
+  end
 
   private
 
@@ -120,5 +130,6 @@ class MainController < ApplicationController
   def count_total_negative
     Ucomment.count_total_negative
   end
+
 
 end

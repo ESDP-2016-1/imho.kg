@@ -124,6 +124,14 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.1.0)
     diff-lcs (1.2.5)
+    elasticsearch (5.0.0)
+      elasticsearch-api (= 5.0.0)
+      elasticsearch-transport (= 5.0.0)
+    elasticsearch-api (5.0.0)
+      multi_json
+    elasticsearch-transport (5.0.0)
+      faraday
+      multi_json
     erubis (2.7.0)
     eventmachine (1.0.9.1)
     execjs (2.7.0)
@@ -331,6 +339,10 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    searchkick (1.4.0)
+      activemodel
+      elasticsearch (>= 1)
+      hashie
     selenium-webdriver (2.53.4)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
@@ -417,6 +429,7 @@ DEPENDENCIES
   russian
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  searchkick
   selenium-webdriver
   spring
   tzinfo

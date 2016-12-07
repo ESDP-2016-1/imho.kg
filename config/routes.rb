@@ -7,8 +7,6 @@ Rails.application.routes.draw do
 
   get  'categories/:id'  =>  'main#categories',      as:  'categories'
 
-  get  'add_comment'     =>  'main#add_comment',     as:  'add_comment'
-
   get  'users/:id'       =>  'users#show_foreign',   as: 'user'
 
   get    'profile'        =>  'users#show',           as: 'profile'
@@ -57,9 +55,9 @@ Rails.application.routes.draw do
 
 
   # AJAX
-  post 'vote'              => 'main#ajax_vote_for',               as: 'ajax_vote_for'
-  post 'favorites'         => 'main#ajax_favorites',              as: 'ajax_favorites'
-
+  post 'vote'                  => 'main#ajax_vote_for',               as: 'ajax_vote_for'
+  post 'favorites'             => 'main#ajax_favorites',              as: 'ajax_favorites'
+  get  'search/new'            => 'main#ajax_add_comment',            as: 'ajax_add_comment'
   # CKeditor routes:
   mount Ckeditor::Engine => '/ckeditor'
 

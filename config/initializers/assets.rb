@@ -18,4 +18,5 @@ Rails.application.config.assets.precompile += %w(
     Chart.bundle.js
     votable.js
     shareable.js
+    add_comment.js
     ckeditor/config.js)

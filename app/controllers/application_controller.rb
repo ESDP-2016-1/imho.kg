@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
         @js_files.push 'ckeditor'
         @js_files.push 'shareable'
         @js_files.push 'votable' if current_user
+        @js_files.push 'add_comment' if params[:action]=='new'
 
 
       when 'companies', 'users'
@@ -65,6 +66,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
 
+
+  def params_sanitizer(*keys)
+
+  end
 
 
 

@@ -54,6 +54,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'geocoder'
 
+gem 'searchkick'
+
 gem 'pg', '0.19.0'
 
 group :development do

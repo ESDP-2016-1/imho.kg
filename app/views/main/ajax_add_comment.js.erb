@@ -1,0 +1,27 @@
+<% if @data && @data[:companies].size > 0 %>
+  search_content.empty();
+  <% @data[:companies].each do |company| %>
+    <% category_obj = company.category.topcategory %>
+    <% category_info = ( category_obj ? category_obj.title + ' / ' : '' ) + company.category.title %>
+    <% full_info = company.city.name + (company.address == "" ? '' : ', ' + company.address )  %>
+    <% website = company.website == "" ? '' : ('<span class="company-item-email">' + company.website + '</span>').html_safe %>
+
+    search_content.append('<div class="company-item" data-id="<%= company.id %>">' +
+                                  '<div class="company-item-img-div">' +
+                                    '<img src="/images/thumb/missing-for-company.png" class="company-item-image">'+
+                                  '</div>' +
+                                  '<div class="company-item-text-div">' +
+                                    '<div class="company-item-text-title"><%= company.title %> ' +
+                                        '<span class="company-item-category">(<%= category_info %>)</span>' +
+                                    '</div>' +
+                                    '<div class="company-item-text-info">' +
+                                      '<%= full_info %>' +
+                                      '<%= website %>' +
+                                    '</div>' +
+                                  '</div>' +
+                          '</div>');
+  <% end %>
+<% else %>
+  search_content.html('<span class="search-result-msg">Такой компании не найдено</span>');
+  search_status.html('<span class="search-status-msg">Добавить компанию</span>');
+<% end %>
