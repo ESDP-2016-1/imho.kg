@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
-  searchkick word_start: [:title]
+  searchkick match: :word_start, searchable: [:title]
   #searchkick
 
   belongs_to :city

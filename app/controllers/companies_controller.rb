@@ -47,6 +47,23 @@ class CompaniesController < ApplicationController
     end  
   end
 
+  def ajax_get_companies
+    companies = Company.search( params[:company], {
+        limit: 10,
+        misspellings: {below: 5}})
+    return unless companies
+
+    @data = { companies: companies }
+    puts "ENTERED WITH PARAMS" + params.to_s
+    puts "ANSWERED: " + @data.to_s
+  end
+
+  def ajax_draw_company
+    @company_show_item = Company.find(params[:company_id].to_i)
+    render layout: false
+  end
+
+
   private 
 
   def company_params

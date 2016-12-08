@@ -21,3 +21,5 @@ Rails.application.config.assets.precompile += %w(
     add_comment.js
     ckeditor/config.js
     ckeditor/* )
+    stars.js
+    ckeditor/config.js)

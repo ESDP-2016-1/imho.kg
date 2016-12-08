@@ -54,25 +54,13 @@ class MainController < ApplicationController
               result: current_user.add_to_favorites(comment) }
   end
 
-  def ajax_add_comment
-    companies = Company.search( params[:company], {
-        match: :word_start,
-        limit: 10,
-        misspellings: {below: 5}})
-    return unless companies
 
-    @data = { companies: companies }
-    puts "ENTERED WITH PARAMS" + params.to_s
-    puts "ANSWERED: " + @data.to_s
-  end
+
 
   private
 
   # CHECK FOR AJAX CURRENT_USER AVAILABLE OR NOT
-  def get_comment_from_params
-    return unless current_user
-    comment = Ucomment.find(params[:comment_id])
-  end
+
 
   # GETING MODAL WINDOW NAME TO SHOW FROM SESSION
   def get_modal_from_session
