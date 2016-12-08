@@ -3,10 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-    @variables = {
-        :positive_comment => Ucomment.where(:positive => true, :topucomment_id => nil, :user_id => @user.id),
-        :negative_comment => Ucomment.where(:positive => false, :topucomment_id => nil, :user_id => @user.id),
-        :user_activity => Ucomment.where(:user_id => @user.id, :topucomment_id => nil)}
+    variables_for_views
   end
 
   def show_foreign
@@ -14,10 +11,7 @@ class UsersController < ApplicationController
       redirect_to(profile_path)
     else
       @user = User.find(params[:id])
-      @variables = {
-          :positive_comment => Ucomment.where(:positive => true, :topucomment_id => nil, :user_id => @user.id),
-          :negative_comment => Ucomment.where(:positive => false, :topucomment_id => nil, :user_id => @user.id),
-          :user_activity => Ucomment.where(:user_id => @user.id, :topucomment_id => nil)}
+      variables_for_views
       render 'show'
     end
   end
@@ -45,6 +39,12 @@ class UsersController < ApplicationController
     params.require(:user).permit(:fullname, :name, :dob, :city_id, :gender_id)
   end
 
+  def variables_for_views
+      @variables = {
+        :positive_comment => Ucomment.where(:positive => true, :topucomment_id => nil, :user_id => @user.id),
+        :negative_comment => Ucomment.where(:positive => false, :topucomment_id => nil, :user_id => @user.id),
+        :user_activity => Ucomment.where(:user_id => @user.id, :topucomment_id => nil)}
+  end
 =begin
   def validate_before_update
     flash[:error] ||= []
