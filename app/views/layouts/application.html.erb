@@ -72,13 +72,11 @@
 
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-              <p class="navbar-text">
-                Привет, <%= link_to current_user.name, edit_profile_path, class: 'navbar-link' %>
-              </p>
+
 
               <ul class="nav navbar-nav">
                 <li>
-                  <div class="menu_avatar_block"><%= link_to image_tag(current_user.avatar.url(:thumb), class: "menu_user_avatar"), profile_path(current_user)%>
+                  <div class="menu_avatar_block"><%= link_to image_tag(current_user.avatar.url(:thumb), class: "menu_user_avatar"), profile_path%>
                   </div>
                 </li>
 

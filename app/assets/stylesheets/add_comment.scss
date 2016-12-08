@@ -1,3 +1,7 @@
+.add-container {
+
+}
+
 .positive-negative-select {
 
 }
@@ -174,6 +178,39 @@
 #add_create:hover {
   background: #E5EDFF ;
   cursor: pointer;
+}
+
+.star-img {
+  height: 25px;
+  width: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.star-img:hover {
+  cursor: pointer;
+}
+
+#stars_show {
+  display:none;
+}
+
+#company_card_show {
+  display:none;
+}
+
+
+#input_block{
+  display:none;
+}
+
+.msg-title {
+
+}
+
+
+.msg-content {
+  rows: 5;
 }
 
 

@@ -1,3 +1,9 @@
+generate_amount_companies = 50
+generate_amount_head_comments = 150
+generate_amount_sub_comments = 200
+generate_amount_users = 20
+line_width = 60
+
 puts
 puts 'CLEARING ALL DATA'
 
@@ -23,11 +29,7 @@ puts ("-" * line_width)
 puts 'ALL ENTITIES CLEARED!'
 puts
 
-generate_amount_companies = 50
-generate_amount_head_comments = 150
-generate_amount_sub_comments = 200
-generate_amount_users = 20
-line_width = 60
+
 
   puts
   puts "SEEDS STARTED:"
@@ -287,7 +289,7 @@ puts
 
   end
 
-Company.reindex!
+Company.reindex
 puts "ELASTICSEARCH REINDEXED FOR COMPANY table"
 puts
 puts "*" * line_width

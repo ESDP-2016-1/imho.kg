@@ -22,11 +22,13 @@ class ApplicationController < ActionController::Base
     case controller_js
 
       when 'main'
+        @js_files.push 'stars'
         @js_files.push controller_js
         @js_files.push 'shareable'
         @js_files.push 'votable' if current_user
 
       when 'ucomments'
+        @js_files.push 'stars'
         @js_files.push controller_js
         @js_files.push 'ckeditor'
         @js_files.push 'shareable'

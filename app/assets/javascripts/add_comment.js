@@ -1,4 +1,18 @@
 $(document).ready(function(){
+    hidden_form = $("#hidden_form");
+
+    company_search = $("#company_name");
+    company_search.prop('disabled', false);
+
+    stars_div = $("#stars_show");
+    company_card = $("#company_card_show");
+
+    input_block = $("#input_block");
+
+    company_name_div =$('#company_name_div');
+    search_result_box = $("#search_result_box");
+    search_content = $("#search_content");
+    search_status = $("#search_status");
 
     // First Step NEGATIVE/POSITIVE
     $(document).on('click', '.positive-negative-select', function(event){
@@ -6,20 +20,16 @@ $(document).ready(function(){
         $("#company_name_div").show();
     });
 
-    hidden_form = $("#hidden_form");
 
-    company_search = $("#company_name");
-    company_search.prop('disabled', false);
-
-    company_name_div =$('#company_name_div');
-    search_result_box = $("#search_result_box");
-    search_content = $("#search_content");
-    search_status = $("#search_status");
 
     company_search.keyup(function(e) {
         e.stopPropagation();
+
         //# TODO disable system keys like ESC and SHIFT
         //# TODO window resize
+        stars_div.hide();
+        company_card.hide();
+        input_block.hide();
 
         clearTimeout($.data(this, 'timer'));
         if ( company_search.val().length > 1)
@@ -98,18 +108,23 @@ $(document).ready(function(){
             url: '/search/show',
             data: { company_id : $(this).attr('data-id') },
             success: function(company_card_html){
-                alert('received');
-                var company_card = $("#company_card_show");
                 company_card.show();
                 company_card.html(company_card_html);
             },
             dataType: 'html'
         });
+        stars_div.show();
+        DrawStars(stars_div, 5, 0, 'stars_', null, 'star-img' );
         //company_search.prop('disabled', true);
     });
 
 
-
+    //STARS
+    $(document).on('click', '.star-img', function(e){
+       var id = $(this).attr('data-id');
+        ReDrawStarsOnClick('#stars_show', 'star-img', id);
+        input_block.show();
+    });
 
 });
 
