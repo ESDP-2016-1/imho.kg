@@ -19,7 +19,7 @@
   <div class="col-md-8 col-md-offset-2">
     <div class="users-chart">
       <div class="chart">
-        <%= line_chart @user.ucomments.group_by_day(:created_at).count, xtitle: "Временной промежуток", ytitle: "Активность" %>
+        <%= line_chart @user.ucomments.group_by_day("ucomments.created_at").count, xtitle: "Временной промежуток", ytitle: "К-во  отзывов" %>
       </div>
       <div class="pie">
         <%= pie_chart({"Positive" => @variables[:positive_comment].count, "Negative" => @variables[:negative_comment].count}) %>

@@ -19,7 +19,7 @@
     <div class="col-md-6 col-sm-6">
       <div class="company-column-chart">
 	      <div class="chart">
-          <%= column_chart @company.ucomments.group_by_day_of_week(:created_at, format: "%a").count %>
+          <%= column_chart @company.ucomments.group_by_day_of_week(:created_at, format: "%a").count, xtitle: "Временной промежуток", ytitle: "К-во  отзывов" %>
 	      </div>
 	  </div>    
     </div>
