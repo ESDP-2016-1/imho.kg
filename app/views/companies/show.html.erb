@@ -19,7 +19,8 @@
     <div class="col-md-6 col-sm-6">
       <div class="company-column-chart">
 	      <div class="chart">
-          <%= column_chart @company.ucomments.group_by_day_of_week(:created_at, format: "%a").count, xtitle: "Временной промежуток", ytitle: "К-во  отзывов" %>
+          <%= column_chart @variables[:company_activity].group_by_month_of_year(:created_at, format: "%b %Y").count,
+              xtitle: "Временной промежуток", ytitle: "К-во  отзывов"%>
 	      </div>
 	  </div>    
     </div>
@@ -27,7 +28,8 @@
     <div class="col-md-6 col-sm-6">  
       <div class="company-pie-chart">	
 	      <div class="pie">
-	        <%= pie_chart({"Положительные" => @variables[:positive_comment].count, "Отрицательные" => @variables[:negative_comment].count}) %>
+	        <%= pie_chart({"Положительные комментарии" => @variables[:positive_comment].count,
+                         "Отрицательные комментарии" => @variables[:negative_comment].count}) %>
 	      </div>
 	  </div>    
     </div>

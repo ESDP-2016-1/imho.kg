@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(current_user.id)
     @variables = {
-        :positive_comment => @user.ucomments.where(:positive => true),
-        :negative_comment => @user.ucomments.where(:positive => false)}
+        :positive_comment => Ucomment.where(:positive => true, :topucomment_id => nil, :user_id => @user.id),
+        :negative_comment => Ucomment.where(:positive => false, :topucomment_id => nil, :user_id => @user.id),
+        :user_activity => Ucomment.where(:user_id => @user.id, :topucomment_id => nil)}
   end
 
   def show_foreign
@@ -14,8 +15,9 @@ class UsersController < ApplicationController
     else
       @user = User.find(params[:id])
       @variables = {
-          :positive_comment => @user.ucomments.where(:positive => true),
-          :negative_comment => @user.ucomments.where(:positive => false)}
+          :positive_comment => Ucomment.where(:positive => true, :topucomment_id => nil, :user_id => @user.id),
+          :negative_comment => Ucomment.where(:positive => false, :topucomment_id => nil, :user_id => @user.id),
+          :user_activity => Ucomment.where(:user_id => @user.id, :topucomment_id => nil)}
       render 'show'
     end
   end
