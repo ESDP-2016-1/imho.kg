@@ -1,4 +1,4 @@
 class Ckeditor::Asset < ActiveRecord::Base
-  include Ckeditor::Backend::Refile
   include Ckeditor::Orm::ActiveRecord::AssetBase
+  include Ckeditor::Backend::Paperclip
 end

@@ -1,7 +1,16 @@
-<% if ucomment.topucomment != nil %>
-	$(".add_reply_to_comment").each( function() {
+$(".add_reply_to_comment").each(function() {
 		$(this).remove();
-	});
+});
+
+$(".edit_comment_btn").each(function() {
+	$(this).attr("disabled", 'disabled');
+});
+
+$(".reply_to_comment_btn").each(function() {
+	$(this).attr("disabled", 'disabled');
+});
+
+<% if ucomment.topucomment != nil %>
 	
 	$("#comment_<%= ucomment.id %>").html('');
 	$("#comment_<%= ucomment.id %>").html("<%= escape_javascript(render partial: 'reply', locals: { ucomment: ucomment, parentcomment: parentcomment} ) %>");
@@ -12,4 +21,4 @@
 	$("#comment_<%= ucomment.id %>").html("<%= j render partial: 'form', locals: { comment: ucomment} %>");
 	$("#ucomment_body").focus();
 <% end %>
-$('#comment_<%= ucomment.id').find('.ckeditor').ckeditor();
+

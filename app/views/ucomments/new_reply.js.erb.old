@@ -1,2 +1,0 @@
-$("#reply_to_comment_modal .modal-body").html("<%= escape_javascript(render partial: 'reply', locals: { ucomment: @reply, parentcomment: @parentcomment} ) %>");
-$("#reply_to_comment_modal").modal();

@@ -19,7 +19,6 @@ Gender.destroy_all
 puts 'CLEARED: Gender entities'
 Company.destroy_all
 puts 'CLEARED: Company entities'
-puts ("-" * line_width)
 puts 'ALL ENTITIES CLEARED!'
 puts
 

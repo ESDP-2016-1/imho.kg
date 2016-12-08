@@ -1,66 +1,58 @@
-<%= javascript_include_tag Ckeditor.cdn_url %>
 <%= form_for @comment, html: {class: 'form-horizontal'} do |f| %>
-    <br>
-    <br>
-    <div class="field text-area">
-      <%= f.label :title, "Заголовок " %><br>
-      <%= f.text_field :title, class: 'form-control' %>
-    </div>
+  <br>
+  <br>
+  <div class="field text-area">
+    <%= f.label :company_id, "Компания: " %>
+    <%= f.collection_select :company_id, Company.all, :id, :title, class: 'form-control' %>
+  </div>
+  <div class="field text-area">
+    <%= f.label :positive, "Положительный", :value => true %>
+    <%= f.radio_button :positive, true %>
+    <%= f.label :positive, "Отрицательный", :value => false %>
+    <%= f.radio_button :positive, false %>
+  </div>
 
-    <div class="field text-area">
-      <%= f.label :body %><br>
-<%
-=begin      
-       = form.cktext_area :notes, class: 'someclass', ckeditor: { language: 'uk'}
-  = form.cktext_area :content, value: 'Default value', id: 'sometext'
-  = cktext_area :page, :info, cols: 40, ckeditor: { uiColor: '#AADC6E', toolbar: 'mini' }
-=end
-%>    
-      <%= f.cktext_area :body, class: 'form-control ckeditor', :ckeditor => { uiColor: '#AADC6E', :toolbar => 'mini' } %>
-    </div> 
+  <div class="field text-area">
+    <%= f.label :rate, "Рейтинг " %><br>
+            
+    <%= f.radio_button(:rate, "1") %> <%= f.label(:rate.to_s + "_1", "Очень плохо") %>
+    <%= f.radio_button(:rate, "2") %> <%= f.label(:rate.to_s + "_2", "Плохо") %> 
+    <%= f.radio_button(:rate, "3") %> <%= f.label(:rate.to_s + "_3", "Средне") %> 
+    <%= f.radio_button(:rate, "4") %> <%= f.label(:rate.to_s + "_4", "Хорошо") %> 
+    <%= f.radio_button(:rate, "5") %> <%= f.label(:rate.to_s + "_5", "Отлично") %> 
+  </div>  
 
-    <div class="field text-area">
-      <%= f.label :positive, "Положительный", :value => true %>
-      <%= f.radio_button :positive, true %>
-      <%= f.label :positive, "Отрицательный", :value => false %>
-      <%= f.radio_button :positive, false %>
-    </div>
+  <div class="field text-area">
+    <%= f.label :title, "Заголовок " %><br>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
 
-    <div class="field text-area">
-      <%= f.label :rate, "Рейтинг " %><br>
-      <%= f.text_field :rate, class: 'form-control' %>
-         
-      <%= f.radio_button(:rate, "1") %> <%= f.label(:rate.to_s + "_1", "Очень плохо") %>
-      <%= f.radio_button(:rate, "2") %> <%= f.label(:rate.to_s + "_2", "Плохо") %> 
-      <%= f.radio_button(:rate, "3") %> <%= f.label(:rate.to_s + "_3", "Средне") %> 
-      <%= f.radio_button(:rate, "4") %> <%= f.label(:rate.to_s + "_4", "Хорошо") %> 
-      <%= f.radio_button(:rate, "5") %> <%= f.label(:rate.to_s + "_5", "Отлично") %> 
-      
-      <p>Оценка компании от 1  до 5</p>
-    <div class="input-group">
-          <%= f.range_field(:rate, in: 1..5) %>
-          <%= f.number_field(:rate, in: 1..5) %>
-      
-    </div>
+  <div class="field text-area">
+    <%= f.label :body, "Ваш отзыв:" %><br>
+    <%= f.cktext_area :body, class: 'form-control ckeditor', :ckeditor => { uiColor: '#AADC6E', :toolbar => 'mini', language: 'ru', startupFocus: true  } %>
+  </div> 
 
-    <div class="field text-area">
-      <%= f.label :company_id, "Компания" %><br>
-      <%= f.collection_select :company_id, Company.all, :id, :title, class: 'form-control' %>
-    </div>
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
 
-    <div class="field">
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-    </div>
+  <div class="field">
+    <%= f.hidden_field :topucomment, :value => @comment.id %>
+  </div>
 
-    <div class="field">
-      <%= f.hidden_field :topucomment, :value => @comment.id %>
-    </div>
-
-    <div>
-      <% if params[:action] == 'edit' %>
-        <%= f.submit "Обновить отзыв", class:'btn btn-primary' %>
-      <% else %>  
-        <%= f.submit "Создать отзыв", class:'btn btn-primary' %>
-      <% end %>
-    </div>
+  <div>
+    <% if params[:action] == 'edit' %>
+      <%= f.submit "Обновить отзыв", class:'btn btn-primary' %>
+    <% else %>  
+      <%= f.submit "Создать отзыв", class:'btn btn-primary' %>
+    <% end %>
+  </div>
 <% end %>
+
+<script>
+  CKEDITOR.replace('ucomment_body', {
+      uiColor: '#AADC6E', 
+      toolbar:'mini',
+      language: 'ru',
+      startupFocus : true,})
+</script>

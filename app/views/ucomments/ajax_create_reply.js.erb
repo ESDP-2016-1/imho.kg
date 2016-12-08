@@ -1,7 +1,0 @@
-debugger;
-console.log(<%= ucomment.id %>);
-$("#comment_<%= ucomment.id %>").html("<%= j render partial: 'show_subcomment', locals: { subcomment: ucomment} %>");
-$('#comment_<%= ucomment.id').find('.ckeditor').ckeditor();
-$( document ).ajaxComplete(function () { 
-  CKEDITOR.replace('id_of_text_area')  
-} );

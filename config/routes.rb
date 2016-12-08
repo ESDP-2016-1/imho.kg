@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   # MVC routes:
 
   root 'main#index'
@@ -58,7 +57,9 @@ Rails.application.routes.draw do
   post 'vote'                  => 'main#ajax_vote_for',               as: 'ajax_vote_for'
   post 'favorites'             => 'main#ajax_favorites',              as: 'ajax_favorites'
   get  'search/new'            => 'main#ajax_add_comment',            as: 'ajax_add_comment'
-  # CKeditor routes:
+
+  #CKeditor routes
+
   mount Ckeditor::Engine => '/ckeditor'
 
   # UNDONE

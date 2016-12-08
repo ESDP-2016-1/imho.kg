@@ -1,41 +1,18 @@
 <%= javascript_include_tag Ckeditor.cdn_url %>
-<!-- Reply_to_comment MODAL block -->
-
-<div id="reply_to_comment_modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-       
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- Reply_to_comment MODAL block END -->
 
 <div class="col-md-12">
   <div class="col-md-9" id="comments_container" >
-  <div id="comment_<%= @comment.id %>" >
-    <div class="comment-show" >
-      <div class="comment-show-user-logo" >
-        <%= image_tag @comment.user.avatar.url(:thumb) %>
-        
-        <div>
-             id :  <%= @comment.id %><br>
-             Ответов:<%= @total_subcomments %>
+    <div id="comment_<%= @comment.id %>" >
+      <div class="comment-show" >
+        <div class="comment-show-user-logo" >
+          <%= image_tag @comment.user.avatar.url(:thumb) %>
+          
+          <div>
+            Ответов:<%= @total_subcomments %>
+          </div>
+
         </div>
 
-      </div>
         <div class="comment-show-body<%= @comment.positive ? ' comment-positive' : ' comment-negative' %> " >
           <div class="comment-title">
             <%= @comment.title %>
@@ -57,14 +34,15 @@
             &nbsp;&nbsp;&nbsp;&nbsp;
             <%= @comment.created_at.strftime("%b %d, %Y %H:%M") %>
 
-            <%= link_to 'Ответить', reply_to_comment_path(ucomment: @comment), class: 'btn btn-primary reply_to_comment', remote: true %>
+            <%= link_to 'Ответить', reply_to_comment_path(ucomment: @comment), class: 'btn btn-primary reply_to_comment_btn', remote: true %>
 
             <%= link_to "Удалить", ucomment_path(ucomment: @comment), class: 'btn btn-primary', method: :delete, data: {confirm: 'Вы точно хотите удалить?'} %>
-            <%= link_to "Редактировать", edit_ucomment_path(@comment), class: "btn btn-primary", remote: true %>
+            <%= link_to "Редактировать", edit_ucomment_path(@comment), class: "btn btn-primary edit_comment_btn", remote: true %>
           </div>
         </div>
+      </div>
     </div>
-  </div>  
+
     <div id="comment-replies">
       <% @comment.subucomments.order(:created_at).each do |subcomment| %>
         <% subcomment_indent = 1 %>
@@ -75,7 +53,6 @@
 
   <div class="col-md-3 advertisement">
     <img src="https://s-media-cache-ak0.pinimg.com/originals/dd/24/8f/dd248f6d8cc95ea36ba763700ade4501.jpg" alt="advertisement">
-
   </div>
 
 </div>

@@ -30,8 +30,8 @@ Ckeditor.setup do |config|
   # config.parent_controller = 'MyController'
 
   # Asset model classes
-  # config.picture_model { Ckeditor::Picture }
-  # config.attachment_file_model { Ckeditor::AttachmentFile }
+  config.picture_model { Ckeditor::Picture }
+  config.attachment_file_model { Ckeditor::AttachmentFile }
 
   # Paginate assets
   # By default: 24
@@ -49,9 +49,10 @@ Ckeditor.setup do |config|
   # CKEditor CDN
   # More info here http://cdn.ckeditor.com/
   # By default: nil (CDN disabled)
-  config.cdn_url = "//cdn.ckeditor.com/4.6.0/standard/ckeditor.js"
+  config.cdn_url = "//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"
+
   # JS config url
   # Used when CKEditor CDN enabled
   # By default: "/assets/ckeditor/config.js"
-  config.js_config_url = "/assets/ckeditor/config.js"
+  # config.js_config_url = "/assets/ckeditor/config.js"
 end
