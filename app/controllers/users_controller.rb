@@ -29,6 +29,14 @@ class UsersController < ApplicationController
       end
   end
 
+  def favorite_comments
+    @user = User.find(current_user.id)
+    @comments = []
+    @user.favorites.each do |favorite|
+      @comments << Ucomment.where(:id => favorite.ucomment_id)
+    end
+  end
+
 
   def destroy
   end

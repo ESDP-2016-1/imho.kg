@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get  'users/:id'       =>  'users#show_foreign',   as: 'user'
 
   get    'profile'        =>  'users#show',           as: 'profile'
+  get    'profile/favorite_comments'  => 'users#favorite_comments',     as: 'profile_favorite_comments'
   get    'profile/edit'   =>  'users#edit',           as: 'edit_profile'
   patch  'profile/edit'   =>  'users#update'
   put    'profile/edit'   =>  'users#update'
