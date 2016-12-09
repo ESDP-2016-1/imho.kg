@@ -11,3 +11,8 @@ ru:
         unlock_token: "Токен разблокировки"
     models:
       user: "Пользователь"
+
+  will_paginate:
+    previous_label: "&#8592; Предыдущая"
+    next_label: "Следующая &#8594;"
+    page_gap: "&hellip;"      
