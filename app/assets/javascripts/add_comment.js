@@ -2,6 +2,9 @@ $(document).ready(function(){
     hidden_form = $("#hidden_form");
     hidden_form.hide();
 
+    $('#bootstrap_company').hide();
+    $('#bootstrap_stars').hide();
+
     company_search = $("#company_name");
     company_search.prop('disabled', false);
 
@@ -19,6 +22,7 @@ $(document).ready(function(){
     // First Step NEGATIVE/POSITIVE
     $(document).on('click', '.positive-negative-select', function(event){
         event.stopPropagation();
+        $("#bootstrap_company").show();
         $("#company_name_div").show();
     });
 
@@ -26,13 +30,12 @@ $(document).ready(function(){
 
     company_search.keyup(function(e) {
         e.stopPropagation();
-
         //# TODO disable system keys like ESC and SHIFT
         //# TODO window resize
         stars_div.hide();
         company_card.hide();
         input_block.hide();
-
+        $('#bootstrap_stars').hide();
         clearTimeout($.data(this, 'timer'));
         if ( company_search.val().length > 1)
             $(this).data('timer', setTimeout(search(company_name_div, this), 1000));
@@ -115,6 +118,8 @@ $(document).ready(function(){
             },
             dataType: 'html'
         });
+
+        $('#bootstrap_stars').show();
         stars_div.show();
         DrawStars(stars_div, 5, 0, 'stars_', null, 'star-img' );
         //company_search.prop('disabled', true);
@@ -130,5 +135,8 @@ $(document).ready(function(){
         AddImageBlock(images_block, 5,'/images/add-image.png');
     });
 
+    $('#do_submit').click(function(){
+        hidden_form.submit();
+    });
 });
 

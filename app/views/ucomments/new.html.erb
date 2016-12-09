@@ -1,4 +1,4 @@
-<form id="hidden_form" action="/comments" method="post" novalidate>
+<form id="hidden_form" action="/comments" method="post" enctype="multipart/form-data" novalidate>
   <input type="hidden" id="comment_type" name="id" value="" />
   <input type="hidden" id="texens" name="user" value="texens" />
   <input id="image_select_1" class="input-select-image" data-id="1" type="file" style="visibility:hidden" />
@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <div class="col-md-12">
+  <div id="bootstrap_company" class="col-md-12 step-margin">
     <div class="col-md-2 text-right">
       <label>Компания:</label>
     </div>
@@ -50,12 +50,12 @@
     </div>
   </div>
 
-  <div class="col-md-12">
+  <div class="col-md-12 step-margin">
     <div class="col-md-2"></div>
     <div id="company_card_show" class="invisible_content text-center col-md-10"></div>
   </div>
 
-    <div class="col-md-12">
+    <div id="bootstrap_stars" class="col-md-12 step-margin">
       <div class="col-md-2 text-right">
         <label>Оценка компании:</label>
       </div>
@@ -63,8 +63,7 @@
       </div>
     </div>
 
-    <div id="input_block" class="col-md-12">
-
+    <div id="input_block" class="col-md-12 step-margin">
       <div>
           <div class="col-md-2 text-right">
             <label for="msg_title">Тема:</label>
@@ -97,11 +96,15 @@
 
         </div>
       </div>
-      <div class="">
+
         <div class="col-md-12 text-center">
-          <button id="do_submit" type="button" class="btn btn-primary">Отправить</button>
+          <div class="col-md-2"></div>
+          <div class="col-md-10">
+            <br><br>
+            <button id="do_submit" type="button" class="btn btn-primary" style="width: 250px;">Отправить</button>
+            <br><br><br><br>
+          </div>
         </div>
-      </div>
 
     </div>
 </div>
