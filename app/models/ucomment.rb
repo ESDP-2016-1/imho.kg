@@ -6,6 +6,7 @@ class Ucomment < ActiveRecord::Base
   belongs_to :topucomment, class_name: 'Ucomment'
 
   has_many :images
+  has_many :pictures
 
   has_many :favorites
   has_many :ucomments, -> { uniq }, through: :favorites
