@@ -34,10 +34,18 @@
             &nbsp;&nbsp;&nbsp;&nbsp;
             <%= @comment.created_at.strftime("%b %d, %Y %H:%M") %>
 
-            <%= link_to 'Ответить', reply_to_comment_path(ucomment: @comment), class: 'btn btn-primary reply_to_comment_btn', remote: true %>
+            <%= link_to_if(user_signed_in?, "Ответить", 
+              reply_to_comment_path(ucomment: @comment), 
+                class: 'btn btn-primary reply_to_comment_btn', remote: true) do
+                  link_to('Ответить', "#", class: 'btn btn-primary reply_to_comment_btn', data: {toggle: "tooltip",placement: "top", title: "Войдите на сайт для написания отзыва."})
+            end %>
+            
+            <% if user_signed_in? && (current_user.id == @comment.user_id) %>
+              <%= link_to "Удалить", ucomment_path(ucomment: @comment), class: 'btn btn-primary', method: :delete, data: {confirm: 'Вы точно хотите удалить?'} %>
+              <%= link_to "Редактировать", edit_ucomment_path(@comment), class: "btn btn-primary edit_comment_btn", remote: true %>
+            
+            <% end %>
 
-            <%= link_to "Удалить", ucomment_path(ucomment: @comment), class: 'btn btn-primary', method: :delete, data: {confirm: 'Вы точно хотите удалить?'} %>
-            <%= link_to "Редактировать", edit_ucomment_path(@comment), class: "btn btn-primary edit_comment_btn", remote: true %>
           </div>
         </div>
       </div>

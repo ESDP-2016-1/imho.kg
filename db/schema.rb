@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208152555) do
+ActiveRecord::Schema.define(version: 20161209200804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,7 +109,10 @@ ActiveRecord::Schema.define(version: 20161208152555) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.integer  "ucomment_id"
   end
+
+  add_index "images", ["ucomment_id"], name: "index_images_on_ucomment_id", using: :btree
 
   create_table "ratings", force: :cascade do |t|
     t.integer  "rate"
@@ -139,13 +142,11 @@ ActiveRecord::Schema.define(version: 20161208152555) do
     t.datetime "updated_at",                     null: false
     t.integer  "user_id"
     t.integer  "company_id"
-    t.integer  "image_id"
     t.string   "title"
     t.boolean  "deleted",        default: false
   end
 
   add_index "ucomments", ["company_id"], name: "index_ucomments_on_company_id", using: :btree
-  add_index "ucomments", ["image_id"], name: "index_ucomments_on_image_id", using: :btree
   add_index "ucomments", ["topucomment_id"], name: "index_ucomments_on_topucomment_id", using: :btree
   add_index "ucomments", ["user_id"], name: "index_ucomments_on_user_id", using: :btree
 
@@ -208,10 +209,10 @@ ActiveRecord::Schema.define(version: 20161208152555) do
   add_foreign_key "companies", "cities"
   add_foreign_key "favorites", "ucomments"
   add_foreign_key "favorites", "users"
+  add_foreign_key "images", "ucomments"
   add_foreign_key "ratings", "companies"
   add_foreign_key "ratings", "users"
   add_foreign_key "ucomments", "companies"
-  add_foreign_key "ucomments", "images"
   add_foreign_key "ucomments", "ucomments", column: "topucomment_id"
   add_foreign_key "ucomments", "users"
   add_foreign_key "users", "cities"

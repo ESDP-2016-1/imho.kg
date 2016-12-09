@@ -1,4 +1,6 @@
 class UcommentsController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
+
   include UcommentsHelper
 
   def new
@@ -13,7 +15,10 @@ class UcommentsController < ApplicationController
 
   def create
     @comment = Ucomment.new(comment_params)
+    
     if @comment.save
+      save_attached_picture #TODO with array
+
       helper_redirect_to_comment
     else
       render 'new'
@@ -46,6 +51,8 @@ class UcommentsController < ApplicationController
     @comment = Ucomment.find(params[:id])
 
     if @comment.update(comment_params)
+      save_attached_picture
+      
       helper_redirect_to_comment
     else
       render 'edit'
@@ -74,7 +81,17 @@ class UcommentsController < ApplicationController
   def comment_params
     params.require(:ucomment).permit(:title, :body,
                    :positive, :anonymous, :rate, :topucomment_id, 
-                   :user_id, :company_id, :deleted)
+                   :user_id, :company_id, :image, :deleted)
+  end
+
+  def save_attached_picture
+    (1..3).each do |i|
+      img = "image_" + i.to_s
+      picture = params[:ucomment][img.to_sym]
+      if !picture.nil?
+        @comment.images.create(picture: picture)
+      end  
+    end  
   end
 
 end
