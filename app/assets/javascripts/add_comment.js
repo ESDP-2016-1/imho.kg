@@ -1,5 +1,6 @@
 $(document).ready(function(){
     hidden_form = $("#hidden_form");
+    hidden_form.hide();
 
     company_search = $("#company_name");
     company_search.prop('disabled', false);
@@ -8,6 +9,7 @@ $(document).ready(function(){
     company_card = $("#company_card_show");
 
     input_block = $("#input_block");
+    images_block = $("#images_block");
 
     company_name_div =$('#company_name_div');
     search_result_box = $("#search_result_box");
@@ -124,6 +126,8 @@ $(document).ready(function(){
        var id = $(this).attr('data-id');
         ReDrawStarsOnClick('#stars_show', 'star-img', id);
         input_block.show();
+        images_block.empty();
+        AddImageBlock(images_block, 5,'/images/add-image.png');
     });
 
 });

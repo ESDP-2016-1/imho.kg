@@ -1,7 +1,12 @@
-<% form_tag('/something', id: 'hidden_form', method: :post) do %>
+<form id="hidden_form" action="/comments" method="post" novalidate>
   <input type="hidden" id="comment_type" name="id" value="" />
   <input type="hidden" id="texens" name="user" value="texens" />
-<% end %>
+  <input id="image_select_1" class="input-select-image" data-id="1" type="file" style="visibility:hidden" />
+  <input id="image_select_2" class="input-select-image" data-id="2" type="file" style="visibility:hidden" />
+  <input id="image_select_3" class="input-select-image" data-id="3" type="file" style="visibility:hidden" />
+  <input id="image_select_4" class="input-select-image" data-id="4" type="file" style="visibility:hidden" />
+  <input id="image_select_5" class="input-select-image" data-id="5" type="file" style="visibility:hidden" />
+</form>
 
 
 <div id="search_result_box" class="search-box">
@@ -83,6 +88,14 @@
           <div class="checkbox col-md-10 text-left">
             <label><input type="checkbox" value=""> Анонимный коментарий</label>
           </div>
+      </div>
+      <div>
+        <div class="col-md-2 text-right">
+          <label for="images_block">Изображения:</label>
+        </div>
+        <div id="images_block" class="col-md-10 text-left">
+
+        </div>
       </div>
 
     </div>

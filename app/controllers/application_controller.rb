@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
         @js_files.push 'votable' if current_user
 
       when 'ucomments'
+        @js_files.push 'image_select'
         @js_files.push 'stars'
         @js_files.push controller_js
         @js_files.push 'ckeditor'
@@ -37,6 +38,7 @@ class ApplicationController < ActionController::Base
 
 
       when 'companies', 'users'
+        @js_files.push 'image_select'
         @js_files.push controller_js
         @js_files.push 'Chart.bundle'
         @js_files.push 'chartkick'

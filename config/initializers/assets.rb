@@ -20,5 +20,6 @@ Rails.application.config.assets.precompile += %w(
     shareable.js
     add_comment.js
     stars.js
+    image_select.js
     ckeditor/config.js
     ckeditor/* )
