@@ -1,7 +1,7 @@
 <div id="ajax_new_reply_to_comment" class="add_reply_to_comment col-md-9">
   <%= form_for ucomment, html: {class: 'form-horizontal', multipart: true } do |f| %>
     <br>
-    <div>
+    <div class="field">
       <%= f.label :anonymous, 'Анонимный' %> 
       <%= f.check_box :anonymous %>
     <div>
@@ -10,7 +10,7 @@
       <%= f.cktext_area :body, class: 'form-control ckeditor', :ckeditor => { uiColor: '#AADC6E', :toolbar => 'mini', language: 'ru', startupFocus: true }, autofocus: true %>
     </div>
 
-    <div class="reply_subcomment_attachment">
+    <div class="add_reply_to_comment_attachment">
       <%= f.file_field :image_1 %>
       <%= f.file_field :image_2 %>
       <%= f.file_field :image_3 %>
@@ -22,7 +22,7 @@
       <%= f.hidden_field :user_id, :value => current_user.id %>
     </div>
     
-    <div>
+    <div class="add_reply_to_comment_buttons">
       <% if params[:action] == 'new_reply' %>
         <%= f.submit "Добавить ответ", class:'btn btn-primary', id:"append_new_reply_btn", remote: true %>
         <%= button_tag "Зaкрыть", type: :button, class: "btn btn-primary", id: "subcomment_close_btn" %>

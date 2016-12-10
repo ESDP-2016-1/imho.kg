@@ -91,3 +91,83 @@
 .comment-negative {
   background-color: #FFBFBF;
 }
+
+/* Style for show view of ucomment at the Ucomment page*/
+.show_topcomment_total_replies {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Style for show view of subucomment */
+.show_subcomment_box, .show_deleted_box  {
+  background: #F5F5F5;
+  margin: 5px;
+  border: 1px solid black;
+  min-height: 80px;
+  margin-left: 100px;
+}
+
+.show_subcomment_user {
+  background: #F0F0F0;
+  font-weight: italic;
+  margin: 5px 0;
+  padding-left: 10px;
+}
+
+.show_subcomment_body {
+  padding-left: 10px;
+}
+
+.show_deleted_box {
+  font-weight: bold;
+  text-align: center;
+  padding-top: 25px;
+} 
+
+.show_subcomment_buttons {
+  float: right;
+  margin-bottom: 10px;
+}
+
+.add_reply_to_comment {
+  background: #FFFFBF;
+  border: 1px solid gray;
+  margin-bottom: 5px;
+}
+
+.add_reply_to_comment_attachment {
+  display: inline-block;
+  padding-top: 15px;
+}
+
+.add_reply_to_comment_buttons {
+  float: right;
+  padding-bottom: 5px;
+}
+
+.subcomment_indent_1 {
+  width: 95%;
+  float: right;
+
+}
+
+.subcomment_indent_2 {
+  width: 90%;
+  float: right;
+}
+
+.subcomment_indent_3 {
+  width: 85%;
+  float: right;
+}
+
+.subcomment_indent_4 {
+  width: 80%;
+  float: right;
+}
+
+.subcomment_indent_5 {
+  width: 75%;
+  float: right;
+}

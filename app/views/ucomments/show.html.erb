@@ -7,8 +7,9 @@
         <div class="comment-show-user-logo" >
           <%= image_tag @comment.user.avatar.url(:thumb) %>
           
-          <div>
-            Ответов:<%= @total_subcomments %>
+          <div class="show_topcomment_total_replies">
+            Ответов:<br>
+            <%= @total_subcomments %>
           </div>
 
         </div>

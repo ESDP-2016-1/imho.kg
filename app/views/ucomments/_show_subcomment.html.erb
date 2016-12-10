@@ -1,52 +1,57 @@
 <div class="col-md-12">
-  <div id="comment_<%= subcomment.id %>" class="subcomment_indent_<%= subcomment_indent %>">
-    <br>
+  <div id="comment_<%= subcomment.id %>" class="subcomment_indent_<%= subcomment_indent %>" >
+     
     <% if subcomment.deleted? %>
       <%= render 'deleted_subcomment' %>
-    <% else %> 
-      <div>
-        <%= !subcomment.anonymous ? (link_to subcomment.user.name, user_path(subcomment.user)) : 'Aнонимный' %>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-        <%= subcomment.created_at.strftime("%b %d, %Y %H:%M") %>
-        <span class="glyphicon glyphicon-share-alt"></span> <%= subcomment.topucomment.user.name %>
-      </div>   
+    <% else %>
 
-      <div>
-        <div class="comment-show-user-logo">
-          <%= !subcomment.anonymous ? (image_tag subcomment.user.avatar.url(:thumb)) : image_tag("/images/thumb/anonymous_user.png", size: "50x50") %>
-        </div>
-        
+      <div class="comment-show-user-logo">
+        <%= !subcomment.anonymous ? (image_tag subcomment.user.avatar.url(:thumb)) : image_tag("/images/thumb/anonymous_user.png", size: "50x50") %>
+      </div>
+      
+      <div class="show_subcomment_box"> 
+        <div class="show_subcomment_user">
+          <%= !subcomment.anonymous ? (link_to subcomment.user.name, user_path(subcomment.user)) : 'Aнонимный' %>
+            &nbsp;
+          
+          <span class="glyphicon glyphicon-share-alt"></span> &nbsp;
+          <%= subcomment.topucomment.user.name %> &nbsp;&nbsp;&nbsp;&nbsp;
+          <%= subcomment.created_at.strftime("%b %d, %Y %H:%M") %>
+        </div>   
+
+
         <div class="field text-area show_subcomment_body">
           <%= raw subcomment.body %>
         </div>
-      <% if subcomment.images.present? %>
-        <div class='photo'>
+        <% if subcomment.images.present? %>
+          <div class='photo'>
 
-          <% subcomment.images.each do |photo| %>
-          <%= image_tag photo.picture.url(:thumb) %>
+            <% subcomment.images.each do |photo| %>
+            <%= image_tag photo.picture.url(:thumb) %>
+            <% end %>
+          </div>
+        <% end %>
+      </div> 
+    
+        <div class="show_subcomment_buttons">
+          <%= link_to_if(user_signed_in?, "Ответить", 
+                  reply_to_comment_path(ucomment: subcomment), 
+                    class: 'btn btn-primary reply_to_comment_btn', remote: true) do
+                      link_to('Ответить', "#", class: 'btn btn-primary reply_to_comment_btn', data: {toggle: "tooltip",placement: "top", title: "Войдите на сайт для написания отзыва."})
+                end %>
+          
+          <% if user_signed_in? && (current_user.id == subcomment.user_id) %>
+            <%= link_to "Редактировать", edit_ucomment_path(subcomment), class: "btn btn-primary edit_comment_btn", remote: true %>
+            <%= link_to 'Удалить', ucomment_path(ucomment: subcomment), class: 'btn btn-primary destroy_comment', method: :delete, remote: true, data: {confirm: 'Вы точно хотите удалить?'} %>
           <% end %>
         </div>
-      <% end %>
-      </div>  
-    
-      <%= link_to_if(user_signed_in?, "Ответить", 
-              reply_to_comment_path(ucomment: subcomment), 
-                class: 'btn btn-primary reply_to_comment_btn', remote: true) do
-                  link_to('Ответить', "#", class: 'btn btn-primary reply_to_comment_btn', data: {toggle: "tooltip",placement: "top", title: "Войдите на сайт для написания отзыва."})
-            end %>
-      
-      <% if user_signed_in? && (current_user.id == subcomment.user_id) %>
-        <%= link_to "Редактировать", edit_ucomment_path(subcomment), class: "btn btn-primary edit_comment_btn", remote: true %>
-        <%= link_to 'Удалить', ucomment_path(ucomment: subcomment), class: 'btn btn-primary destroy_comment', method: :delete, remote: true, data: {confirm: 'Вы точно хотите удалить?'} %>
-      <% end %>
-
     <% end %>
 
     </div> 
-      <% if subcomment.subucomments.present? %>
-        <% subcomment_indent >= 5 ? subcomment_indent = 5 : subcomment_indent += 1 %>
-        <% subcomment.subucomments.each do |subcomment| %>
-          <%= render partial: 'show_subcomment', :locals=> {subcomment: subcomment, subcomment_indent: subcomment_indent } %>
-        <% end %>
-      <% end %>
-</div>
+</div>    
+  <% if subcomment.subucomments.present? %>
+    <% subcomment_indent >= 5 ? subcomment_indent = 5 : subcomment_indent += 1 %>
+    <% subcomment.subucomments.each do |subcomment| %>
+      <%= render partial: 'show_subcomment', :locals=> {subcomment: subcomment, subcomment_indent: subcomment_indent } %>
+    <% end %>
+  <% end %>
