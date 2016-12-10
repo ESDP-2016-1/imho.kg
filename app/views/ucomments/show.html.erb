@@ -30,24 +30,25 @@
               <%= @comment.created_at.strftime("%b %d, %Y %H:%M") %>
            </div>
             <button class="btn btn-link" data-toggle="collapse" data-target="#hide-me">Подробнее..</button>
+              <%= link_to_if(user_signed_in?, "Ответить",
+                             reply_to_comment_path(ucomment: @comment),
+                             class: 'btn btn-primary reply_to_comment_btn', remote: true) do
+                link_to('Ответить', "#", class: 'btn btn-primary reply_to_comment_btn', data: {toggle: "tooltip",placement: "top", title: "Войдите на сайт для написания отзыва."})
+              end %>
+
+              <% if user_signed_in? && (current_user.id == @comment.user_id) %>
+                  <%= link_to "Удалить", ucomment_path(ucomment: @comment), class: 'btn btn-primary', method: :delete, data: {confirm: 'Вы точно хотите удалить?'} %>
+                  <%= link_to "Редактировать", edit_ucomment_path(@comment), class: "btn btn-primary edit_comment_btn", remote: true %>
+
+            <% end %>
           <div id="hide-me" class="collapse in">
             <div class="comment-show-text">
               <%= raw @comment.body %>
             </div>
           </div>
+          <div class="btn-comment-show">
 
-            <%= link_to_if(user_signed_in?, "Ответить",
-              reply_to_comment_path(ucomment: @comment),
-                class: 'btn btn-primary reply_to_comment_btn', remote: true) do
-                  link_to('Ответить', "#", class: 'btn btn-primary reply_to_comment_btn', data: {toggle: "tooltip",placement: "top", title: "Войдите на сайт для написания отзыва."})
-            end %>
-
-            <% if user_signed_in? && (current_user.id == @comment.user_id) %>
-              <%= link_to "Удалить", ucomment_path(ucomment: @comment), class: 'btn btn-primary', method: :delete, data: {confirm: 'Вы точно хотите удалить?'} %>
-              <%= link_to "Редактировать", edit_ucomment_path(@comment), class: "btn btn-primary edit_comment_btn", remote: true %>
-
-            <% end %>
-
+          </div>
           </div>
         </div>
       </div>
@@ -59,10 +60,11 @@
         <%= render partial: 'show_subcomment', :locals=> {subcomment: subcomment, subcomment_indent: subcomment_indent} %>
         <% end %>
     </div>
+    <div class="col-md-3 col-lg-3 advertisement">
+      <img src="https://s-media-cache-ak0.pinimg.com/originals/dd/24/8f/dd248f6d8cc95ea36ba763700ade4501.jpg" alt="advertisement">
+    </div>
   </div>
 
-  <div class="col-md-3 col-lg-3 advertisement">
-    <img src="https://s-media-cache-ak0.pinimg.com/originals/dd/24/8f/dd248f6d8cc95ea36ba763700ade4501.jpg" alt="advertisement">
-  </div>
+
 
 </div>
