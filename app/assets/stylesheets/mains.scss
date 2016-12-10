@@ -148,6 +148,15 @@
   width: 80%;
   height: 95px;
   border: 2px;
+  overflow: hidden;
+  font-weight: normal;
+  font-size:13px;
+}
+
+.img-head {
+  height: 68px;
+  width: 68px;
+  margin-left: 30px;
 }
 
 .comment-buttons {
@@ -304,4 +313,11 @@
   padding-right: 5%;
   padding-top: 1%;
   
+}
+
+.main-stars {
+  display: inline-block;
+  margin-left: 5px;
+  height: 14px;
+  width: 14px;
 }

@@ -48,10 +48,16 @@ class UsersController < ApplicationController
   end
 
   def variables_for_views
+    if current_user
+      comments = Ucomment.where(user_id: current_user.id)
+    else
+      comments = Ucomment.where(user_id: params[:id])
+    end
       @variables = {
         :positive_comment => Ucomment.where(:positive => true, :topucomment_id => nil, :user_id => @user.id),
         :negative_comment => Ucomment.where(:positive => false, :topucomment_id => nil, :user_id => @user.id),
-        :user_activity => Ucomment.where(:user_id => @user.id, :topucomment_id => nil)}
+        :user_activity => Ucomment.where(:user_id => @user.id, :topucomment_id => nil),
+        :comments  => comments}
   end
 =begin
   def validate_before_update

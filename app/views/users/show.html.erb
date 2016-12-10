@@ -27,6 +27,20 @@
       </div>
     </div>
   </div>
+  <br>
+  <br>
+  <div class="col-md-10 col-md-offset-1">
+    <% if @variables[:comments] %>
+        <%= helper_draw_cards(@variables[:comments].order('created_at DESC')) %>
+        <br>
+        <br>
+        <br>
+    <% end %>
+    <br>
+    <br>
+    <br>
+  </div>
+
 </div>
 
 

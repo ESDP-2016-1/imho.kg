@@ -46,9 +46,8 @@ module ApplicationHelper
           #{comment.title}
         </div>
         <div class="comment-rating">
-        #{comment.rate}
-        #{comment.positive}
-            #{comment.topucomment.title unless comment.topucomment_id.nil? }
+        #{ helper_draw_stars_for_commment(comment) }
+
         </div>
         <div class="comment-text">
         #{comment.body}
@@ -92,7 +91,7 @@ module ApplicationHelper
             #{ image_tag company.image.url(:thumb) }
           </div>
           <div class="company-card-info">
-            <b>#{ link_to company.category.title, categories_path(company.category.id) }</b>
+            <b>#{ link_to company.category.title, categories_path(company.category.id) }</br>
             #{ company.phones.split(';')*", " }<br/>
             #{ company.address }<br/>
             #{ link_to company.email }
@@ -210,7 +209,18 @@ module ApplicationHelper
     html.html_safe
   end
 
-
+  def helper_draw_stars_for_commment(comment)
+    value = comment.rate
+    html = ''
+    for i in 1..5
+      if i<= value
+        html << '<img src="/images/star-full.png" class="main-stars"/>'
+      else
+        html << '<img src="/images/star-empty.png" class="main-stars"/>'
+      end
+    end
+    html.html_safe
+  end
 
 end
 
