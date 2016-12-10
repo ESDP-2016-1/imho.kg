@@ -6,10 +6,12 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 
 
 # ---Database cleaner before and after test---
-DatabaseCleaner.strategy = :truncation
-
-at_exit do
+begin
   DatabaseCleaner.clean_with(:truncation)
+
+  DatabaseCleaner.strategy = :transaction
+rescue NameError
+    raise "You need to add database_cleaner to your gemfile(in the test: group)"
 end
 
 
@@ -20,7 +22,5 @@ Capybara.app_host = 'http://app.kg'
 # ---For automated test with browser(Firefox as a default)
 Capybara.default_driver = :selenium
 
-
-
-
+# ------ Hooks ----------
 

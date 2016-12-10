@@ -1,8 +1,34 @@
-generate_amount_companies = 50
-generate_amount_head_comments = 150
-generate_amount_sub_comments = 200
-generate_amount_users = 20
+generate_amount_companies = 10
+generate_amount_head_comments = 10
+generate_amount_sub_comments = 20
+generate_amount_users = 2
 line_width = 60
+
+puts
+puts 'CLEARING ALL DATA'
+
+User.destroy_all
+puts 'CLEARED: User entities'
+Ucomment.destroy_all
+puts 'CLEARED: Ucomment entities'
+Favorite.destroy_all
+puts 'CLEARED: Favorite entities'
+Vote.destroy_all
+puts 'CLEARED: Vote entities'
+City.destroy_all
+puts 'CLEARED: City entities'
+Role.destroy_all
+puts 'CLEARED: Role entities'
+Category.destroy_all
+puts 'CLEARED: Category entities'
+Gender.destroy_all
+puts 'CLEARED: Gender entities'
+Company.destroy_all
+puts 'CLEARED: Company entities'
+puts 'ALL ENTITIES CLEARED!'
+puts
+
+
 
 puts
 puts "SEEDS STARTED:"
@@ -19,7 +45,7 @@ puts
 
 cities = ['г. Бишкек', 'г. Талас', 'г. Нарын', 'г. Чуй', 'г. Ыссык-Кол', 'г. Баткен', 'г. Жалал-Абад', 'г. Кант', 'г. Ош']
 cities.each do |city|
-  City.find_or_create_by({name: city})
+  City.create(name: city)
   puts"CREATED CITY: #{city}"
 end
 puts
@@ -28,7 +54,7 @@ puts
 #--------------------  ROLES ----------------------------------
 
 ['user', 'agent', 'moderator', 'admin', 'banned'].each do |role|
-  Role.find_or_create_by({name: role})
+  Role.create(name: role)
   puts "CREATED ROLE: #{role}"
 end
 puts
@@ -39,7 +65,12 @@ puts
 ['user', 'agent', 'moderator', 'admin'].each_with_index do |name, n|
   email = name + '@example.com'
   password = '123456'
-  User.create(name: name, email: email, role_id: n+1, password: password, password_confirmation: password, confirmed_at: Time.now )
+  User.create(  name: name,
+                email: email,
+                role_id: n+1,
+                password: password,
+                password_confirmation: password,
+                confirmed_at: Time.now )
   print "\x1b[0;32m"
   puts "CREATED USER -> #{name} WITH ROLE = #{name} AND PASSWORD: #{password}"
   print "\x1b[0m"
@@ -202,7 +233,7 @@ generate_amount_companies.times do
   city = rand(1..cities.size)
   company = Company.create( title:   Faker::Company.name,
                             description:       Faker::Company.bs.capitalize,
-                            address:           "#{cities[city]}",
+                            address:           Faker::Address.street_address,
                             phones:            "0(312)#{rand(999999)};0(700)#{rand(999999)}",
                             email:             Faker::Internet.email,
                             website:           Faker::Internet.domain_name,
@@ -230,6 +261,17 @@ end
 puts "CREATED COMMENTS!"
 puts
 
+#---------------------------  VOTES ------------------------------------
+Ucomment.all.each do |comment|
+  for i in 1..rand(15)
+    Vote.add(User.find(rand(1..generate_amount_users)),comment, rand(0..1)==1 ? :like : :dislike )
+  end
+end
+
+puts "CREATED LIKES/DISLIKES!"
+puts
+
+
 
 3.times do |n|
   n += 1
@@ -242,7 +284,9 @@ puts
 
 end
 
+Company.reindex
+puts "ELASTICSEARCH REINDEXED FOR COMPANY table"
 puts
 puts "*" * line_width
-puts "SEEDS FOR TEST FINISHED SUCCESSFULLY!"
+puts "SEEDS FINISHED SUCCESSFULLY!"
 puts
