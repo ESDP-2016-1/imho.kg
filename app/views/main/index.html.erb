@@ -54,17 +54,8 @@
   </div>
 
   <div class="container">
-
-    <% unless current_user.nil? %>
-
-      <%= link_to 'Создать коммент', new_ucomment_path, class: 'btn btn-primary' %>
-
-    <% end %>
-
     <div id="main-page-list-companies">
-
       <%= helper_draw_cards(@comments) %>
-
     </div>
   </div>
 

@@ -22,12 +22,12 @@
       <%= f.hidden_field :user_id, :value => current_user.id %>
     </div>
     
-    <div class="add_reply_to_comment_buttons">
+    <div class="btn-new-reply">
       <% if params[:action] == 'new_reply' %>
-        <%= f.submit "Добавить ответ", class:'btn btn-primary', id:"append_new_reply_btn", remote: true %>
-        <%= button_tag "Зaкрыть", type: :button, class: "btn btn-primary", id: "subcomment_close_btn" %>
+        <%= f.submit "Добавить ответ", class:'btn btn-success', id:"append_new_reply_btn", remote: true %>
+        <%= button_tag "Зaкрыть", type: :button, class: "btn btn-warning", id: "subcomment_close_btn" %>
       <% else %>
-        <%= f.submit "Обновить отзыв", class:'btn btn-primary', id:"update_comment_btn", remote: true %>
+        <%= f.submit "Обновить отзыв", class:'btn btn-info', id:"update_comment_btn", remote: true %>
       <% end %>  
     </div>
 

@@ -1,5 +1,4 @@
 .advertisement {
-
   height: 100%;
 }
 
@@ -10,7 +9,6 @@
 
 .comment-show {
   width: 880px;
-  height: 250px;
   float: left;
   overflow: hidden;
   margin: 5px;
@@ -33,21 +31,22 @@
 
 
 }
-
 .comment-show-body {
   float: left;
   position: relative;
-  width: 780px;
-  height: 100%;
+  max-width: 780px;
   padding-left: 10px;
-  margin: 5px;
-
+  margin: auto;
+  width: 100%;
+  margin-top: 5px;
 }
 
 
 .comment-show-title {
   font-size: 14pt;
   font-weight: bold;
+  display:inline;
+  list-style: none;
 }
 
 .comment-show-text {
@@ -55,6 +54,8 @@
   width: 80%;
   height: 95px;
   border: 2px;
+  display: table;
+  margin-bottom: 10px;
 }
 
 .comment-show-buttons {
@@ -66,12 +67,10 @@
 
 }
 
-.comment-show-user-info {
+.btn-for-comment-show-details {
   position: absolute;
-  width: 90%;
-  height: 12%;
+  right: 50px;
   bottom: 0px;
-  float: left;
 }
 
 .btn-for-answer-show {
@@ -91,6 +90,13 @@
 .comment-negative {
   background-color: #FFBFBF;
 }
+
+.field .text-area .show_subcomment_body {
+
+
+}
+
+
 
 /* Style for show view of ucomment at the Ucomment page*/
 .show_topcomment_total_replies {
@@ -123,7 +129,7 @@
   font-weight: bold;
   text-align: center;
   padding-top: 25px;
-} 
+}
 
 .show_subcomment_buttons {
   float: right;
