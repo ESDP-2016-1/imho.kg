@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_id: 1
+  company_title: MyString
+  company_occupation: MyString
+  company_address: MyString
+  company_phones: MyString
+  comment_rate: 1
+  comment_title: MyString
+  comment_body: MyText
+  comment_anonymous: false
+  picture1: 
+  picture2: 
+  picture3: 
+  picture4: 
+  picture5: 
+
+two:
+  company_id: 1
+  company_title: MyString
+  company_occupation: MyString
+  company_address: MyString
+  company_phones: MyString
+  comment_rate: 1
+  comment_title: MyString
+  comment_body: MyText
+  comment_anonymous: false
+  picture1: 
+  picture2: 
+  picture3: 
+  picture4: 
+  picture5: 

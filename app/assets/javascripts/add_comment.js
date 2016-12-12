@@ -70,7 +70,7 @@ $(document).ready(function(){
         search_content.html(  '<div class="div-space"></div>' +
                                 '<div class="add-company-item">' +
                                     '<div class="add-company-field-desc">Название:</div>' +
-                                    '<div class="add-company-field"><input name="occupation" type="text"></div>' +
+                                    '<div class="add-company-field"><input name="title" type="text"></div>' +
                                 '</div>' +
                                 '<div class="add-company-item">' +
                                     '<div class="add-company-field-desc">Вид деятельности:</div>' +

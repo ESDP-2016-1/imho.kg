@@ -1,3 +1,12 @@
+<%= form_for :moderator, as: :post, url: verify_comment_url, html: {multipart: true, id: 'hidden_form' } do |frm| %>
+  <%= frm.file_field :image1, id:'image_select_1', class: 'input-select-image', 'data-id' => '1', style: 'visibility:hidden' %>
+  <%= frm.file_field :image2, id:'image_select_2', class: 'input-select-image', 'data-id' => '2', style: 'visibility:hidden' %>
+  <%= frm.file_field :image3, id:'image_select_3', class: 'input-select-image', 'data-id' => '3', style: 'visibility:hidden' %>
+  <%= frm.file_field :image4, id:'image_select_4', class: 'input-select-image', 'data-id' => '4', style: 'visibility:hidden' %>
+  <%= frm.file_field :image5, id:'image_select_5', class: 'input-select-image', 'data-id' => '5', style: 'visibility:hidden' %>
+<% end %>
+
+<!--
 <form id="hidden_form" action="/comments" method="post" enctype="multipart/form-data" novalidate>
   <input type="hidden" id="comment_type" name="id" value="" />
   <input type="hidden" id="texens" name="user" value="texens" />
@@ -7,7 +16,7 @@
   <input id="image_select_4" class="input-select-image" data-id="4" type="file" style="visibility:hidden" />
   <input id="image_select_5" class="input-select-image" data-id="5" type="file" style="visibility:hidden" />
 </form>
-
+-->
 
 <div id="search_result_box" class="search-box">
   <div id="search_content">

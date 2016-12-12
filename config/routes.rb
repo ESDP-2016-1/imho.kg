@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   get 'positive_comments' => 'main#positive_comments',  as: 'positive_comments'
   get 'sorting'           => 'main#sorting',            as: 'sorting'
 
+  post 'verify'                 => 'moderation#verify_comment',         as: 'verify_comment'
 
   # AJAX
   post 'vote'                  => 'main#ajax_vote_for',               as: 'ajax_vote_for'

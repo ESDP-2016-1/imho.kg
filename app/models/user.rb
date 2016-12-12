@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   belongs_to :role
   has_many :ratings
   has_many :ucomments
+  has_many :moderations
 
   has_many :favorites
   has_many :ucomments, -> { uniq }, through: :favorites

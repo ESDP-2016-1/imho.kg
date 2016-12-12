@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209200804) do
+ActiveRecord::Schema.define(version: 20161212212124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,16 +103,69 @@ ActiveRecord::Schema.define(version: 20161209200804) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "picture1_file_name"
+    t.string   "picture1_content_type"
+    t.integer  "picture1_file_size"
+    t.datetime "picture1_updated_at"
+    t.string   "picture2_file_name"
+    t.string   "picture2_content_type"
+    t.integer  "picture2_file_size"
+    t.datetime "picture2_updated_at"
+    t.string   "picture3_file_name"
+    t.string   "picture3_content_type"
+    t.integer  "picture3_file_size"
+    t.datetime "picture3_updated_at"
+    t.string   "picture4_file_name"
+    t.string   "picture4_content_type"
+    t.integer  "picture4_file_size"
+    t.datetime "picture4_updated_at"
+    t.string   "picture5_file_name"
+    t.string   "picture5_content_type"
+    t.integer  "picture5_file_size"
+    t.datetime "picture5_updated_at"
     t.integer  "ucomment_id"
   end
 
   add_index "images", ["ucomment_id"], name: "index_images_on_ucomment_id", using: :btree
+
+  create_table "moderations", force: :cascade do |t|
+    t.integer  "company_id"
+    t.string   "company_title"
+    t.string   "company_occupation"
+    t.string   "company_address"
+    t.string   "company_phones"
+    t.integer  "comment_rate"
+    t.string   "comment_title"
+    t.text     "comment_body"
+    t.boolean  "comment_anonymous"
+    t.string   "image1_file_name"
+    t.string   "image1_content_type"
+    t.integer  "image1_file_size"
+    t.datetime "image1_updated_at"
+    t.string   "image2_file_name"
+    t.string   "image2_content_type"
+    t.integer  "image2_file_size"
+    t.datetime "image2_updated_at"
+    t.string   "image3_file_name"
+    t.string   "image3_content_type"
+    t.integer  "image3_file_size"
+    t.datetime "image3_updated_at"
+    t.string   "image4_file_name"
+    t.string   "image4_content_type"
+    t.integer  "image4_file_size"
+    t.datetime "image4_updated_at"
+    t.string   "image5_file_name"
+    t.string   "image5_content_type"
+    t.integer  "image5_file_size"
+    t.datetime "image5_updated_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "user_id"
+  end
+
+  add_index "moderations", ["user_id"], name: "index_moderations_on_user_id", using: :btree
 
   create_table "ratings", force: :cascade do |t|
     t.integer  "rate"
@@ -210,6 +263,7 @@ ActiveRecord::Schema.define(version: 20161209200804) do
   add_foreign_key "favorites", "ucomments"
   add_foreign_key "favorites", "users"
   add_foreign_key "images", "ucomments"
+  add_foreign_key "moderations", "users"
   add_foreign_key "ratings", "companies"
   add_foreign_key "ratings", "users"
   add_foreign_key "ucomments", "companies"
