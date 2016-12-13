@@ -1,5 +1,5 @@
 close_button_image = "/images/close-image-btn.png";
-preffix_of_hidden_fields = '#image_select_';
+//preffix_of_hidden_fields = '#image_select_';
 default_image_path = '';
 
 function AddImageBlock(div_block, amount, default_image){
@@ -33,9 +33,6 @@ function readURL(input, img) {
 }
 
 $(document).ready( function() {
-    $('.class-close-image').click(function () {
-
-    });
 
     $(document).on('click', '.class-image', function () {
         var id = $(this).attr('data-id');

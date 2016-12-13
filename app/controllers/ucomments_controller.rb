@@ -4,7 +4,9 @@ class UcommentsController < ApplicationController
   include UcommentsHelper
 
   def new
-    @comment = Ucomment.new
+    @moderation_comment = Moderation.new
+    @data = { id: current_user.id.to_s
+            }
   end
 
   def show

@@ -32,6 +32,7 @@ $(document).ready(function(){
         e.stopPropagation();
         //# TODO disable system keys like ESC and SHIFT
         //# TODO window resize
+        hidden_form.find('input[data="company_id"]').first().val('');
         stars_div.hide();
         company_card.hide();
         input_block.hide();
@@ -108,6 +109,7 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.company-item', function(){
+        hidden_form.find('input[data="company_id"]').first().val($(this).attr('data-id'));
         search_result_box.hide(400);
         $.ajax({
             url: '/search/show',
@@ -115,6 +117,7 @@ $(document).ready(function(){
             success: function(company_card_html){
                 company_card.show();
                 company_card.html(company_card_html);
+                alert(hidden_form.find('data=["company_id"]').val());
             },
             dataType: 'html'
         });
@@ -130,13 +133,33 @@ $(document).ready(function(){
     $(document).on('click', '.star-img', function(e){
        var id = $(this).attr('data-id');
         ReDrawStarsOnClick('#stars_show', 'star-img', id);
+        hidden_form.find('input[data="msg_rate"]').first().val(id);
         input_block.show();
         images_block.empty();
         AddImageBlock(images_block, 5,'/images/add-image.png');
     });
 
+    $('#msg_title').change(function(e) {
+       var comment_title = hidden_form.find('input[data="msg_title"]').first();
+           comment_title.val($(this).val());
+    });
+
+    $('#msg_content').change(function(e) {
+        var comment_body = hidden_form.find('textarea[data="msg_content"]').first();
+        comment_body.val($(this).val());
+        console.log(comment_body.val());
+    });
+
+    $('#msg_anonymous').change(function(e) {
+        var comment_anonymous = hidden_form.find('input[data="msg_anonymous"]').first();
+        comment_anonymous.val($(this).is(':checked'));
+        //console.log(comment_anonymous.val());
+    });
+
     $('#do_submit').click(function(){
         hidden_form.submit();
     });
+
+
 });
 
